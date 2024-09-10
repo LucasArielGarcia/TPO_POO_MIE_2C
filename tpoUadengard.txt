@@ -1,0 +1,113 @@
+@startuml
+
+class Heroe{
+-idHeore: int
+-vida: int
+-daño: double
+-nivelDefensa
+-nombre: String
+-estadoPersonaje: EstadoPersonaje
+-listaItems: <Items>
++{abstract} void atacar()
++{abstract} void curar()
++{abstract} void defender()
+}
+class Guerrero{
++{abstract} void atacar()
++{abstract} void curar()
++{abstract} void defender()
+}
+class Arquero{
+- agilidad: int
+- punteria: int
++{abstract} void atacar()
++{abstract} void curar()
++{abstract} void defender()
+}
+class Mago{
++{abstract} void atacar()
++{abstract} void curar()
++{abstract} void defender()
+}
+
+enum EstadoPersonaje{
+VIVO
+MUERTO
+}
+
+class Criatura{
+-idCriatura: int
+-vida: int
+-daño: double
+-nombre: String
+-estadoPersonaje: EstadoPersonaje
++{abstract} void atacar()
+}
+class Troll{
++{abstract} void atacar()
+
+}
+class Dragon{
++{abstract} void atacar()
+
+}
+class Espectro{
++{abstract} void atacar()
+}
+
+
+
+
+class Items{
+-descripcionItem: String
+-idItem: int
+-nivelItem: int
++{abstract} int sumarHabilidad()
+}
+class Espada{
++{abstract} int sumarHabilidad()
+}
+class Arco{
++{abstract} int sumarHabilidad()
+}
+class Baculo{
++{abstract} int sumarHabilidad()
+}
+class Armadura{
++{abstract} int sumarHabilidad()
+}
+
+
+
+
+
+
+class Pelea{
+heroe: Heroe
+criatura: Criatura
+}
+Heroe <|-- Guerrero
+Heroe <|-- Mago
+Heroe <|-- Arquero
+
+Heroe o-- EstadoPersonaje
+Criatura o-- EstadoPersonaje
+
+
+Criatura<|-- Troll
+Criatura<|-- Dragon
+Criatura<|-- Espectro
+
+Pelea o-- Heroe
+Pelea o-- Criatura
+
+Heroe o-- Items
+
+Items <|-- Espada
+Items <|-- Arco
+Items <|-- Baculo
+Items <|-- Armadura
+
+
+
+@enduml
