@@ -2,6 +2,7 @@
 
 class Heroe{
 -idHeore: int
+-nombre: String
 -vida: int
 -daño: double
 -nivelDefensa
@@ -11,11 +12,15 @@ class Heroe{
 +{abstract} void atacar()
 +{abstract} void curar()
 +{abstract} void defender()
++{abstract} boolean estoyMuerto()
+
 }
 class Guerrero{
 +{abstract} void atacar()
 +{abstract} void curar()
 +{abstract} void defender()
++{abstract} boolean estoyMuerto()
+
 }
 class Arquero{
 - agilidad: int
@@ -23,11 +28,15 @@ class Arquero{
 +{abstract} void atacar()
 +{abstract} void curar()
 +{abstract} void defender()
++{abstract} boolean estoyMuerto()
+
 }
 class Mago{
 +{abstract} void atacar()
 +{abstract} void curar()
 +{abstract} void defender()
++{abstract} boolean estoyMuerto()
+
 }
 
 enum EstadoPersonaje{
@@ -42,17 +51,19 @@ class Criatura{
 -nombre: String
 -estadoPersonaje: EstadoPersonaje
 +{abstract} void atacar()
++{abstract} boolean estoyMuerto()
 }
 class Troll{
 +{abstract} void atacar()
-
++{abstract} boolean estoyMuerto()
 }
 class Dragon{
 +{abstract} void atacar()
-
++{abstract} boolean estoyMuerto()
 }
 class Espectro{
 +{abstract} void atacar()
++{abstract} boolean estoyMuerto()
 }
 
 
@@ -62,6 +73,7 @@ class Items{
 -descripcionItem: String
 -idItem: int
 -nivelItem: int
+-precio: double
 +{abstract} int sumarHabilidad()
 }
 class Espada{
@@ -78,14 +90,22 @@ class Armadura{
 }
 
 
-
-
-
-
 class Pelea{
 heroe: Heroe
 criatura: Criatura
++void peleaPersonajes(criatura: Criatura, heroe: Heroe)
 }
+
+class Mercader{
+-ventaItems: list<Items>
+}
+
+class ZonaDescanso{
+-mercaderZonaDescanso: Mercader
+-heroe: Heroe
++void reposoPersonaje(heroe: Heroe)
+}
+
 Heroe <|-- Guerrero
 Heroe <|-- Mago
 Heroe <|-- Arquero
@@ -108,6 +128,10 @@ Items <|-- Arco
 Items <|-- Baculo
 Items <|-- Armadura
 
+Mercader o-- Items
+
+ZonaDescanso o-- Mercader
+ZonaDescanso o-- Heroe
 
 
 @enduml
