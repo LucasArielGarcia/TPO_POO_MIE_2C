@@ -1,0 +1,191 @@
+
+@startuml
+abstract SerVivo{
+  -nombre: String
+  -puntosDeVida:  int
+  -nivelDeAtaque: int
+  -nivelDeDefensa:int
+  +atacar(): void
+  +defender(): void
+  +muerte(): void
+}
+
+
+abstract Personaje{
+  -nivel: static int
+  -equipoPelea: <equipo>
+  +correr(): void
+  +abrirMapa(): void
+}
+
+class  Mago{
++inmunidadEspectro(): void
++recuperarVida(): int
+}
+
+class Guerrero{
++contad
+orDeGolpes: static int
++monstruoDebil: String
+}
+
+class Arquero{
+ -nivelDePunteria: double
+ -nivelDeAgilidad: double 
+ +eficienciDraconica(): double
+}
+
+
+
+SerVivo<|--Personaje
+Personaje<|--Guerrero
+Personaje<|--Mago
+Personaje<|--Arquero
+
+abstract Monstruo{
+ -puntosExperiencia: double
+}
+
+
+class Dragon{
+ +AumentoDeAtaque(a: guerrero): int
+}
+
+
+class Troll{
+  +AumentoDeDefensa(a:mago): int
+}
+
+
+class Espectro{
+ +AumentoDeAtaque(a: arquero): int
+}
+
+
+SerVivo<|--Monstruo
+Monstruo<|-- Dragon
+Monstruo<|--Troll
+Monstruo<|--Espectro
+
+
+
+class Pelea{
+-Daño: int
+-heroe: personaje
+-enemigo: monstruo
++calcularDañoHeroe(): int
++calcularDañoMonstruo(): int
++ReducirDefensaHeroe(Daño): Personaje
++ReducirVidaHeore(Daño): Personaje
++ReducirDefensaMonstruo(Daño): Monstruo
++ReducirVidaMonstruo(Daño): Monstruo
+}
+class Mapa{
+-ubicaciones:<ubicacion>
++irAUbicacion(ubicacion a)
++elegirUbicacion(): ubicacion 
+}
+
+
+abstract Ubicacion{
+  -heroe: personaje
+  -nombre: String
+}
+
+
+class UbicacionConTesoro{
+  -Tesoro: String
+}
+
+
+class UbicacionConEnemigo{
+   -enemigo :mostruo 
+   +inicializarCombate(): void  
+}
+
+
+class UbicacionNeutral{
+   -misionesSecundarias: <MisionSecundaria>
+   +descansar(): void
+   +mejorarNivelPersonaje(): void
+   +Reclamar pago(): int 
+   +BuscarMisionSecundaria(): MisionSecundaria
+}
+
+Ubicacion <|-- UbicacionConEnemigo
+UbicacionConEnemigo  <|-- UbicacionConTesoro
+Ubicacion <|-- UbicacionNeutral
+Ubicacion O--O Mapa
+UbicacionConEnemigo *-- Monstruo
+Mapa O--* Personaje
+
+
+abstract MisionSecundaria{
+  -recompensa:
+  +aceptarMision
+}
+
+
+class DerrotarDrangonDelNorte{
+  -dragonDerrotado: static boolean
+  +DerrotaDragon(): boolean
+}
+
+
+class AmuletoPerdido{
+  -amuletoRecuperado:static boolean
+  +recuperoAmuleto(): boolean
+}
+
+
+class EliminarEspectrosDelPantano{
+  -espectrosDerrotados: static int
+  +espectroDerrotadoPantano(ubicacion a): void
+}
+
+ 
+class LimpiarAldeaDeTrolls{
+  -trollsDerrotados: static int
+  +trollsDerrotadosEnAldeas(ubicacion a): void
+}
+
+
+DerrotarDrangonDelNorte--|>MisionSecundaria
+AmuletoPerdido--|>MisionSecundaria
+EliminarEspectrosDelPantano--|>MisionSecundaria
+LimpiarAldeaDeTrolls--|>MisionSecundaria
+MisionSecundaria O--* UbicacionNeutral
+
+
+class TurnoNeutral{
+-heroe: Personaje
++VerMapa(): void
++Equipar(): void
++descansar(): void
++escapar(): void
+}
+TurnoNeutral O--* Personaje
+class TurnoPelea{
+-pelea: Pelea
+-heroe:Personaje
+-enemigo:Monstruo
++tunoHeroe(): void
++turnoMonstruo():void
+}
+
+TurnoPelea *--* Pelea
+TurnoPelea --* Personaje
+TurnoPelea --* UbicacionConEnemigo
+
+class MenuPrincipal{
+-heroe: Personaje
+-turnoNeutral: TurnoNeutral
+-urnoPelea: TurnoPelea
++iniciar(): void
++borrarPersonaje(): void
++guardar():void
+}
+MenuPrincipal *-- Personaje
+MenuPrincipal *-- TurnoNeutral
+
+@enduml
