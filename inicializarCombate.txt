@@ -1,0 +1,14 @@
+@startuml
+actor USUARIO 
+USUARIO --> UbicacionConEnemigo: inicializarCombate(): void
+activate UbicacionConEnemigo
+UbicacionConEnemigo --> TurnoPelea: inicializarCombate(): void
+activate TurnoPelea
+   alt "Turno del Heroe"
+    TurnoPelea --> UbicacionConEnemigo: turnoHeroe(): void
+    UbicacionConEnemigo --> USUARIO: turnoHeroe(): void
+    else "Turno del Monstruo"
+     TurnoPelea --> UbicacionConEnemigo: turnoMonstruo(): void
+     UbicacionConEnemigo --> USUARIO: turnoMostruo(): void
+   end
+@enduml
