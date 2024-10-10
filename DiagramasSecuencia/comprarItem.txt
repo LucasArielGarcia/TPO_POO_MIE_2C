@@ -1,0 +1,51 @@
+@startuml
+actor Jugador
+Jugador -> Juego
+activate Juego
+
+Juego -> ZonaDescanso: Items transaccionItem(pago: double, idItem: int)
+activate ZonaDescanso
+
+ZonaDescanso -> Mercader:Items ventaItem(pago: double, idItem: int)
+activate Mercader
+alt si se encuentra el item
+
+ loop por cada item
+
+  Mercader -> Items: boolean sosItem(idItem)
+  activate Items
+
+  Items --> Mercader: boolean 
+  deactivate Items
+
+ end
+
+ alt si el pago es igual al precio
+
+  Mercader --> ZonaDescanso: Items itemComprado
+  deactivate Mercader
+  ZonaDescanso --> Juego: Items itemComprado
+  deactivate ZonaDescanso
+  Juego -> Juego: guardarItem(item: Items)
+  activate Juego
+  Juego -> Heroe: guardarMochilaItem(item: Items)
+  deactivate Juego
+  deactivate Juego
+  
+
+ else Si el pago es menor al precio del item
+ Mercader --> ZonaDescanso: ErrorMensage
+ ZonaDescanso --> Juego: ErrorMensage
+ Juego --> Jugador: ErrorMensage
+ end
+
+ else Si no se encuentra el item
+ Mercader --> ZonaDescanso: ErrorMensage
+ ZonaDescanso --> Juego: ErrorMensage
+ Juego --> Jugador: ErrorMensage
+end
+
+
+
+
+@enduml
