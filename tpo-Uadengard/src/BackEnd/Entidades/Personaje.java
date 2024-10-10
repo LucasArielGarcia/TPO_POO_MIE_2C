@@ -1,4 +1,9 @@
 package BackEnd.Entidades;
 
-public class Personaje {
+abstract class  Personaje {
+    private int vida;
+    private int nvlAtaque;
+    private int nvlDefensa;
+
+    public abstract void atacar();
 }
