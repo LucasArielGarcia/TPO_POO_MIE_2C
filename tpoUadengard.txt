@@ -14,6 +14,7 @@ abstract Heroe{
 -mochila: List<Items>
 -equipamento: List<Items>
 - mapa: Mapa
+- mision: Mision
 +void guardarMochilaItem(item: Items)
 +{abstract} void atacar()
 +{abstract} void curar()
@@ -106,9 +107,16 @@ class Mercader{
 +Items ventaItem(pago: double, idItem: int)
 }
 
+class Aliado{
+- List<Misiones> misiones
++ List<Misiones> mostrarCatalogoMisiones()
++ Items reclamarRecompensa()
+}
+
 class ZonaDescanso{
 -mercaderZonaDescanso: Mercader
 -heroe: Heroe
+-aliado: Aliado
 +void reposoPersonaje(heroe: Heroe)
 +List<Items> mostrarItemsMercader()
 +boolean estanciaJugador()
@@ -176,6 +184,7 @@ Personaje<|--Enemigo
 Heroe <|-- Guerrero
 Heroe <|-- Mago
 Heroe <|-- Arquero
+Heroe o-- Mision
 
 
 
@@ -198,6 +207,8 @@ Mercader o-- Items
 
 ZonaDescanso o-- Mercader
 ZonaDescanso o-- Heroe
+ZonaDescanso o-- Aliado
+Aliado o-- Mision
 
 Juego *-- Heroe
 Juego *-- Enemigo
