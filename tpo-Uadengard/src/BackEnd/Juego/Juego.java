@@ -5,9 +5,8 @@ import BackEnd.Entidades.*;
 import java.util.List;
 
 public class Juego {
-    Mapa mapa = new Mapa();
+    Mapa mapa;
     Heroe heroe;
-    ZonaDescanso zonaDescanso;
 
     public void crearHeroe(String tipoHeroe, String nombre){
         switch (tipoHeroe){
@@ -18,24 +17,29 @@ public class Juego {
     }
 
     public List<Mision> mostrarMisionList(){
-        return zonaDescanso.mostrarMisionesList();
+        return mapa.mostrarMisionList();
     }
     public List<Items> mostrarItems(){
-        return zonaDescanso.mostrarCatologoItems() ;
+        return mapa.mostrarItems() ;
     }
 
-    public void aceptarMision(Heroe heroe, Mision mision){
+    public void aceptarMision(Mision mision){
         heroe.aceptarMision(mision);
     }
 
 
-    public void hacerMision(){
+
+
+    public void hacerMision(Ubicacion ubicacionMision){
         if (heroe.tengoMision()){
-            // viajar a la ubicacion
+            ubicacionMision.llegadaUbicacion(heroe);
         }
+        // agregar logica para que si termina la mision poner la variable mision como null
+        heroe.terminarMision();
     }
 
     public void viajarUbicacion(){
+
 
     }
 
