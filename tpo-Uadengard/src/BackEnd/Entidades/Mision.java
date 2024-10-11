@@ -5,6 +5,7 @@ public class Mision {
     private String nombreMision;
     private Ubicacion ubicacion;
     private Objetivo objetivo;
+    private Pelea pelea;
 
     public Mision(Items recompensa, String nombreMision, Ubicacion ubicacion, Objetivo objetivo) {
         this.recompensa = recompensa;
@@ -12,7 +13,9 @@ public class Mision {
         this.ubicacion = ubicacion;
         this.objetivo = objetivo;
     }
-    
+
+    public
+
 
 
 }

@@ -20,7 +20,7 @@ alt si se encuentra el item
 
  end
 
- alt si el pago es igual al precio
+ alt si los puntos de mejora es igual al precio
 
   Mercader --> ZonaDescanso: Items itemComprado
   deactivate Mercader
@@ -33,7 +33,7 @@ alt si se encuentra el item
   deactivate Juego
   
 
- else Si el pago es menor al precio del item
+ else Si los puntos de mejora es menor al precio del item
  Mercader --> ZonaDescanso: ErrorMensage
  ZonaDescanso --> Juego: ErrorMensage
  Juego --> Jugador: ErrorMensage
