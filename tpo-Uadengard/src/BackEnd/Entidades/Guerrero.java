@@ -1,5 +1,7 @@
 package BackEnd.Entidades;
 
+import java.util.List;
+
 public class Guerrero extends Heroe {
 
     @Override
@@ -14,6 +16,6 @@ public class Guerrero extends Heroe {
 
 
     public Guerrero(String nombre) {
-        super();
+        super(nombre, 80);
     }
 }
