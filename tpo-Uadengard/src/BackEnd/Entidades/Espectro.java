@@ -2,8 +2,9 @@ package BackEnd.Entidades;
 
 public class Espectro extends Enemigo{
 
-    public Espectro(int vida, int daño, String nombre) {
-        super(vida, daño, nombre);
+
+    public Espectro(String nombre, int defensa) {
+        super(nombre, 30);
     }
 
     @Override

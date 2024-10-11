@@ -7,6 +7,7 @@ public abstract class Heroe extends Personaje{
     private List<Items> mochilaItems = new ArrayList<>();
     private List<Items> equipoItems = new ArrayList<>();
     private int nivelHeroe;
+    private Mision mision;
 
 
     public Heroe(String nombre, int defensa) {
@@ -14,6 +15,16 @@ public abstract class Heroe extends Personaje{
         this.mochilaItems = null;
         this.equipoItems = null;
         this.nivelHeroe = 1;
+    }
+    public void aceptarMision(Mision mision){
+        this.mision = mision;
+    }
+    public void terminarMision(){
+        this.mision = null;
+    }
+
+    public boolean tengoMision(){
+        return this.mision == null;
     }
 
     public abstract void curarse();

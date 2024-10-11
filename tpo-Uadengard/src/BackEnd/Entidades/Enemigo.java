@@ -1,8 +1,8 @@
 package BackEnd.Entidades;
 
 abstract class Enemigo extends Personaje{
-    public Enemigo(int vida, int daño, String nombre) {
-        super(vida, daño, nombre);
+    public Enemigo(String nombre, int defensa) {
+        super(nombre, defensa);
     }
 
     public abstract void dropearItem();

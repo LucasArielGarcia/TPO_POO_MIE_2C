@@ -5,4 +5,8 @@ import java.util.List;
 
 public class Mercader {
     private List<Items> itemVenta = new ArrayList<>();
+    public List<Items> mostrarCatologoItems(){
+        return this.itemVenta;
+    }
+
 }

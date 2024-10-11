@@ -1,8 +1,8 @@
 package BackEnd.Entidades;
 
 public class Dragon extends Enemigo {
-    public Dragon(int vida, int daño, String nombre) {
-        super(vida, daño, nombre);
+    public Dragon(String nombre, int defensa) {
+        super(nombre, 70);
     }
 
     @Override
