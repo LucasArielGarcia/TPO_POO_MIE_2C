@@ -1,8 +1,11 @@
 @startuml
-abstract SerVivo{
+abstract Personaje{
 -vida: int
 -daño: double
 -nombre: String
++ void usarItem(Items item)
++ void sumarDefensa(cantidadDefensa: int)
++ void sumarAtaque(cantidadAtaque: int)
 }
 abstract Heroe{
 -idHeore: int
@@ -70,20 +73,24 @@ abstract Items{
 -idItem: int
 -nivelItem: int
 -precio: double
-+{abstract} int sumarHabilidad()
++{abstract} void usarItem(Personaje personaje)
 + boolean sosItem(idItem: int)
 }
 class Espada{
-+{abstract} int sumarHabilidad()
+- aumentoAtaque: int
++{abstract} void usarItem(Personaje personaje)
 }
 class Arco{
-+{abstract} int sumarHabilidad()
+- aumentoAtaque: int
++{abstract} void usarItem(Personaje personaje)
 }
 class Baculo{
-+{abstract} int sumarHabilidad()
+- aumentoAtaque: int
++{abstract} void usarItem(Personaje personaje)
 }
 class Armadura{
-+{abstract} int sumarHabilidad()
+- aumentoDefensa: int
++{abstract} void usarItem(Personaje personaje)
 }
 
 
@@ -163,8 +170,8 @@ Class Juego{
 +void comprarItem(pago: double, idItem: int)
 +void guardarItem(item: Items)
 }
-SerVivo<|--Heroe
-SerVivo<|--Enemigo
+Personaje<|--Heroe
+Personaje<|--Enemigo
 
 Heroe <|-- Guerrero
 Heroe <|-- Mago

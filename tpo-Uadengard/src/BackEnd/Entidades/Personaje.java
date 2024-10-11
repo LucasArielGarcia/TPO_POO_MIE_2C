@@ -23,11 +23,13 @@ abstract class  Personaje {
     }
 
     public void sumarDefensa(int cantidadDefensa){
-        defensa = cantidadDefensa;
+        defensa += cantidadDefensa;
     }
     public void sumarDaño(int cantidadDaño){
-        daño = cantidadDaño;
+        daño += cantidadDaño;
     }
+
+
 
 
 }

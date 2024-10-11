@@ -1,4 +1,4 @@
 package BackEnd.Entidades;
 
-public class DevolverItem {
+public class DevolverItem extends Objetivo{
 }

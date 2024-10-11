@@ -1,4 +1,4 @@
 package BackEnd.Entidades;
 
-public class LimpiarUbicacion {
+public class LimpiarUbicacion extends Objetivo {
 }
