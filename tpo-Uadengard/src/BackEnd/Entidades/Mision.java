@@ -14,7 +14,11 @@ public class Mision {
         this.objetivo = objetivo;
     }
 
-    public
+    public void empezarMision(){
+        if (ubicacion.hayEnemigos()){
+            pelea.peleaPersonajes();
+        }
+    }
 
 
 

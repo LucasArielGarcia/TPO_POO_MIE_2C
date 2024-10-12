@@ -11,7 +11,7 @@ public class Dragon extends Enemigo {
     }
 
     @Override
-    public void atacar() {
+    public void atacar(Personaje personajeAtacar, Personaje personaje) {
 
     }
 }

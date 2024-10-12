@@ -1,7 +1,5 @@
 package BackEnd.Entidades;
 
-import java.util.List;
-
 public class Arquero extends Heroe {
 
     private int agilidad;
@@ -19,7 +17,7 @@ public class Arquero extends Heroe {
     }
 
     @Override
-    public void atacar() {
+    public void atacar(Personaje personajeAtacar, Personaje personaje) {
 
     }
 

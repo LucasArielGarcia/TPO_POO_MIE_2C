@@ -17,8 +17,12 @@ public class Ubicacion {
     }
     public void empezarMision(){
         if (enemigo != null){
-            mision.
+            mision.empezarMision();
         }
+    }
+
+    public boolean hayEnemigos(){
+        return this.enemigo != null;
     }
 
 

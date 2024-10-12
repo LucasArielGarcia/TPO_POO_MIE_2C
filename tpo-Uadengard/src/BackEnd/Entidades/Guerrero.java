@@ -1,7 +1,5 @@
 package BackEnd.Entidades;
 
-import java.util.List;
-
 public class Guerrero extends Heroe {
 
     @Override
@@ -11,7 +9,8 @@ public class Guerrero extends Heroe {
 
 
     @Override
-    public void atacar() {
+    public void atacar(Personaje personajeAtacar, Personaje personaje) {
+        personajeAtacar.recibirDaño(personaje.golpePersonaje());
     }
 
 

@@ -1,7 +1,5 @@
 package BackEnd.Entidades;
 
-import java.util.List;
-
 public class Mago extends Heroe {
     public Mago(String nombre) {
         super(nombre, 40);
@@ -13,7 +11,7 @@ public class Mago extends Heroe {
     }
 
     @Override
-    public void atacar() {
+    public void atacar(Personaje personajeAtacar, Personaje personaje) {
 
     }
 

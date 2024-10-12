@@ -13,9 +13,14 @@ abstract class  Personaje {
         this.defensa = defensa;
     }
 
-    public abstract void atacar();
+    public void recibirDaño(int golpe){
+        if (this.defensa > 0)
+            this.defensa -= golpe;
+        this.vida -= golpe;
+    }
+    public abstract void atacar(Personaje personajeAtacar, Personaje personaje);
     public boolean personajeMuerto(){
-        return vida == 0;
+        return vida > 0;
     }
 
     public void usarItem(Items item){
@@ -27,6 +32,18 @@ abstract class  Personaje {
     }
     public void sumarDaño(int cantidadDaño){
         daño += cantidadDaño;
+    }
+
+    public int golpePersonaje(){
+        return this.daño;
+    }
+
+
+    public void mostrarEstadistica(){
+        System.out.println(
+                "Vida: " + this.vida + "\n"+
+                "Defensa: " + this.defensa
+        );
     }
 
 
