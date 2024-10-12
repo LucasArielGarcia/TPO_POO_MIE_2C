@@ -14,10 +14,19 @@ public class Mision {
         this.objetivo = objetivo;
     }
 
-    public void empezarMision(){
+    public void empezarMision(Heroe heroe, Enemigo enemigo){
         if (ubicacion.hayEnemigos()){
+            pelea = new Pelea(heroe,enemigo);
             pelea.peleaPersonajes();
+            if (heroe.personajeVivo()){
+                heroe.agregarItemMochila(this.recompensa);
+            }
+        } else if (this.recompensa != null) {
+            heroe.agregarItemMochila(recompensa);
+        } else{
+            throw new RuntimeException("No hay ningun enemigo o objeto para agarrar");
         }
+
     }
 
 

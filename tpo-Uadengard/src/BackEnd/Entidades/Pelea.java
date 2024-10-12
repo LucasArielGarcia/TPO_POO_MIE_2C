@@ -4,12 +4,13 @@ public class Pelea {
     Heroe heroe;
     Enemigo enemigo;
     public void peleaPersonajes(){
-        while (heroe.personajeMuerto() && enemigo.personajeMuerto()){
+        while (heroe.personajeVivo() && enemigo.personajeVivo()){
             heroe.atacar(enemigo,heroe);
+            System.out.println("Estadistica de nuestro Heroe");
             enemigo.mostrarEstadistica();
+            System.out.println("Estadistica de nuestro Enemigo");
             enemigo.atacar(heroe,enemigo);
             heroe.mostrarEstadistica();
-
         }
     }
 

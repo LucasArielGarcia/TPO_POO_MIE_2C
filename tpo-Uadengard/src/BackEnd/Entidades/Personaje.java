@@ -19,7 +19,7 @@ abstract class  Personaje {
         this.vida -= golpe;
     }
     public abstract void atacar(Personaje personajeAtacar, Personaje personaje);
-    public boolean personajeMuerto(){
+    public boolean personajeVivo(){
         return vida > 0;
     }
 

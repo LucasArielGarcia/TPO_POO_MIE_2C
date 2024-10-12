@@ -22,6 +22,10 @@ public abstract class Heroe extends Personaje{
     public void terminarMision(){
         this.mision = null;
     }
+    public void agregarItemMochila(Items itemNuevo){
+        mochilaItems.add(itemNuevo);
+    }
+
 
     public boolean tengoMision(){
         return this.mision == null;
