@@ -20,6 +20,7 @@ public class Mision {
             pelea.peleaPersonajes();
             if (heroe.personajeVivo()){
                 heroe.agregarItemMochila(this.recompensa);
+                objetivo.objetivoCompletado();
             }
         } else if (this.recompensa != null) {
             heroe.agregarItemMochila(recompensa);
