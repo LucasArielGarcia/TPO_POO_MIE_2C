@@ -18,6 +18,15 @@ public class Mapa {
         return zonaDescanso.mostrarCatologoItems() ;
     }
 
+    public Ubicacion ubicacionPersonaje(){
+        for (Ubicacion ubicacion: ubicacionList){
+            if (ubicacion.personajeSeEncuentra()){
+                return ubicacion;
+            }
+        }
+        return null;
+    }
+
 
 
 

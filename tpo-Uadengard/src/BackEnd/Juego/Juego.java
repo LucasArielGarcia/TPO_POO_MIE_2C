@@ -31,16 +31,17 @@ public class Juego {
 
 
     public void hacerMision(Ubicacion ubicacionMision){
-        if (heroe.tengoMision()){
-            ubicacionMision.llegadaUbicacion(heroe);
-        }
-        // agregar logica para que si termina la mision poner la variable mision como null
-        heroe.terminarMision();
+        Ubicacion ubicacion = mapa.ubicacionPersonaje();
+        ubicacion.empezarMision();
     }
 
-    public void viajarUbicacion(){
+    public void viajarUbicacion(Ubicacion ubicacion){
+        ubicacion.llegadaUbicacion(heroe);
+    }
 
-
+    public void viajarZonaDescanso(){
+        Ubicacion ubicacion = mapa.ubicacionPersonaje();
+        ubicacion
     }
 
 

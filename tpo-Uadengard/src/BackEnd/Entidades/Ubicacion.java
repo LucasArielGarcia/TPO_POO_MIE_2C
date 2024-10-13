@@ -13,17 +13,23 @@ public class Ubicacion {
     }
     public void llegadaUbicacion(Heroe heroe){
         this.heroe = heroe;
-        empezarMision();
     }
-    public void empezarMision(){
-        if (enemigo != null){
-            mision.empezarMision(heroe);
-        }
+    public boolean personajeSeEncuentra(){
+        return this.heroe != null;
     }
 
-    public boolean hayEnemigos(){
-        return this.enemigo != null;
+    public void empezarMision(){
+        if (mision != null)
+            mision.empezarMision(heroe);
+        System.out.println("No hay mision");
     }
+
+   public void sacarPersonaje(){
+        this.heroe = null;
+   }
+   public void terminarMision(){
+        mision = null;
+   }
 
 
 

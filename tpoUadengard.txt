@@ -123,26 +123,27 @@ class ZonaDescanso{
 +Items transaccionItem(pago: double, idItem: int)
 }
 
-Class Mision{
+abstract Mision{
 - pelea: Pelea
 - recompensa: Items
 - nombreMision: String
-- objetivo: Objetivo 
+- completada: boolean
 + comenzarPelea(heroe: Heroe, enemigo: Enemigo)
-+ boolean misionCompletada(objetivo: Objetivo)
++ void marcarMisionCompletada()
++{abstract} void comenzarMision()
+}
 
-}
-abstract  Objetivo{
--completado: Boolean
-+{abstract} boolean objetivoCompletado()
-}
 Class LimpiarUbicacion{
-- listEnemigo:   Enemigo
-+{abstract} boolean objetivoCompletado()
+- listEnemigo: List<Enemigo>
++{abstract} void comenzarMision()
 }
 Class DevolverItem{
 - item:  Item
-+{abstract} boolean objetivoCompletado()
++{abstract} void comenzarMision()
+}
+Class PeleaJefe{
+- enemigo: Enemigo
++{abstract} void comenzarMision()
 }
 
 
@@ -220,13 +221,15 @@ Juego *-- Ubicacion
 
 Mision o-- Pelea
 
-Objetivo <|-- LimpiarUbicacion
+Mision <|-- LimpiarUbicacion
 LimpiarUbicacion o-- Enemigo
 
-Objetivo <|-- DevolverItem
+Mision <|-- DevolverItem
 DevolverItem o-- Items
 
-Mision o-- Objetivo
+Mision <|-- PeleaJefe
+PeleaJefe o-- Enemigo
+
 
 Ubicacion o-- Mision
 Ubicacion o-- Enemigo

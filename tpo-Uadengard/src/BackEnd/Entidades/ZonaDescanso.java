@@ -18,8 +18,10 @@ public class ZonaDescanso {
             heroe.agregarItemMochila(aliado.reclamarRecompensa(mision));
             System.out.println("Se reclamo la recompensa");
         } else if (mision instanceof DevolverItem) {
+            Items items = ((DevolverItem) mision).getItemsDevuelta();
 
         }
+
 
     }
 
