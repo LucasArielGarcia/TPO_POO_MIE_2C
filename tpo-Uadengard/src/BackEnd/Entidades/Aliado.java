@@ -9,4 +9,14 @@ public class Aliado {
     public List<Mision> misionList (){
         return this.misionList;
     }
+
+    public Items reclamarRecompensa(Mision mision){
+        if (mision.misionCompleta()){
+            return mision.darRecompensa();
+        }
+        else {
+            System.out.println("No se completo la mision");
+            return null;
+        }
+    }
 }

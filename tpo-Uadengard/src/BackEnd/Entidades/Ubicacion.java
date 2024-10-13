@@ -17,7 +17,7 @@ public class Ubicacion {
     }
     public void empezarMision(){
         if (enemigo != null){
-            mision.empezarMision(heroe,enemigo);
+            mision.empezarMision(heroe);
         }
     }
 

@@ -1,9 +1,17 @@
 package BackEnd.Entidades;
 
-public class DevolverItem extends Objetivo{
+public class DevolverItem extends Mision{
+    private Items itemsDevuelta;
+
+    public DevolverItem(Items recompensa, String nombreMision, Ubicacion ubicacion, Items itemsDevuelta) {
+        super(recompensa, nombreMision, ubicacion);
+        this.itemsDevuelta = itemsDevuelta;
+    }
 
     @Override
-    public void objetivoCompletado() {
-        return false;
+    public void empezarMision(Heroe heroe) {
+        System.out.println("Nuestro personaje esta agarrando del cofre el item");
+        heroe.agregarItemMochila(itemsDevuelta);
+
     }
 }

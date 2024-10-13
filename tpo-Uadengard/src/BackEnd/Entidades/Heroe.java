@@ -33,6 +33,9 @@ public abstract class Heroe extends Personaje{
 
     public abstract void curarse();
 
+    public void sacarItem(){
+
+    }
 
 
 

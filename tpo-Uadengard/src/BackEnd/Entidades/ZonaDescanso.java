@@ -13,5 +13,15 @@ public class ZonaDescanso {
         return aliado.misionList();
     }
 
+    public void reclamarRecompensa(Mision mision){
+        if (mision instanceof LimpiarUbicacion){
+            heroe.agregarItemMochila(aliado.reclamarRecompensa(mision));
+            System.out.println("Se reclamo la recompensa");
+        } else if (mision instanceof DevolverItem) {
+
+        }
+
+    }
+
 
 }

@@ -5,6 +5,14 @@ public abstract class Items {
     private int idItems;
     private double precio;
     private int nvlItem;
+
+    public Items(String descripcion, int idItems, double precio, int nvlItem) {
+        this.descripcion = descripcion;
+        this.idItems = idItems;
+        this.precio = precio;
+        this.nvlItem = nvlItem;
+    }
+
     public boolean sosItem(int idItem){
         return idItem == this.idItems;
     }
