@@ -9,4 +9,7 @@ public class Mercader {
         return this.itemVenta;
     }
 
+    public Mercader(List<Items> itemVenta) {
+        this.itemVenta = itemVenta;
+    }
 }

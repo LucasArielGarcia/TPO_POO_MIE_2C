@@ -3,8 +3,8 @@ package BackEnd.Entidades;
 public class DevolverItem extends Mision{
     private Items itemsDevuelta;
 
-    public DevolverItem(Items recompensa, String nombreMision, Ubicacion ubicacion, Items itemsDevuelta) {
-        super(recompensa, nombreMision, ubicacion);
+    public DevolverItem(Items recompensa, String nombreMision, Items itemsDevuelta) {
+        super(recompensa, nombreMision);
         this.itemsDevuelta = itemsDevuelta;
     }
     public Items getItemsDevuelta (){

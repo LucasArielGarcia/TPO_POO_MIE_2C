@@ -21,8 +21,20 @@ public class ZonaDescanso {
             Items items = ((DevolverItem) mision).getItemsDevuelta();
 
         }
+    }
+
+    public void llegarZonaDescanso(Heroe heroe){
+        this.heroe = heroe;
+    }
+    public void salirZonaDescanso(){this.heroe = null;}
 
 
+    public ZonaDescanso(Mercader mercader, Aliado aliado) {
+        this.mercader = mercader;
+        this.aliado = aliado;
+    }
+    public boolean personajeEstaEnzona(){
+        return this.heroe != null;
     }
 
 

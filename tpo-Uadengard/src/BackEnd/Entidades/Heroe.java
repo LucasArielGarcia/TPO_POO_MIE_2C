@@ -12,10 +12,14 @@ public abstract class Heroe extends Personaje{
 
     public Heroe(String nombre, int defensa) {
         super(nombre, defensa);
-        this.mochilaItems = null;
-        this.equipoItems = null;
         this.nivelHeroe = 1;
     }
+    public void equiparItem(Items itemEquipar){
+        equipoItems.add(itemEquipar);
+        super.usarItem(itemEquipar);
+    }
+
+
     public void aceptarMision(Mision mision){
         this.mision = mision;
     }

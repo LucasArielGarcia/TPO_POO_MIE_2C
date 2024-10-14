@@ -1,24 +1,31 @@
 package BackEnd.Entidades;
 
-import java.util.List;
-
 public class LimpiarUbicacion extends Mision {
-    private List<Enemigo> enemigosList;
 
-    public LimpiarUbicacion(Items recompensa, String nombreMision, Ubicacion ubicacion, List<Enemigo> enemigosList) {
-        super(recompensa, nombreMision, ubicacion);
-        this.enemigosList = enemigosList;
+
+    public LimpiarUbicacion(Items recompensa, String nombreMision) {
+        super(recompensa, nombreMision);
     }
 
     @Override
     public void empezarMision(Heroe heroe) {
-        enemigosList.forEach(enemigo -> {
-            Pelea pelea = new Pelea(heroe, enemigo);
-            pelea.peleaPersonajes();
-        });
-        if (heroe.personajeVivo()){
-            super.marcarMisionCompletada();
+        System.out.println("Tienes enemigos con los que pelear te recomendamos que te prepares");
+
+        if (super.hayEnemigos()){
+            System.out.println("Hay enemigos preparate");
+            Pelea pelea = new Pelea(heroe, super.getEnemigosList());
+            super.emepezarPelea(pelea);
         }
+        else {
+            System.out.println("Donde estan los enemigos...");
+        }
+
+
     }
+
+
+
+
+
 
 }

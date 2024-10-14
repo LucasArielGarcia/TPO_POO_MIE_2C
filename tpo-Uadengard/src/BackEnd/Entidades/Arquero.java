@@ -6,7 +6,7 @@ public class Arquero extends Heroe {
     private int apunteria;
 
     public Arquero(String nombre) {
-        super(nombre,60);
+        super(nombre,60 );
         this.agilidad = 10;
         this.apunteria = 10;
     }
@@ -17,7 +17,7 @@ public class Arquero extends Heroe {
     }
 
     @Override
-    public void atacar(Personaje personajeAtacar, Personaje personaje) {
+    public void atacar(Personaje personajeAtacar) {
 
     }
 

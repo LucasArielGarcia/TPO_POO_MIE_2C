@@ -1,36 +1,28 @@
 package BackEnd.Entidades;
 
+import java.util.List;
+
 public abstract class Mision {
     private Items recompensa;
     private String nombreMision;
-    private Ubicacion ubicacion;
     private boolean objetivoCompletado;
+    private List<Enemigo> enemigosList;
     private Pelea pelea;
 
-    public Mision(Items recompensa, String nombreMision, Ubicacion ubicacion) {
+
+    public Mision(Items recompensa, String nombreMision) {
         this.recompensa = recompensa;
         this.nombreMision = nombreMision;
-        this.ubicacion = ubicacion;
         this.objetivoCompletado = false;
     }
+    public void cargarEnemigos(List<Enemigo>listaEnemigos){
+        this.enemigosList = listaEnemigos;
+    }
+
 
     public abstract void empezarMision(Heroe heroe);
 
-    /*
-    public void empezarMision(Heroe heroe, Enemigo enemigo){
-        if (ubicacion.hayEnemigos()){
-            pelea = new Pelea(heroe,enemigo);
-            pelea.peleaPersonajes();
-            if (heroe.personajeVivo()){
-                heroe.agregarItemMochila(this.recompensa);
-            }
-        } else if (this.recompensa != null) {
-            heroe.agregarItemMochila(recompensa);
-        } else{
-            throw new RuntimeException("No hay ningun enemigo o objeto para agarrar");
-        }
-    }
-    */
+
 
 
     public void marcarMisionCompletada(){
@@ -43,6 +35,41 @@ public abstract class Mision {
 
     public Items darRecompensa(){
         return this.recompensa;
+    }
+
+
+    public boolean hayEnemigos(){
+        return !enemigosList.isEmpty();
+    }
+
+
+    public List<Enemigo> getEnemigosList() {
+        return enemigosList;
+    }
+
+
+    public void emepezarPelea(Pelea empiezaPelea){
+        this.pelea = empiezaPelea;
+    }
+    public void peleaHeroe(Heroe heroe, int opcion){
+        if (this.pelea != null) {
+            this.pelea.peleaPersonajes(heroe, opcion);
+        }
+    }
+
+    public List<String>mostrarEstadisticasEnemigos(){
+        return pelea.mostrarEstadisticaEnemigos();
+    }
+
+    public String mostrarEstadisticaHeroe(){
+        return pelea.mostrarEstadisticasHeroe();
+    }
+
+    public boolean existePelea(){
+        return this.pelea != null;
+    }
+    public void terminarPelea(){
+        this.pelea =null;
     }
 
 }

@@ -15,10 +15,11 @@ abstract class  Personaje {
 
     public void recibirDaño(int golpe){
         if (this.defensa > 0)
-            this.defensa -= golpe;
-        this.vida -= golpe;
+            this.defensa = this.defensa - golpe;
+        else
+            this.vida = this.vida - golpe;
     }
-    public abstract void atacar(Personaje personajeAtacar, Personaje personaje);
+    public abstract void atacar(Personaje personajeAtacar);
     public boolean personajeVivo(){
         return vida > 0;
     }
@@ -39,11 +40,9 @@ abstract class  Personaje {
     }
 
 
-    public void mostrarEstadistica(){
-        System.out.println(
-                "Vida: " + this.vida + "\n"+
-                "Defensa: " + this.defensa
-        );
+    public String mostrarEstadistica(){
+        String estadistica = "nombre: " + this.nombre + " Vida del personaje: "+ this.vida+ " Defensa del personaje " + this.defensa;
+        return estadistica;
     }
 
 

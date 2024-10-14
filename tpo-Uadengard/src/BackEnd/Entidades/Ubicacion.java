@@ -6,10 +6,9 @@ public class Ubicacion {
     private Enemigo enemigo;
     private Heroe heroe;
 
-    public Ubicacion(String nombreUbicacion, Mision mision, Enemigo enemigo) {
+    public Ubicacion(String nombreUbicacion, Mision mision) {
         this.nombreUbicacion = nombreUbicacion;
         this.mision = mision;
-        this.enemigo = enemigo;
     }
     public void llegadaUbicacion(Heroe heroe){
         this.heroe = heroe;
@@ -18,11 +17,14 @@ public class Ubicacion {
         return this.heroe != null;
     }
 
-    public void empezarMision(){
-        if (mision != null)
-            mision.empezarMision(heroe);
-        System.out.println("No hay mision");
+    public Mision empezarMision(){
+        if (this.mision != null) {
+            this.mision.empezarMision(heroe);
+            return this.mision;
+        }
+        return null;
     }
+
 
    public void sacarPersonaje(){
         this.heroe = null;
@@ -31,6 +33,12 @@ public class Ubicacion {
         mision = null;
    }
 
+   public String getNombreUbicacion(){
+        return this.nombreUbicacion;
+   }
 
+   public boolean tengoMision(){
+       return this.mision != null;
+   }
 
 }

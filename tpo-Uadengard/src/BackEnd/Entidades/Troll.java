@@ -11,7 +11,7 @@ public class Troll extends Enemigo {
     }
 
     @Override
-    public void atacar(Personaje personajeAtacar, Personaje personaje) {
+    public void atacar(Personaje personajeAtacar) {
 
     }
 }

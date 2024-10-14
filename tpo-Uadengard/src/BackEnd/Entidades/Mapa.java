@@ -27,6 +27,22 @@ public class Mapa {
         return null;
     }
 
+    public List<Ubicacion> abrirMapa(){
+        return this.ubicacionList;
+    }
+
+    public Ubicacion viajarUbicacionMapa(int opcion, Heroe heroe){
+        for (int i = 0; i<ubicacionList.size();i++){
+            if (opcion == i){
+                Ubicacion ubicacionReturn = ubicacionList.get(i);
+                ubicacionReturn.llegadaUbicacion(heroe);
+                return ubicacionReturn;
+            }
+        }
+        System.out.println("No se encontro la ubicacion");
+        return null ;
+    }
+
 
 
 

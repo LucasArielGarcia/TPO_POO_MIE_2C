@@ -6,6 +6,10 @@ import java.util.List;
 public class Aliado {
     private List<Mision> misionList = new ArrayList<>();
 
+    public Aliado(List<Mision> misionList) {
+        this.misionList = misionList;
+    }
+
     public List<Mision> misionList (){
         return this.misionList;
     }

@@ -7,19 +7,35 @@ import java.util.List;
 public class Juego {
     Mapa mapa;
     Heroe heroe;
+    ZonaDescanso zonaDescanso;
 
-    public void crearHeroe(String tipoHeroe, String nombre){
+    public Juego(Mapa mapa, ZonaDescanso zonaDescanso) {
+        this.mapa = mapa;
+        this.zonaDescanso = zonaDescanso;
+    }
+
+    public Heroe crearHeroe(int tipoHeroe, String nombre){
         switch (tipoHeroe){
-            case "Guerrero": heroe = new Guerrero(nombre);
-            case "Arquero": heroe = new Arquero(nombre);
-            case "Mago": heroe= new Mago(nombre);
+            case 1:
+                heroe = new Guerrero(nombre);
+                break;
+            case 2:
+                heroe = new Arquero(nombre);
+                break;
+            case 3:
+                heroe = new Mago(nombre);
+                break;
+            default:
+                System.out.println("Tipo de héroe no válido.");
         }
+
+        return heroe;
     }
 
     public List<Mision> mostrarMisionList(){
         return mapa.mostrarMisionList();
     }
-    public List<Items> mostrarItems(){
+    public List<Items> mostrarCatalogoMercaderItems(){
         return mapa.mostrarItems() ;
     }
 
@@ -30,18 +46,29 @@ public class Juego {
 
 
 
-    public void hacerMision(Ubicacion ubicacionMision){
-        Ubicacion ubicacion = mapa.ubicacionPersonaje();
-        ubicacion.empezarMision();
+    public void hacerMision(Ubicacion ubicacion){
+
+        if (ubicacion.personajeSeEncuentra())
+            ubicacion.empezarMision();
     }
 
-    public void viajarUbicacion(Ubicacion ubicacion){
-        ubicacion.llegadaUbicacion(heroe);
+    public Ubicacion viajarUbicacion(int opcion, Heroe heroe){
+        return mapa.viajarUbicacionMapa(opcion, heroe);
     }
 
-    public void viajarZonaDescanso(){
+    public void viajarZonaDescanso(Mapa mapa, ZonaDescanso zonaDescanso){
         Ubicacion ubicacion = mapa.ubicacionPersonaje();
-        ubicacion
+        if (ubicacion != null)
+            ubicacion.sacarPersonaje();
+        zonaDescanso.llegarZonaDescanso(heroe);
+    }
+
+    public List<Ubicacion> abrirMapa(){
+        return mapa.abrirMapa();
+    }
+
+    public void comprarItem(){
+
     }
 
 
