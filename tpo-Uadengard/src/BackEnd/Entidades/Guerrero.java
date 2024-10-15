@@ -12,7 +12,8 @@ public class Guerrero extends Heroe {
     @Override
     public void atacar(Personaje personajeAtacar) {
         if(personajeAtacar.tipoEnemigo()=="Troll") {
-        	personajeAtacar.recibirDano(super.golpePersonaje() * 100);	
+        	personajeAtacar.recibirDano(super.golpePersonaje() * 100);
+            this.cantidadAtaques++;
         }
         else if (cantidadAtaques == 3) {
             personajeAtacar.recibirDano(super.golpePersonaje() * 2);
@@ -20,7 +21,7 @@ public class Guerrero extends Heroe {
         }
         else {
             personajeAtacar.recibirDano(super.golpePersonaje());
-            cantidadAtaques++;
+            this.cantidadAtaques++;
         }
     }
 
