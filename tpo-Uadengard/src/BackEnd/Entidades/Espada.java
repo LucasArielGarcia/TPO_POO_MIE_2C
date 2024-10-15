@@ -1,15 +1,15 @@
 package BackEnd.Entidades;
 
 public class Espada extends Items {
-    private int aumentoDaño;
+    private int aumentoDano;
 
-    public Espada(String descripcion, double precio, int nvlItem, int aumentoDaño) {
+    public Espada(String descripcion, double precio, int nvlItem, int aumentoDano) {
         super(descripcion, precio, nvlItem);
-        this.aumentoDaño = aumentoDaño;
+        this.aumentoDano = aumentoDano;
     }
 
     @Override
     public void usarItem(Personaje personaje) {
-        personaje.sumarDaño(aumentoDaño);
+        personaje.sumarDano(aumentoDano);
     }
 }

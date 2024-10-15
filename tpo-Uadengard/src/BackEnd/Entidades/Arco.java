@@ -1,15 +1,15 @@
 package BackEnd.Entidades;
 
 public class Arco extends Items {
-    private int dañoSumar;
+    private int danoSumar;
 
-    public Arco(String descripcion, double precio, int nvlItem, int dañoSumar) {
+    public Arco(String descripcion, double precio, int nvlItem, int danoSumar) {
         super(descripcion, precio, nvlItem);
-        this.dañoSumar = dañoSumar;
+        this.danoSumar = danoSumar;
     }
 
     @Override
     public void usarItem(Personaje personaje) {
-        personaje.sumarDaño(dañoSumar);
+        personaje.sumarDano(danoSumar);
     }
 }

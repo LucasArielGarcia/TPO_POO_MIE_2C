@@ -14,7 +14,7 @@ public class Espectro extends Enemigo{
 
     @Override
     public void atacar(Personaje personajeAtacar) {
-        personajeAtacar.recibirDaño(super.golpePersonaje());
+        personajeAtacar.recibirDano(super.golpePersonaje());
 
     }
 }

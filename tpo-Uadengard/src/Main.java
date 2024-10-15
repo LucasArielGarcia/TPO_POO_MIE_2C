@@ -123,12 +123,15 @@ public class Main {
                     System.out.println("Eliminaste a todos los enemigos felicidades");
                 }
             }
+            juego.cerrarMision();
         }
+        else
+            System.out.println("No tienes nada que hacer aqui");
     }
 
     public static void mostrarEstadisticas(List<String> estadisticasList){
         for (int i = 0; i<estadisticasList.size(); i++){
-            System.out.println(i +estadisticasList.get(i));
+            System.out.println("Opcion de ataque: "+i +estadisticasList.get(i));
         }
     }
 

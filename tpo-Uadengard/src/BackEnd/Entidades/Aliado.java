@@ -26,6 +26,7 @@ public class Aliado {
 
     public void aceptarMision(Heroe heroe, int opcion){
         heroe.aceptarMision(misionList().get(opcion));
+        misionList.remove(opcion);
     }
 
 }

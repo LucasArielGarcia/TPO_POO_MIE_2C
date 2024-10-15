@@ -11,7 +11,6 @@ public class Pelea {
     public void peleaPersonajes(Heroe heroe, int opcion){
 
         if (heroe.personajeVivo() && !enemigoList.isEmpty()){
-            
             heroe.atacar(this.enemigoList.get(opcion));
             if (!this.enemigoList.get(opcion).personajeVivo()){
                 this.enemigoList.remove(opcion);
@@ -57,7 +56,12 @@ public class Pelea {
     }
 
     public boolean hayEnemigos(){
-        return !enemigoList.isEmpty();
+        try {
+            return !enemigoList.isEmpty();
+        }
+        catch (NullPointerException e){
+            return true;
+        }
     }
 
 

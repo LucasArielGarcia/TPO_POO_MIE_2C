@@ -30,6 +30,7 @@ public class Ubicacion {
         this.heroe = null;
    }
    public void terminarMision(){
+        mision.marcarMisionCompletada();
         mision = null;
    }
 

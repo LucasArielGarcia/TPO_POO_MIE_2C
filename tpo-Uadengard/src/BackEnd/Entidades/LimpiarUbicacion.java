@@ -18,13 +18,5 @@ public class LimpiarUbicacion extends Mision {
         else {
             System.out.println("Donde estan los enemigos...");
         }
-
-
     }
-
-
-
-
-
-
 }

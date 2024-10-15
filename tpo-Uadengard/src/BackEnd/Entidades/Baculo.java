@@ -2,15 +2,15 @@ package BackEnd.Entidades;
 
 public class Baculo extends Items {
 
-    private int aumentoDaño;
+    private int aumentoDano;
 
-    public Baculo(String descripcion, double precio, int nvlItem, int aumentoDaño) {
+    public Baculo(String descripcion, double precio, int nvlItem, int aumentoDano) {
         super(descripcion, precio, nvlItem);
-        this.aumentoDaño = aumentoDaño;
+        this.aumentoDano = aumentoDano;
     }
 
     @Override
     public void usarItem(Personaje personaje) {
-        personaje.sumarDaño(aumentoDaño);
+        personaje.sumarDano(aumentoDano);
     }
 }

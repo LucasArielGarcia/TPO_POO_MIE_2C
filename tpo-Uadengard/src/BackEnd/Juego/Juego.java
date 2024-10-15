@@ -56,7 +56,10 @@ public class Juego {
     }
 
     public boolean hayMision(){
-        return this.ubicacion.tengoMision();
+        if (this.ubicacion.tengoMision() &&(this.ubicacion.tengoMision() && heroe.misionSonIguales(this.ubicacion.getMision())))
+            return true ;
+        else
+            return false;
     }
     public boolean hayPelea(){
         return this.ubicacion.hayPelea();
@@ -88,6 +91,10 @@ public class Juego {
     }
     public List<String> estadisticasEnemigos(){
         return this.ubicacion.estadisticasEnemigos();
+    }
+
+    public void cerrarMision(){
+        ubicacion.terminarMision();
     }
 
 

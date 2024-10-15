@@ -8,6 +8,7 @@ public abstract class Mision {
     private boolean objetivoCompletado;
     private List<Enemigo> enemigosList;
     private Pelea pelea;
+    private Items cofe;
 
 
     public Mision(Items recompensa, String nombreMision) {
@@ -66,18 +67,26 @@ public abstract class Mision {
     }
 
     public boolean existePelea(){
-        return this.pelea.hayEnemigos();
+        try {
+            return this.pelea.hayEnemigos();
+        }
+        catch (NullPointerException e){
+            return false;
+        }
+
     }
     public void terminarPelea(){
         this.pelea =null;
     }
-
-
     public Items getRecompensa() {
         return recompensa;
     }
 
     public String getNombreMision() {
         return nombreMision;
+    }
+
+    public void agregarItemAlCofre(Items items){
+        this.cofe = items;
     }
 }
