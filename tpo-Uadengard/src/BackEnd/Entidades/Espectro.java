@@ -4,7 +4,7 @@ public class Espectro extends Enemigo{
 
 
     public Espectro(String nombre, int defensa) {
-        super(nombre, 30);
+        super(nombre, 30,"Espectro");
     }
 
     @Override

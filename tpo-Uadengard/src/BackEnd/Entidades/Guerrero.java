@@ -4,21 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Guerrero extends Heroe {
-
+	private int cantidadAtaques=1;
     @Override
     public void curarse() {
 
     }
-
-
     @Override
     public void atacar(Personaje personajeAtacar) {
-        personajeAtacar.recibirDaño(super.golpePersonaje());
+        if(personajeAtacar.tipoEnemigo()=="Troll") {
+        	personajeAtacar.recibirDano(super.golpePersonaje() * 100);	
+        }
+        else if (cantidadAtaques == 3) {
+            personajeAtacar.recibirDano(super.golpePersonaje() * 2);
+            this.cantidadAtaques = 1;
+        }
+        else {
+            personajeAtacar.recibirDano(super.golpePersonaje());
+            cantidadAtaques++;
+        }
     }
 
-
     public Guerrero(String nombre) {
-        super(nombre, 80);
+        super(nombre, 80,"Guerrero");
         equipoComienzo();
 
     }

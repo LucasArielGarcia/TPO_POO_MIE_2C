@@ -17,8 +17,8 @@ public class ConfiguracionJuego {
 
 
     public ConfiguracionJuego() {
-        Espectro espectro0 = new Espectro("Especto fantasma",2);
-        Espectro espectro1 = new Espectro("Especto fantasma",2);
+        Enemigo espectro0 = new Espectro("Especto fantasma",2);
+        Enemigo Troll1 = new Troll("troll verde",2);
         this.enemigoList.add(espectro0);
         Troll troll = new Troll("Troll",50);
         this.enemigoList.add(troll);
@@ -37,7 +37,7 @@ public class ConfiguracionJuego {
 
         List<Enemigo> enemigosPantano = new ArrayList<>();
         enemigosPantano.add(espectro0);
-        enemigosPantano.add(espectro1);
+        enemigosPantano.add(Troll1);
 
         LimpiarUbicacion limpiarPantano = new LimpiarUbicacion(arco1, "limpiar pantano");
         limpiarPantano.cargarEnemigos(enemigosPantano);

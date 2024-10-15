@@ -10,16 +10,15 @@ public abstract class Heroe extends Personaje{
     private Mision mision;
 
 
-    public Heroe(String nombre, int defensa) {
-        super(nombre, defensa);
+    public Heroe(String nombre, int defensa,String tipo) {
+        super(nombre, defensa,tipo);
         this.nivelHeroe = 1;
     }
     public void equiparItem(Items itemEquipar){
         equipoItems.add(itemEquipar);
         super.usarItem(itemEquipar);
     }
-
-
+    public abstract void atacar(Personaje personajeAtacar);
     public void aceptarMision(Mision mision){
         this.mision = mision;
     }
@@ -29,12 +28,11 @@ public abstract class Heroe extends Personaje{
     public void agregarItemMochila(Items itemNuevo){
         mochilaItems.add(itemNuevo);
     }
-
+    
 
     public boolean misionSonIguales(Mision misionComparar){
         return this.mision == misionComparar;
     }
-
     public abstract void curarse();
 
 
