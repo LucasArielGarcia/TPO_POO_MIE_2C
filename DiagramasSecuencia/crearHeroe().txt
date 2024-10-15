@@ -1,0 +1,15 @@
+@startuml
+actor Jugador
+Jugador -> Juego: crearHeroe(clase: String, nombreString)
+Juego -> Heroe: crearHeroe()
+alt Si es clase Guerrero
+   Juego -> Guerrero: new Guerrero()
+else Si es clase Arquero
+    Juego -> Arquero: new Arquero()
+else Si es clase Mago
+   Juego -> Mago: new Mago()
+end
+Heroe --> Juego: heroe: Heroe
+
+
+@enduml

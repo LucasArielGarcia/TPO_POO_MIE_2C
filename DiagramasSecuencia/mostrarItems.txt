@@ -1,0 +1,34 @@
+@startuml
+actor Jugador
+Jugador -> Juego: List<Items>MostrarItemsMercader()
+activate Juego #FFBBBB
+
+Juego -> ZonaDescanso: boolean estanciaJugador()
+activate ZonaDescanso #f9e79f
+
+ZonaDescanso --> Juego: boolean estanciaJugador
+deactivate ZonaDescanso
+
+alt Si el jugador esta en la zona de descanso
+
+ Juego -> ZonaDescanso: List<Items> mostrarItemsMercader()
+ activate ZonaDescanso #f9e79f
+
+ ZonaDescanso -> Mercader: List<Items>mostrarCatalogoItems()
+ activate Mercader #48c9b0
+
+ Mercader--> ZonaDescanso: List<Items> itemsList
+ deactivate Mercader 
+ 
+ ZonaDescanso --> Juego: List<Items> itemsList
+ deactivate ZonaDescanso
+Juego --> Jugador: List<Items> itemsList
+deactivate Juego
+
+Else Si el jugador no se encuentra en la zona de descanso
+Juego --> Jugador: List<Items> itemsList = null
+
+end
+
+
+@enduml
