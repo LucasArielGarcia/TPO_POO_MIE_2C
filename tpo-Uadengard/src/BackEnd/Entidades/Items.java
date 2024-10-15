@@ -1,7 +1,5 @@
 package BackEnd.Entidades;
 
-import java.security.PublicKey;
-
 public abstract class Items {
     private String descripcion;
     private int idItems = 0 ;
@@ -31,5 +29,10 @@ public abstract class Items {
 
     public int getNvlItem() {
         return nvlItem;
+    }
+
+    public abstract String infoItem();
+    protected String superInfor(){
+        return " Descripcion item: "+this.descripcion;
     }
 }

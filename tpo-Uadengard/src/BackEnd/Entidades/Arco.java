@@ -12,4 +12,9 @@ public class Arco extends Items {
     public void usarItem(Personaje personaje) {
         personaje.sumarDano(danoSumar);
     }
+
+    @Override
+    public String infoItem() {
+        return superInfor() + " aumenta en daño: "+ danoSumar;
+    }
 }

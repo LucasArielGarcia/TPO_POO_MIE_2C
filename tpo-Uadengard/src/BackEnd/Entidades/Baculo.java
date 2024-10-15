@@ -13,4 +13,9 @@ public class Baculo extends Items {
     public void usarItem(Personaje personaje) {
         personaje.sumarDano(aumentoDano);
     }
+
+    @Override
+    public String infoItem() {
+        return superInfor() + "aumenta daño: "+ aumentoDano +" puntos";
+    }
 }
