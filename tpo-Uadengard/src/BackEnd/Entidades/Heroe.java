@@ -36,6 +36,15 @@ public abstract class Heroe extends Personaje{
     public abstract void curarse();
 
 
+    public List<String> abrirMochila(){
+        List<String> mochilaReturn = new ArrayList<>();
+        for (Items item: mochilaItems){
+            String itemString = item.infoItem();
+            mochilaReturn.add(itemString);
+        }
+        return mochilaReturn;
+    }
+
 
     public void devolverItem(){
         mochilaItems.forEach(items -> {

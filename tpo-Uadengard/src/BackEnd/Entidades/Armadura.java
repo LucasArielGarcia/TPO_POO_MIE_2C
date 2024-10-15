@@ -14,4 +14,9 @@ public class Armadura  extends Items{
     public void usarItem(Personaje personaje) {
         personaje.sumarDefensa(this.aumentoDefensa);
     }
+
+    @Override
+    public String infoItem() {
+        return superInfor() + "defensa item: "+aumentoDefensa;
+    }
 }

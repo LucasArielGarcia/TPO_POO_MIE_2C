@@ -12,4 +12,9 @@ public class Espada extends Items {
     public void usarItem(Personaje personaje) {
         personaje.sumarDano(aumentoDano);
     }
+
+    @Override
+    public String infoItem() {
+        return superInfor()+ "Aumenta en daño: "+ aumentoDano;
+    }
 }

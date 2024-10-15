@@ -45,7 +45,8 @@ public class Main {
                 System.out.println("1 para abrir el mapa"+ "\n"+
                         "2 para hablar con el mercader" + "\n"+
                         "3 para hablar con nuestro aliado"+ "\n"+
-                        "4 para viajar a una ubicacion" +"\n"
+                        "4 para viajar a una ubicacion" +"\n"+
+                        "5 Opciones de personaje" +"\n"
                 );
                 int opcion = scanner.nextInt();
                 scanner.nextLine();
@@ -62,19 +63,42 @@ public class Main {
                     else if (opcion == 2)
                         juegoControler.comprarItem();
                 } else if (opcion == 3) {
-                    System.out.println("Bienvenido aliado, veo que estas emocionado por emprender una nueva aventura. Dime que deseas hacer..."+"\n");
-                    mostrarMisiones(juegoControler.mostrarMisionList());
-                    System.out.println("ingresa que mision quieres...");
+                    System.out.println("Bienvenido aliado, veo que estas emocionado por emprender una nueva aventura. Dime que deseas hacer..."+"\n"+
+                                       "1 Para aceptar Misiones "+ "\n"+
+                                       "2 para reclamar recompensa");
                     opcion = scanner.nextInt();
                     scanner.nextLine();
-                    juegoControler.aceptarMision(opcion, heroeJuego);
-
+                    if (opcion == 1){
+                        mostrarMisiones(juegoControler.mostrarMisionList());
+                        System.out.println("ingresa que mision quieres...");
+                        opcion = scanner.nextInt();
+                        scanner.nextLine();
+                        juegoControler.aceptarMision(opcion, heroeJuego);
+                    } else if (opcion == 2) {
+                        boolean reclamoRecompensa = juegoControler.reclamarRecompensa();
+                        if (reclamoRecompensa)
+                            System.out.println("Reclamaste tu recompensa");
+                        else
+                            System.out.println("No completaste la mision");
+                    }
                 } else if (opcion == 4) {
                     System.out.println("Ingrese la zona en donde queres viajar");
                     int ubicacion = scanner.nextInt();
                     scanner.nextLine();
                     zonaDescanso.salirZonaDescanso();
                     viajarZonaJuego(ubicacion,juegoControler,heroeJuego,scanner);
+
+                }
+                else if (opcion == 5) {
+                    System.out.println("1 Para abrir mochila "+ "\n"+
+                                        "2 para equipar item");
+                    opcion= scanner.nextInt();
+                    scanner.nextLine();
+                    if (opcion == 1)
+                        abrirMochila(juegoControler);
+                    else if (opcion == 2) {
+
+                    }
 
                 }
             }
@@ -123,6 +147,7 @@ public class Main {
                     System.out.println("Eliminaste a todos los enemigos felicidades");
                 }
             }
+            System.out.println("Ve al aliado para reclamar tu recompensa");
             juego.cerrarMision();
         }
         else
@@ -139,6 +164,15 @@ public class Main {
         for (int i = 0; i<misionList.size(); i++){
             System.out.println(i +" Nombre de la mision: "+misionList.get(i).getNombreMision());
         }
+    }
+
+
+    public static void abrirMochila(Juego juego){
+        for (String item: juego.abrirMochila()){
+            System.out.println(item);
+        }
+        if (juego.abrirMochila().isEmpty())
+            System.out.println("No tienes ningun item");
     }
 
 

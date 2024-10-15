@@ -19,19 +19,19 @@ public class Juego {
     public Heroe crearHeroe(int tipoHeroe, String nombre){
         switch (tipoHeroe){
             case 1:
-                heroe = new Guerrero(nombre);
+                this.heroe = new Guerrero(nombre);
                 break;
             case 2:
-                heroe = new Arquero(nombre);
+                this.heroe = new Arquero(nombre);
                 break;
             case 3:
-                heroe = new Mago(nombre);
+                this.heroe = new Mago(nombre);
                 break;
             default:
                 System.out.println("Tipo de héroe no válido.");
         }
 
-        return heroe;
+        return this.heroe;
     }
 
 
@@ -96,6 +96,9 @@ public class Juego {
     public void cerrarMision(){
         ubicacion.terminarMision();
     }
+
+    public boolean reclamarRecompensa(){return zonaDescanso.reclamarRecompensa();}
+    public List<String>abrirMochila(){return heroe.abrirMochila();}
 
 
 
