@@ -78,9 +78,6 @@ public abstract class Mision {
     public void terminarPelea(){
         this.pelea =null;
     }
-    public Items getRecompensa() {
-        return recompensa;
-    }
 
     public String getNombreMision() {
         return nombreMision;

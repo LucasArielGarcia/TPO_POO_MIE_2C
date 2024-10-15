@@ -2,7 +2,7 @@ package BackEnd.Entidades;
 
 public class Mago extends Heroe {
     public Mago(String nombre) {
-        super(nombre, 40);
+        super(nombre, 40,"Mago");
     }
 
     @Override

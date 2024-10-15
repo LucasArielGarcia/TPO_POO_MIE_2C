@@ -97,6 +97,8 @@ public class Juego {
         ubicacion.terminarMision();
     }
 
+    public boolean reclamarRecompensa(){return zonaDescanso.reclamarRecompensa();}
+
 
 
 }

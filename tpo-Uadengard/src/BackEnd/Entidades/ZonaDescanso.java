@@ -42,4 +42,13 @@ public class ZonaDescanso {
     }
 
 
+    public boolean reclamarRecompensa(){
+        Items recompensa = aliado.reclamarRecompensa();
+        if (recompensa != null) {
+            heroe.agregarItemMochila(recompensa);
+            return true;
+        }
+        return false;
+    }
+
 }

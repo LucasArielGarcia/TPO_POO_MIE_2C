@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Aliado {
     private List<Mision> misionList = new ArrayList<>();
+    private Mision misionAceptadas ;
 
     public Aliado(List<Mision> misionList) {
         this.misionList = misionList;
@@ -26,7 +27,17 @@ public class Aliado {
 
     public void aceptarMision(Heroe heroe, int opcion){
         heroe.aceptarMision(misionList().get(opcion));
+        misionAceptadas = misionList.get(opcion);
         misionList.remove(opcion);
+    }
+
+    public Items reclamarRecompensa(){
+        if (misionAceptadas.misionCompleta()){
+            Items recompensa = misionAceptadas.darRecompensa();
+            misionAceptadas = null;
+            return recompensa;
+        }
+        return null;
     }
 
 }
