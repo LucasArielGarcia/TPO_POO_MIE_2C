@@ -2,7 +2,7 @@ package BackEnd.Entidades;
 
 public class Mago extends Heroe {
     public Mago(String nombre) {
-        super(nombre, 40);
+        super(nombre, 40,"Mago");
     }
 
     @Override
@@ -12,7 +12,7 @@ public class Mago extends Heroe {
 
     @Override
     public void atacar(Personaje personajeAtacar) {
-
+    	personajeAtacar.recibirDano(super.golpePersonaje());
     }
 
 }
