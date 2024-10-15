@@ -7,9 +7,11 @@ import java.util.Random;
 public class Pelea {
     private Heroe heroe;
     private List<Enemigo> enemigoList;
+    private int ataques = 0;
     public void peleaPersonajes(Heroe heroe, int opcion){
 
         if (heroe.personajeVivo() && !enemigoList.isEmpty()){
+            
             heroe.atacar(this.enemigoList.get(opcion));
             if (!this.enemigoList.get(opcion).personajeVivo()){
                 this.enemigoList.remove(opcion);

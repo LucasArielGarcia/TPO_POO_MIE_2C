@@ -14,7 +14,6 @@ public class Guerrero extends Heroe {
     @Override
     public void atacar(Personaje personajeAtacar) {
         personajeAtacar.recibirDaño(super.golpePersonaje());
-
     }
 
 

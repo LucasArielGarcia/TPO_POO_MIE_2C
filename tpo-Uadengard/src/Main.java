@@ -63,7 +63,11 @@ public class Main {
                         juegoControler.comprarItem();
                 } else if (opcion == 3) {
                     System.out.println("Bienvenido aliado, veo que estas emocionado por emprender una nueva aventura. Dime que deseas hacer..."+"\n");
-                    juegoControler.mostrarMisionList();
+                    mostrarMisiones(juegoControler.mostrarMisionList());
+                    System.out.println("ingresa que mision quieres...");
+                    opcion = scanner.nextInt();
+                    scanner.nextLine();
+                    juegoControler.aceptarMision(opcion, heroeJuego);
 
                 } else if (opcion == 4) {
                     System.out.println("Ingrese la zona en donde queres viajar");
@@ -106,7 +110,7 @@ public class Main {
         Ubicacion ubicacionActual =juego.viajarUbicacion(opcion,heroe);
         while (ubicacionActual.personajeSeEncuentra()){
             System.out.println("El heroe se encuentra en: "+ubicacionActual.getNombreUbicacion());
-            if (ubicacionActual.tengoMision()){
+            if (ubicacionActual.tengoMision() && heroe.misionSonIguales(ubicacionActual.getMision())){
                 System.out.println("Empecemos la mision");
                 Mision misionActual = ubicacionActual.empezarMision();
                 while (!misionActual.misionCompleta()){
@@ -134,9 +138,6 @@ public class Main {
             ubicacionActual.sacarPersonaje();
         }
 
-
-
-
     }
 
     public static void mostrarEstadisticas(List<String> estadisticasList){
@@ -144,6 +145,13 @@ public class Main {
             System.out.println(i +estadisticasList.get(i));
         }
     }
+
+    public static void mostrarMisiones(List<Mision>misionList){
+        for (int i = 0; i<misionList.size(); i++){
+            System.out.println(i +" Nombre de la mision: "+misionList.get(i).getNombreMision());
+        }
+    }
+
 
 
 }

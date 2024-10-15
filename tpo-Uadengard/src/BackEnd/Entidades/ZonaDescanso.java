@@ -37,5 +37,9 @@ public class ZonaDescanso {
         return this.heroe != null;
     }
 
+    public void aceptarMision(int opcion, Heroe heroe){
+        aliado.aceptarMision(heroe, opcion);
+    }
+
 
 }

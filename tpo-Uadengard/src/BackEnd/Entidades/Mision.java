@@ -72,4 +72,12 @@ public abstract class Mision {
         this.pelea =null;
     }
 
+
+    public Items getRecompensa() {
+        return recompensa;
+    }
+
+    public String getNombreMision() {
+        return nombreMision;
+    }
 }

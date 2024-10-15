@@ -43,6 +43,10 @@ public class Mapa {
         return null ;
     }
 
+    public void aceptarMision(int opcion, Heroe heroe){
+        zonaDescanso.aceptarMision(opcion, heroe);
+    }
+
 
 
 

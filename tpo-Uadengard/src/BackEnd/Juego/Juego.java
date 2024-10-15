@@ -32,6 +32,7 @@ public class Juego {
         return heroe;
     }
 
+
     public List<Mision> mostrarMisionList(){
         return mapa.mostrarMisionList();
     }
@@ -39,8 +40,8 @@ public class Juego {
         return mapa.mostrarItems() ;
     }
 
-    public void aceptarMision(Mision mision){
-        heroe.aceptarMision(mision);
+    public void aceptarMision(int opcion, Heroe heroe){
+        mapa.aceptarMision(opcion,heroe);
     }
 
 

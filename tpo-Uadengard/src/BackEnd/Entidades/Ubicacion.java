@@ -41,4 +41,8 @@ public class Ubicacion {
        return this.mision != null;
    }
 
+   public Mision getMision(){
+        return this.mision;
+   }
+
 }

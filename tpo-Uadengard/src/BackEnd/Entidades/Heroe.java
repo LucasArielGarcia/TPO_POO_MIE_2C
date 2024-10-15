@@ -31,11 +31,13 @@ public abstract class Heroe extends Personaje{
     }
 
 
-    public boolean tengoMision(){
-        return this.mision == null;
+    public boolean misionSonIguales(Mision misionComparar){
+        return this.mision == misionComparar;
     }
 
     public abstract void curarse();
+
+
 
     public void devolverItem(){
         mochilaItems.forEach(items -> {
