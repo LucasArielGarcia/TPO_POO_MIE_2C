@@ -66,7 +66,7 @@ public abstract class Mision {
     }
 
     public boolean existePelea(){
-        return this.pelea != null;
+        return this.pelea.hayEnemigos();
     }
     public void terminarPelea(){
         this.pelea =null;

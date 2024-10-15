@@ -5,9 +5,11 @@ import BackEnd.Entidades.*;
 import java.util.List;
 
 public class Juego {
-    Mapa mapa;
-    Heroe heroe;
-    ZonaDescanso zonaDescanso;
+    private Mapa mapa;
+    private Heroe heroe;
+    private ZonaDescanso zonaDescanso;
+    private Ubicacion ubicacion;
+    private Mision mision;
 
     public Juego(Mapa mapa, ZonaDescanso zonaDescanso) {
         this.mapa = mapa;
@@ -47,14 +49,27 @@ public class Juego {
 
 
 
-    public void hacerMision(Ubicacion ubicacion){
-
-        if (ubicacion.personajeSeEncuentra())
-            ubicacion.empezarMision();
+    public void empezarMision(){
+        if (this.ubicacion.personajeSeEncuentra() && (this.ubicacion.tengoMision() && heroe.misionSonIguales(this.ubicacion.getMision()))){
+            this.ubicacion.empezarMision();
+        }
     }
 
-    public Ubicacion viajarUbicacion(int opcion, Heroe heroe){
-        return mapa.viajarUbicacionMapa(opcion, heroe);
+    public boolean hayMision(){
+        return this.ubicacion.tengoMision();
+    }
+    public boolean hayPelea(){
+        return this.ubicacion.hayPelea();
+    }
+
+    public void pelea(int opcion){
+        if (hayPelea())
+            ubicacion.pelea(heroe,opcion);
+    }
+
+    public String viajarUbicacion(int opcion, Heroe heroe){
+        this.ubicacion=mapa.viajarUbicacionMapa(opcion, heroe);
+        return "nuestro heroe se encuentra en"+ ubicacion.getNombreUbicacion();
     }
 
     public void viajarZonaDescanso(Mapa mapa, ZonaDescanso zonaDescanso){
@@ -71,8 +86,46 @@ public class Juego {
     public void comprarItem(){
 
     }
-
+    public List<String> estadisticasEnemigos(){
+        return this.ubicacion.estadisticasEnemigos();
+    }
 
 
 
 }
+
+
+/*
+* public static void viajarZonaJuego(int opcion, Juego juego, Heroe heroe, Scanner scanner){
+        Ubicacion ubicacionActual =juego.viajarUbicacion(opcion,heroe);
+        while (ubicacionActual.personajeSeEncuentra()){
+            System.out.println("El heroe se encuentra en: "+ubicacionActual.getNombreUbicacion());
+            if (ubicacionActual.tengoMision() && heroe.misionSonIguales(ubicacionActual.getMision())){
+                System.out.println("Empecemos la mision");
+                Mision misionActual = ubicacionActual.empezarMision();
+                while (!misionActual.misionCompleta()){
+                    if (misionActual.existePelea()){
+                        while (misionActual.hayEnemigos()){
+                            mostrarEstadisticas(misionActual.mostrarEstadisticasEnemigos());
+                            System.out.println("");
+                            System.out.println("Nuestro heroe tiene estas estadisticas: " + misionActual.mostrarEstadisticaHeroe());
+                            System.out.println("Debes ingresar a quien quieres atacar...");
+                            int opcionPelea = scanner.nextInt();
+                            scanner.nextLine();
+                            misionActual.peleaHeroe(heroe,opcionPelea);
+                            if (!misionActual.hayEnemigos()){
+                                System.out.println("Mataste a todos los enemigos enhorabuena.");
+                                misionActual.marcarMisionCompletada();
+                                misionActual.terminarPelea();
+                            }
+                        }
+                    }
+
+                }
+            }
+            System.out.println("No tiene que hacer nada por aqui, volvamos a la zona de descanso");
+            ubicacionActual.terminarMision();
+            ubicacionActual.sacarPersonaje();
+        }
+
+    }*/

@@ -107,37 +107,23 @@ public class Main {
     }
 
     public static void viajarZonaJuego(int opcion, Juego juego, Heroe heroe, Scanner scanner){
-        Ubicacion ubicacionActual =juego.viajarUbicacion(opcion,heroe);
-        while (ubicacionActual.personajeSeEncuentra()){
-            System.out.println("El heroe se encuentra en: "+ubicacionActual.getNombreUbicacion());
-            if (ubicacionActual.tengoMision() && heroe.misionSonIguales(ubicacionActual.getMision())){
-                System.out.println("Empecemos la mision");
-                Mision misionActual = ubicacionActual.empezarMision();
-                while (!misionActual.misionCompleta()){
-                    if (misionActual.existePelea()){
-                        while (misionActual.hayEnemigos()){
-                            mostrarEstadisticas(misionActual.mostrarEstadisticasEnemigos());
-                            System.out.println("");
-                            System.out.println("Nuestro heroe tiene estas estadisticas: " + misionActual.mostrarEstadisticaHeroe());
-                            System.out.println("Debes ingresar a quien quieres atacar...");
-                            int opcionPelea = scanner.nextInt();
-                            scanner.nextLine();
-                            misionActual.peleaHeroe(heroe,opcionPelea);
-                            if (!misionActual.hayEnemigos()){
-                                System.out.println("Mataste a todos los enemigos enhorabuena.");
-                                misionActual.marcarMisionCompletada();
-                                misionActual.terminarPelea();
-                            }
-                        }
-                    }
-
+        String mensajeReturns = "";
+        mensajeReturns = juego.viajarUbicacion(opcion,heroe);
+        System.out.println(mensajeReturns);
+        if (juego.hayMision()){
+            juego.empezarMision();
+            System.out.println("Peparate para la mision...");
+            while (juego.hayPelea()){
+                mostrarEstadisticas(juego.estadisticasEnemigos());
+                System.out.println("Tienes que elegir un enemigo");
+                int opcionPelea = scanner.nextInt();
+                scanner.nextLine();
+                juego.pelea(opcionPelea);
+                if (!juego.hayPelea()){
+                    System.out.println("Eliminaste a todos los enemigos felicidades");
                 }
             }
-            System.out.println("No tiene que hacer nada por aqui, volvamos a la zona de descanso");
-            ubicacionActual.terminarMision();
-            ubicacionActual.sacarPersonaje();
         }
-
     }
 
     public static void mostrarEstadisticas(List<String> estadisticasList){

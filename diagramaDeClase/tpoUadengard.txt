@@ -1,0 +1,243 @@
+@startuml
+abstract Personaje{
+-vida: int
+-daño: double
+-nombre: String
++ void usarItem(Items item)
++ void sumarDefensa(cantidadDefensa: int)
++ void sumarAtaque(cantidadAtaque: int)
+}
+abstract Heroe{
+-idHeore: int
+-nivelDefensa
+-nombre: String
+-mochila: List<Items>
+-equipamento: List<Items>
+- mapa: Mapa
+- mision: Mision
++void guardarMochilaItem(item: Items)
++{abstract} void atacar()
++{abstract} void curar()
++{abstract} void defender()
++{abstract} boolean estoyMuerto()
+
+}
+class Guerrero{
++{abstract} void atacar()
++{abstract} void curar()
++{abstract} void defender()
++{abstract} boolean estoyMuerto()
+
+}
+class Arquero{
+- agilidad: int
+- punteria: int
++{abstract} void atacar()
++{abstract} void curar()
++{abstract} void defender()
++{abstract} boolean estoyMuerto()
+
+}
+class Mago{
++{abstract} void atacar()
++{abstract} void curar()
++{abstract} void defender()
++{abstract} boolean estoyMuerto()
+
+}
+
+
+
+abstract Enemigo {
+-idEnemigo : int
++{abstract} void atacar()
++{abstract} boolean estoyMuerto()
+}
+class Troll{
++{abstract} void atacar()
++{abstract} boolean estoyMuerto()
+}
+class Dragon{
++{abstract} void atacar()
++{abstract} boolean estoyMuerto()
+}
+class Espectro{
++{abstract} void atacar()
++{abstract} boolean estoyMuerto()
+}
+
+
+
+
+abstract Items{
+-descripcionItem: String
+-idItem: int
+-nivelItem: int
+-precio: double
++{abstract} void usarItem(Personaje personaje)
++ boolean sosItem(idItem: int)
+}
+class Espada{
+- aumentoAtaque: int
++{abstract} void usarItem(Personaje personaje)
+}
+class Arco{
+- aumentoAtaque: int
++{abstract} void usarItem(Personaje personaje)
+}
+class Baculo{
+- aumentoAtaque: int
++{abstract} void usarItem(Personaje personaje)
+}
+class Armadura{
+- aumentoDefensa: int
++{abstract} void usarItem(Personaje personaje)
+}
+
+
+class Pelea{
+-heroe: Heroe
+-enemigo : Enemigo 
++void peleaPersonajes(Enemigo : Enemigo , heroe: Heroe)
+}
+
+class Mercader{
+-ventaItems: list<Items>
++List<Items>mostrarCatalogoItems()
++Items ventaItem(pago: double, idItem: int)
+}
+
+class Aliado{
+- List<Misiones> misiones
++ List<Misiones> mostrarCatalogoMisiones()
++ Items reclamarRecompensa()
+}
+
+class ZonaDescanso{
+-mercaderZonaDescanso: Mercader
+-heroe: Heroe
+-aliado: Aliado
++void reposoPersonaje(heroe: Heroe)
++List<Items> mostrarItemsMercader()
++boolean estanciaJugador()
++Items transaccionItem(pago: double, idItem: int)
+}
+
+abstract Mision{
+- pelea: Pelea
+- recompensa: Items
+- nombreMision: String
+- completada: boolean
++ comenzarPelea(heroe: Heroe, enemigo: Enemigo)
++ void marcarMisionCompletada()
++{abstract} void comenzarMision()
+}
+
+Class LimpiarUbicacion{
+- listEnemigo: List<Enemigo>
++{abstract} void comenzarMision()
+}
+Class DevolverItem{
+- item:  Item
++{abstract} void comenzarMision()
+}
+Class PeleaJefe{
+- enemigo: Enemigo
++{abstract} void comenzarMision()
+}
+
+
+
+Class Mapa{
+- listUbicacion: List<Ubicacion>
+- zonaDescanso: ZonaDescanso
++Ubicacion buscarUbicacion(nombre: String)
+}
+Class Ubicacion{
+-nombreUbicacion: String
+-mision: Mision
+-enemigo: Enemigo
+-heroe: Heroe
+-item: Items
++boolean sosUbicacion(nombre: String)
++comenzarMision(heroe: Heroe, enemigo Enemigo)
+}
+
+
+Class Juego{
++misionesList: List<Misiones>
++heroe: Heroe
++enemigoList: List<Enemigo>
++mapa: Mapa
++listMision: List<Mision>
++ubicacionJuego: Ubicacion
++void empezarPelea()
++void irZonaDescanso()
++void empezarMision()
++void crearHeroe(clase: String, nombre: String)
++void viajarUbicacion(ubicacion: String)
++List<Items> mostrarItemsMercader()
++void comprarItem(pago: double, idItem: int)
++void guardarItem(item: Items)
+}
+Personaje<|--Heroe
+Personaje<|--Enemigo
+
+Heroe <|-- Guerrero
+Heroe <|-- Mago
+Heroe <|-- Arquero
+Heroe o-- Mision
+
+
+
+
+Enemigo <|-- Troll
+Enemigo <|-- Dragon
+Enemigo <|-- Espectro
+
+Pelea o-- Heroe
+Pelea o-- Enemigo 
+
+Heroe o-- Items
+
+Items <|-- Espada
+Items <|-- Arco
+Items <|-- Baculo
+Items <|-- Armadura
+
+Mercader o-- Items
+
+ZonaDescanso o-- Mercader
+ZonaDescanso o-- Heroe
+ZonaDescanso o-- Aliado
+Aliado o-- Mision
+
+Juego *-- Heroe
+Juego *-- Enemigo
+Juego *-- ZonaDescanso
+Juego *-- Mision
+Juego *-- Mapa
+Juego *-- Ubicacion
+
+Mision o-- Pelea
+
+Mision <|-- LimpiarUbicacion
+LimpiarUbicacion o-- Enemigo
+
+Mision <|-- DevolverItem
+DevolverItem o-- Items
+
+Mision <|-- PeleaJefe
+PeleaJefe o-- Enemigo
+
+
+Ubicacion o-- Mision
+Ubicacion o-- Enemigo
+Ubicacion o-- Heroe
+
+Mapa *-- Ubicacion
+Mapa *-- ZonaDescanso
+Mapa o-- Heroe
+
+
+@enduml

@@ -56,5 +56,9 @@ public class Pelea {
         return enemigoList.get(enemigoRandom);
     }
 
+    public boolean hayEnemigos(){
+        return !enemigoList.isEmpty();
+    }
+
 
 }

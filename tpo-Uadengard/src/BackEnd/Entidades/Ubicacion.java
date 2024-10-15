@@ -1,5 +1,7 @@
 package BackEnd.Entidades;
 
+import java.util.List;
+
 public class Ubicacion {
     private String nombreUbicacion;
     private Mision mision;
@@ -17,12 +19,10 @@ public class Ubicacion {
         return this.heroe != null;
     }
 
-    public Mision empezarMision(){
+    public void empezarMision(){
         if (this.mision != null) {
             this.mision.empezarMision(heroe);
-            return this.mision;
         }
-        return null;
     }
 
 
@@ -43,6 +43,18 @@ public class Ubicacion {
 
    public Mision getMision(){
         return this.mision;
+   }
+
+   public boolean hayPelea(){
+        return mision.existePelea();
+   }
+
+   public void pelea(Heroe heroe, int opcion){
+        this.mision.peleaHeroe(heroe,opcion);
+   }
+
+   public List<String> estadisticasEnemigos(){
+        return this.mision.mostrarEstadisticasEnemigos();
    }
 
 }

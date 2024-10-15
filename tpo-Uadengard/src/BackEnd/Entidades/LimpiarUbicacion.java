@@ -1,5 +1,7 @@
 package BackEnd.Entidades;
 
+import java.util.List;
+
 public class LimpiarUbicacion extends Mision {
 
 
@@ -9,10 +11,7 @@ public class LimpiarUbicacion extends Mision {
 
     @Override
     public void empezarMision(Heroe heroe) {
-        System.out.println("Tienes enemigos con los que pelear te recomendamos que te prepares");
-
         if (super.hayEnemigos()){
-            System.out.println("Hay enemigos preparate");
             Pelea pelea = new Pelea(heroe, super.getEnemigosList());
             super.emepezarPelea(pelea);
         }
