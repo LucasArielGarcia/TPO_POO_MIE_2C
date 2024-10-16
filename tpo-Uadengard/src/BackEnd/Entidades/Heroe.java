@@ -27,6 +27,7 @@ public abstract class Heroe extends Personaje{
     }
     public void agregarItemMochila(Items itemNuevo){
         mochilaItems.add(itemNuevo);
+        nivelHeroe += 0.25; //Aumento de experiencia por cada vez que toma un nuevo ítem.
     }
     
 

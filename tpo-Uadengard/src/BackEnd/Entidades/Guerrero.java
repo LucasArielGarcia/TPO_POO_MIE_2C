@@ -15,9 +15,8 @@ public class Guerrero extends Heroe {
         	personajeAtacar.recibirDano(super.golpePersonaje() * 100);
             this.cantidadAtaques++;
         }
-        else if (cantidadAtaques == 3) {
+        else if (cantidadAtaques >= 3) {
             personajeAtacar.recibirDano(super.golpePersonaje() * 2);
-            this.cantidadAtaques = 1;
         }
         else {
             personajeAtacar.recibirDano(super.golpePersonaje());
