@@ -58,4 +58,6 @@ public class Ubicacion {
         return this.mision.mostrarEstadisticasEnemigos();
    }
 
+   public String mostrarEstadisticasHeroe(){return mision.mostrarEstadisticaHeroe();}
+
 }

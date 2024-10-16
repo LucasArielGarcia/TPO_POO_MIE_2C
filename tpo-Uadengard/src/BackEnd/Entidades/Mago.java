@@ -15,4 +15,11 @@ public class Mago extends Heroe {
     	personajeAtacar.recibirDano(super.golpePersonaje());
     }
 
+    private void equipoComienzo(){
+        Items baculo = new Baculo("baculo de roble",0,0,15);
+        Items armadura = new Armadura("Tunica de principiante",0,0,20);
+        super.equiparItem(baculo);
+        super.equiparItem(armadura);
+    }
+
 }

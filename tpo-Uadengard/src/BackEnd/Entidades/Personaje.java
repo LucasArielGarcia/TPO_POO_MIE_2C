@@ -46,7 +46,7 @@ abstract class  Personaje {
         return this.dano;
     }
 
-    public String tipoEnemigo() {
+    public String tipoPersonaje() {
     	return this.tipo;
     }
     public String mostrarEstadistica(){

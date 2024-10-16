@@ -5,7 +5,7 @@ public abstract class Enemigo extends Personaje{
         super(nombre, defensa,tipo);
     }
 
-    public abstract void dropearItem();
+    public abstract void habilidadPersonajeExtra(Personaje heroe);
 
 
 
