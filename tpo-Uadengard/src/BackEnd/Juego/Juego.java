@@ -100,6 +100,10 @@ public class Juego {
     public boolean reclamarRecompensa(){return zonaDescanso.reclamarRecompensa();}
     public List<String>abrirMochila(){return heroe.abrirMochila();}
 
+    public String mostrarEstadisticasHeroe(){
+        return heroe.mostrarEstadistica();
+    }
+
 
 
 }
