@@ -7,13 +7,18 @@ public class Troll extends Enemigo {
     }
 
     @Override
-    public void dropearItem() {
+    public void habilidadPersonajeExtra(Personaje heroe) {
+        if (heroe.tipoPersonaje().equals("Mago")){
+            int golpe = super.golpePersonaje();
+            golpe = (int) (golpe*0.15);
+            super.sumarDano(golpe);
+        }
         
     }
 
     @Override
     public void atacar(Personaje personajeAtacar) {
-    	if (personajeAtacar.tipoEnemigo()=="Mago" && cont==1) {
+    	if (personajeAtacar.tipoPersonaje()=="Mago" && cont==1) {
     		super.sumarDefensa(15*50/100);
     		cont++;
     	}

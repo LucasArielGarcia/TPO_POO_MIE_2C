@@ -18,7 +18,7 @@ public class Arquero extends Heroe {
 
     @Override
     public void atacar(Personaje personajeAtacar) {	
-    	if(personajeAtacar.tipoEnemigo()=="Dragon") {
+    	if(personajeAtacar.tipoPersonaje()=="Dragon") {
     	 personajeAtacar.recibirDano(super.golpePersonaje());
     	}
     	else {
