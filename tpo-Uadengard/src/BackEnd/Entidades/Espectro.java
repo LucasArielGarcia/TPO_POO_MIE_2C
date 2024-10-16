@@ -13,7 +13,7 @@ public class Espectro extends Enemigo{
 
     @Override
     public void atacar(Personaje personajeAtacar) {
-    	if (personajeAtacar.tipoEnemigo()=="arquero" && cont==1) {
+    	if (personajeAtacar.tipoEnemigo()=="Arquero" && cont==1) {
     		super.sumarDano(20*super.golpePersonaje()/super.golpePersonaje());
     		cont++;
     	}

@@ -16,21 +16,16 @@ public class Juego {
         this.zonaDescanso = zonaDescanso;
     }
 
-    public Heroe crearHeroe(int tipoHeroe, String nombre){
-        switch (tipoHeroe){
-            case 1:
-                this.heroe = new Guerrero(nombre);
-                break;
-            case 2:
-                this.heroe = new Arquero(nombre);
-                break;
-            case 3:
-                this.heroe = new Mago(nombre);
-                break;
-            default:
-                System.out.println("Tipo de héroe no válido.");
+    public Heroe crearHeroe(int tipoHeroe, String nombre) {
+        if (tipoHeroe == 1) {
+            this.heroe = new Guerrero(nombre);
+        } else if (tipoHeroe == 2) {
+            this.heroe = new Arquero(nombre);
+        } else if (tipoHeroe == 3) {
+            this.heroe = new Mago(nombre);
+        } else {
+            System.out.println("Tipo de héroe no válido.");
         }
-
         return this.heroe;
     }
 

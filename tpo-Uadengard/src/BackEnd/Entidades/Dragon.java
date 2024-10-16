@@ -12,7 +12,7 @@ public class Dragon extends Enemigo {
 
     @Override
     public void atacar(Personaje personajeAtacar) {
-    	if (personajeAtacar.tipoEnemigo()=="arquero" && cont==1) {
+    	if (personajeAtacar.tipoEnemigo()=="Guerrero" && cont==1) {
     		super.sumarDano(30*super.golpePersonaje()/super.golpePersonaje());
     		cont++;
     	}
