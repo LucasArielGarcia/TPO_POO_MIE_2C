@@ -138,6 +138,8 @@ public class Main {
             juego.empezarMision();
             System.out.println("Peparate para la mision...");
             while (juego.hayPelea()){
+                System.out.println(juego.mostrarEstadisticasHeroe());
+                System.out.println("");
                 mostrarEstadisticas(juego.estadisticasEnemigos());
                 System.out.println("Tienes que elegir un enemigo");
                 int opcionPelea = scanner.nextInt();
