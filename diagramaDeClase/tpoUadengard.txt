@@ -1,243 +1,320 @@
 @startuml
 abstract Personaje{
+-tipo: String
 -vida: int
--daño: double
+-daño: int
 -nombre: String
-+ void usarItem(Items item)
-+ void sumarDefensa(cantidadDefensa: int)
-+ void sumarAtaque(cantidadAtaque: int)
-}
-abstract Heroe{
--idHeore: int
--nivelDefensa
--nombre: String
--mochila: List<Items>
--equipamento: List<Items>
-- mapa: Mapa
-- mision: Mision
-+void guardarMochilaItem(item: Items)
-+{abstract} void atacar()
-+{abstract} void curar()
-+{abstract} void defender()
-+{abstract} boolean estoyMuerto()
+-defensa: int
 
++ recibirDano(golpe int) : void
++ usarItem(Items item): void
++ {abstract} atacar: void
++ sumarDefensa(cantidadDefensa: int): void 
++ sumarAtaque(cantidadAtaque: int): void
++ golpePersonaje(): int
++ tipoPersonaje(): String
++ mostrarEstadistica: String
 }
+
+abstract Heroe{
+- nivelHeroe: int
+- nombre: String
+- mochilaItems: List<Items>
+- equipo: List<Items>
+- mision: Mision
+
++ equiparItem(item: Items): void
++ abrirMochila(): List<String>
++ devolverItem(): void
++{abstract} terminarMision(): void
++{abstract} atacar(): void 
++{abstract} curarse(): void 
++ misionSonIguales(misionComparar: Mision): boolean
+}
+
 class Guerrero{
-+{abstract} void atacar()
-+{abstract} void curar()
-+{abstract} void defender()
-+{abstract} boolean estoyMuerto()
+- cantidadAtaques: int
+
++ atacar(personajeAtacar: Personaje): void 
++ curarse(): void
++ equipoComienzo(): void
 
 }
 class Arquero{
 - agilidad: int
 - punteria: int
-+{abstract} void atacar()
-+{abstract} void curar()
-+{abstract} void defender()
-+{abstract} boolean estoyMuerto()
 
++ atacar(personajeAtacar: Personaje): void 
++ curarse(): void 
 }
+
 class Mago{
-+{abstract} void atacar()
-+{abstract} void curar()
-+{abstract} void defender()
-+{abstract} boolean estoyMuerto()
+
++ atacar(personajeAtacar: Personaje): void
++ curarse(): void
++ equipoComienzo(): void
 
 }
-
-
 
 abstract Enemigo {
--idEnemigo : int
-+{abstract} void atacar()
-+{abstract} boolean estoyMuerto()
++{abstract} habilidadPersonajeExtra(heroe Personaje): void
 }
+
 class Troll{
-+{abstract} void atacar()
-+{abstract} boolean estoyMuerto()
+- contador: int
+
++ habilidadPersonajeExtra(heroe Personaje): void
++ atacar(personajeAtacar: Personaje): void
 }
+
 class Dragon{
-+{abstract} void atacar()
-+{abstract} boolean estoyMuerto()
+- contador: int
+
++ dropearItem(): void
++ atacar(personajeAtacar: Personaje): void
 }
+
 class Espectro{
-+{abstract} void atacar()
-+{abstract} boolean estoyMuerto()
+- contador: int
+
++ dropearItem(): void
++ atacar(personajeAtacar: Personaje): void
 }
-
-
 
 
 abstract Items{
--descripcionItem: String
+-descripcion: String
 -idItem: int
 -nivelItem: int
 -precio: double
-+{abstract} void usarItem(Personaje personaje)
-+ boolean sosItem(idItem: int)
-}
-class Espada{
-- aumentoAtaque: int
-+{abstract} void usarItem(Personaje personaje)
-}
-class Arco{
-- aumentoAtaque: int
-+{abstract} void usarItem(Personaje personaje)
-}
-class Baculo{
-- aumentoAtaque: int
-+{abstract} void usarItem(Personaje personaje)
-}
-class Armadura{
-- aumentoDefensa: int
-+{abstract} void usarItem(Personaje personaje)
+
++{abstract} usarItem(Personaje personaje): void 
++ sosItem(idItem: int): boolean 
++ getDescripcion(): int
++ getPrecio(): double
++ getNivelItem(): int
++ {abstract} infoItem(): String
 }
 
+class Espada{
+- aumentoDano: int
+
++ usarItem(Personaje personaje): void 
++ infoItem(): String
+}
+
+class Arco{
+-danoSumar: int
+
++ usarItem(Personaje personaje): void 
++ infoItem(): String
+}
+
+class Baculo{
+- aumentoDano: int
+
++ usarItem(Personaje personaje): void 
++ infoItem(): String
+}
+
+class Armadura{
+- aumentoDefensa: int
+
++ usarItem(Personaje personaje): void
++ infoItem(): String
+}
 
 class Pelea{
 -heroe: Heroe
--enemigo : Enemigo 
-+void peleaPersonajes(Enemigo : Enemigo , heroe: Heroe)
+-enemigoList: List<Enemigo>
+-ataques: int
+
++ peleaPersonajes(opcion: int, heroe: Heroe): void 
++ elegirAtaqueEnemigo(opcion: int): Enemigo
++ mostrarEstadistaEnemigos(): List<String>
++ mostrarEstadistasHeore(): List<String>
++ elegirEnemigoRamdon(): Enemigo
++ hayEnemigos(): boolean
 }
 
 class Mercader{
--ventaItems: list<Items>
-+List<Items>mostrarCatalogoItems()
-+Items ventaItem(pago: double, idItem: int)
+-itemVenta: list<Items>
+
++mostrarCatalogoItems(): List<Items>
 }
 
 class Aliado{
-- List<Misiones> misiones
-+ List<Misiones> mostrarCatalogoMisiones()
-+ Items reclamarRecompensa()
+- misionList: List<Mision> 
+
++ misionList(): List<Misiones>
++ reclamarRecompensa(mision: Mision): Items 
++ aceptarMision(heroe: Heroe, opcion: int): void
++ reclamarRecompensa(): Items
+
 }
 
 class ZonaDescanso{
--mercaderZonaDescanso: Mercader
+-mercader: Mercader
 -heroe: Heroe
 -aliado: Aliado
-+void reposoPersonaje(heroe: Heroe)
-+List<Items> mostrarItemsMercader()
-+boolean estanciaJugador()
-+Items transaccionItem(pago: double, idItem: int)
+
++ mostrarCatalogoItems(): List<Items>
++ mostrarMisionesList(): List<Mision>
++ reclamarRecompensa(mision Mision): void
++ llegarZonaDescanso(heroe Heroe): void
++ personajeEstaEnZona(): boolean
++ aceptarMision(opcion int, heroe Heroe): void
++ reclamarRecompensa(): Items
 }
 
 abstract Mision{
+- objeticoCompletado: boolean
 - pelea: Pelea
 - recompensa: Items
 - nombreMision: String
-- completada: boolean
-+ comenzarPelea(heroe: Heroe, enemigo: Enemigo)
-+ void marcarMisionCompletada()
-+{abstract} void comenzarMision()
+- enemigosList: List<Enemigos>
+- cofre: Items
+
++ cargarEnemigos(listaEnemigos List<Enemigos>): void
++ misionCompleta(): boolean
++ darRecompensa(): Items
++ hayEnemigos(): boolean
++ getEnemigosList(): List<Enemigos>
++ empezarPelea(empiezaPelea Pelea): void
++ peleaHeroe(heroe Heroe, opcion: int): void
++ mostrarEstadisticasEnemigos(): List<Strings>
++ mostrarEstadisticaHeroe(): List<String>
++ existePelea(): boolean
++ terminarPelea(): void
++ getNombreMision(): String
++ agregarItemAlCofre(item Items): void
++ marcarMisionCompletada(): void 
++{abstract} empezarMision(heroe Heroe): void 
 }
 
-Class LimpiarUbicacion{
-- listEnemigo: List<Enemigo>
-+{abstract} void comenzarMision()
-}
-Class DevolverItem{
-- item:  Item
-+{abstract} void comenzarMision()
-}
-Class PeleaJefe{
-- enemigo: Enemigo
-+{abstract} void comenzarMision()
+abstract LimpiarUbicacion{
++empezarMision(heroe Heroe): void
 }
 
+abstract DevolverItem{
++empezarMision(heroe Heroe): void
+}
 
+class PeleaJefe{
++empezarMision(heroe Heroe): void
+}
 
 Class Mapa{
-- listUbicacion: List<Ubicacion>
+- UbicacionList: List<Ubicacion>
 - zonaDescanso: ZonaDescanso
-+Ubicacion buscarUbicacion(nombre: String)
+
++mostrarMisionLista(): List<Misiones>
++mostrarItems(): List<Items>
++ubicacionPersonaje(): Ubicacion
++abrirMapa(): List<Ubicacion>
++viajarUbicacionMapa(opcion int, heroe Heroe): Ubicacion
++aceptarMision(opcion int, heroe Heroe): void
 }
+
 Class Ubicacion{
 -nombreUbicacion: String
 -mision: Mision
 -enemigo: Enemigo
 -heroe: Heroe
--item: Items
-+boolean sosUbicacion(nombre: String)
-+comenzarMision(heroe: Heroe, enemigo Enemigo)
-}
 
++llegarALaUbicacion(heroe Heroe): void
++sacarPersonaje(): void
++terminarMision(): void
++getNombreUbicacion(): String
++tengoMision(): boolean
++getMision(): Mision
++hayPelea(): boolean
++pelea(heroe Heroe, opcion int): void
++EstadisticasEnemigos(): List<Strings>
++mostrarEstadisticaHeroe(): String
++empezarMision(): void
+}
 
 Class Juego{
-+misionesList: List<Misiones>
-+heroe: Heroe
-+enemigoList: List<Enemigo>
-+mapa: Mapa
-+listMision: List<Mision>
-+ubicacionJuego: Ubicacion
-+void empezarPelea()
-+void irZonaDescanso()
-+void empezarMision()
-+void crearHeroe(clase: String, nombre: String)
-+void viajarUbicacion(ubicacion: String)
-+List<Items> mostrarItemsMercader()
-+void comprarItem(pago: double, idItem: int)
-+void guardarItem(item: Items)
+-heroe: Heroe
+-mapa: Mapa
+-zonaDescanso: ZonaDescanso
+-mision: Mision
+-ubicacion: Ubicacion
+
++abrirMapa(): List<Ubicacion>
++viajarZonaDescanso(mapa Mapa, zonaDescanso ZonaDescanso): void
++pelea(opcion int): void
++hayPelea(): boolean
++hayMision(): boolean
++empezarMision(): void 
++crearHeroe(tipoHeroe: int, nombre: String): Heroe
++mostrarMisionList(): List<Mision>
++mostrarCatalogoMercaderItems(): List<Items>
++aceptarMision(opcion int, heroe Heroe): void
++viajarUbicacion(opcion int, heroe Heroe): String
++comprarItem(): void
++EstadisticasEnemigos(): List<String>
++cerrarMision(): void
++reclamarRecompensa(): boolean
++abrirMochila(): List<String>
++mostrarEstadisticasHeroe(): int
 }
-Personaje<|--Heroe
-Personaje<|--Enemigo
+
+Personaje <|-- Heroe
+Personaje <|--Enemigo
 
 Heroe <|-- Guerrero
 Heroe <|-- Mago
 Heroe <|-- Arquero
-Heroe o-- Mision
-
-
+Heroe "1" o-- "*" Mision
 
 
 Enemigo <|-- Troll
 Enemigo <|-- Dragon
 Enemigo <|-- Espectro
 
-Pelea o-- Heroe
-Pelea o-- Enemigo 
+Pelea "1" o-- "1" Heroe
+Pelea "1" o-- "*" Enemigo 
 
-Heroe o-- Items
+Heroe "1" o-- "*" Items
 
 Items <|-- Espada
 Items <|-- Arco
 Items <|-- Baculo
 Items <|-- Armadura
 
-Mercader o-- Items
+Mercader "1" o-- "*" Items
 
-ZonaDescanso o-- Mercader
-ZonaDescanso o-- Heroe
-ZonaDescanso o-- Aliado
-Aliado o-- Mision
+ZonaDescanso "1" o-- "1" Mercader
+ZonaDescanso "1" o-- "1" Heroe
+ZonaDescanso "1" o-- "1" Aliado
 
-Juego *-- Heroe
-Juego *-- Enemigo
-Juego *-- ZonaDescanso
-Juego *-- Mision
-Juego *-- Mapa
-Juego *-- Ubicacion
+Aliado "1" o-- "*" Mision
 
-Mision o-- Pelea
+Juego "1" *-- "1" Heroe
+Juego "1" *-- "*" Enemigo
+Juego "1" *-- "1" ZonaDescanso
+Juego "1" *-- "*" Mision
+Juego "1" *-- "1" Mapa
+Juego "1" *-- "*" Ubicacion
+
+Mision "1" o-- "1" Pelea
 
 Mision <|-- LimpiarUbicacion
-LimpiarUbicacion o-- Enemigo
-
 Mision <|-- DevolverItem
-DevolverItem o-- Items
+
+DevolverItem "1" o-- "1" Items
 
 Mision <|-- PeleaJefe
-PeleaJefe o-- Enemigo
 
+Ubicacion "1" o-- "1" Mision
+Ubicacion "1" o-- "*" Enemigo
+Ubicacion "1" o-- "1" Heroe
 
-Ubicacion o-- Mision
-Ubicacion o-- Enemigo
-Ubicacion o-- Heroe
-
-Mapa *-- Ubicacion
-Mapa *-- ZonaDescanso
-Mapa o-- Heroe
+Mapa "1" *-- "*" Ubicacion
+Mapa "1" *-- "1" ZonaDescanso
+Mapa "1" o-- "1" Heroe
 
 
 @enduml
