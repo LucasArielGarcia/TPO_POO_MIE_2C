@@ -39,7 +39,7 @@ public class Mapa {
                 return ubicacionReturn;
             }
         }
-        System.out.println("No se encontro la ubicacion");
+
         return null ;
     }
 

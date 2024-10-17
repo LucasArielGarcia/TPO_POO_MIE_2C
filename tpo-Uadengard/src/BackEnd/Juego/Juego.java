@@ -67,7 +67,7 @@ public class Juego {
 
     public String viajarUbicacion(int opcion, Heroe heroe){
         this.ubicacion=mapa.viajarUbicacionMapa(opcion, heroe);
-        return "nuestro heroe se encuentra en"+ ubicacion.getNombreUbicacion();
+        return ubicacion != null ?  "nuestro heroe se encuentra en"+ ubicacion.getNombreUbicacion(): "No se encontro la ubicacion";
     }
 
     public void viajarZonaDescanso(Mapa mapa, ZonaDescanso zonaDescanso){

@@ -16,15 +16,18 @@ abstract class  Personaje {
     }
 
     public void recibirDano(int golpe) {
-    	if (this.defensa > 0)
-           this.defensa = this.defensa - golpe;
-    		if(golpe>defensa) {
-    			golpe=golpe-defensa;
-    			this.defensa=0;
-    			this.vida=this.vida-golpe;
-    		}
-       else
-          this.vida = this.vida - golpe;
+    	if (this.defensa > 0) {
+            this.defensa = this.defensa - golpe;
+            if (golpe > (defensa + golpe) && defensa < 0) {
+                defensa = defensa < 0 ? Math.abs(defensa) : defensa;
+                golpe = golpe - defensa;
+                this.defensa = 0;
+                this.vida = this.vida - golpe;
+            }
+        }
+        else {
+                this.vida = this.vida - golpe;
+        }
    }
     public abstract void atacar(Personaje personajeAtacar);
     public boolean personajeVivo(){
@@ -50,8 +53,7 @@ abstract class  Personaje {
     	return this.tipo;
     }
     public String mostrarEstadistica(){
-        String estadistica = " ,Nombre: " + this.nombre + " ,Vida del personaje: "+ this.vida+ " ,Defensa del personaje " + this.defensa;
-        return estadistica;
+        return " Nombre: " + this.nombre + " ,Vida del personaje: "+ this.vida+ " ,Defensa del personaje " + this.defensa;
     }
 
 

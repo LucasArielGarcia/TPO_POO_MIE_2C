@@ -16,13 +16,7 @@ public class Aliado {
     }
 
     public Items reclamarRecompensa(Mision mision){
-        if (mision.misionCompleta()){
-            return mision.darRecompensa();
-        }
-        else {
-            System.out.println("No se completo la mision");
-            return null;
-        }
+        return mision.misionCompleta() ? mision.darRecompensa(): null; // es un if despues del "?" retornaria si el if es true y despues del ":" si es false
     }
 
     public void aceptarMision(Heroe heroe, int opcion){
