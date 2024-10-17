@@ -6,18 +6,15 @@ public class Espectro extends Enemigo{
         super(nombre, 30,"Espectro");
     }
 
-    @Override
-    public void dropearItem() {
 
-    }
 
     @Override
     public void atacar(Personaje personajeAtacar) {
-    	if (personajeAtacar.tipoEnemigo()=="Arquero" && cont==1) {
+    	if (personajeAtacar.tipoPersonaje()=="Arquero" && cont==1) {
     		super.sumarDano(20*super.golpePersonaje()/super.golpePersonaje());
     		cont++;
     	}
-    	if(personajeAtacar.tipoEnemigo()=="Mago") {
+    	if(personajeAtacar.tipoPersonaje()=="Mago") {
     		personajeAtacar.recibirDano(super.golpePersonaje()*0);
     	}
     	else {
@@ -25,4 +22,9 @@ public class Espectro extends Enemigo{
     	}
 
     }
+
+	@Override
+	public void habilidadPersonajeExtra(Personaje heroe) {
+
+	}
 }
