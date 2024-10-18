@@ -44,15 +44,17 @@ public class Juego {
 
 
 
-    public void empezarMision(){
+    private void empezarMision(){
         if (this.ubicacion.personajeSeEncuentra() && (this.ubicacion.tengoMision() && heroe.misionSonIguales(this.ubicacion.getMision()))){
             this.ubicacion.empezarMision();
         }
     }
 
     public boolean hayMision(){
-        if (this.ubicacion.tengoMision() &&(this.ubicacion.tengoMision() && heroe.misionSonIguales(this.ubicacion.getMision())))
-            return true ;
+        if (this.ubicacion.tengoMision() &&(this.ubicacion.tengoMision() && heroe.misionSonIguales(this.ubicacion.getMision()))) {
+            empezarMision();
+            return true;
+        }
         else
             return false;
     }

@@ -137,13 +137,11 @@ public class Main {
         mensajeReturns = juego.viajarUbicacion(opcion,heroe);
         System.out.println(mensajeReturns);
         if (juego.hayMision()){
-            juego.empezarMision();
-            System.out.println("Peparate para la mision...");
             while (juego.hayPelea()){
-                System.out.println(juego.mostrarEstadisticasHeroe());
-                System.out.println("");
+                System.out.println("Hay enemigos, demos pelear"+"\n");
+                System.out.println(juego.mostrarEstadisticasHeroe()+"\n");
                 mostrarEstadisticas(juego.estadisticasEnemigos());
-                System.out.println("Tienes que elegir un enemigo");
+                System.out.println("Tienes que elegir un enemigo"+"\n");
                 int opcionPelea = scanner.nextInt();
                 scanner.nextLine();
                 juego.pelea(opcionPelea);
