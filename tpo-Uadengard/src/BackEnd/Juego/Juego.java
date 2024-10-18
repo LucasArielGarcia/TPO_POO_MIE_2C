@@ -99,8 +99,18 @@ public class Juego {
         return heroe.mostrarEstadistica();
     }
 
+    public boolean hayCofre(){
+        return ubicacion.hayCofre();
+    }
+
+    public String abrirCofre(){
+        return ubicacion.abrirCofre();
+    }
 
 
+    public String mostrarRecompensa() {
+        return heroe.mostrarRecompensa();
+    }
 }
 
 

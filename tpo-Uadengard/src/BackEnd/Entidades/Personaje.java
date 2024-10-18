@@ -16,7 +16,11 @@ abstract class  Personaje {
     }
 
     public void recibirDano(int golpe) {
-    	if (this.defensa > 0) {
+
+
+
+
+     	if (this.defensa > 0) {
             this.defensa = this.defensa - golpe;
             if (golpe > (defensa + golpe) && defensa < 0) {
                 defensa = defensa < 0 ? Math.abs(defensa) : defensa;

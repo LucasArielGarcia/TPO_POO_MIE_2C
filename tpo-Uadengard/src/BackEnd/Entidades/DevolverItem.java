@@ -13,7 +13,6 @@ public class DevolverItem extends Mision{
 
     @Override
     public void empezarMision(Heroe heroe) {
-        System.out.println("Nuestro personaje esta agarrando del cofre el item");
         super.agregarItemAlCofre(itemsDevuelta);
     }
 }

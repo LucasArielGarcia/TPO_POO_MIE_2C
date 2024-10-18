@@ -33,6 +33,6 @@ public abstract class Items {
 
     public abstract String infoItem();
     protected String superInfor(){
-        return " Descripcion item: "+this.descripcion;
+        return this.descripcion;
     }
 }

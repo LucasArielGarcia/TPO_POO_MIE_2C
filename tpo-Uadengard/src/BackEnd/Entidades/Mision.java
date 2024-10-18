@@ -8,7 +8,7 @@ public abstract class Mision {
     private boolean objetivoCompletado;
     private List<Enemigo> enemigosList;
     private Pelea pelea;
-    private Items cofe;
+    private Items cofre;
 
 
     public Mision(Items recompensa, String nombreMision) {
@@ -84,6 +84,15 @@ public abstract class Mision {
     }
 
     public void agregarItemAlCofre(Items items){
-        this.cofe = items;
+        this.cofre = items;
+    }
+
+    public boolean hayCofre(){
+        return this.cofre != null;
+    }
+
+    public String abrirCofre(Heroe heroe){
+        heroe.agregarItemMochila(this.cofre);
+        return "En el cofre hay: " +cofre.infoItem();
     }
 }

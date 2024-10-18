@@ -54,6 +54,7 @@ public abstract class Heroe extends Personaje{
     }
 
 
-
-
+    public String mostrarRecompensa() {
+        return "La recompensa es: "+mochilaItems.get(mochilaItems.size()-1).infoItem();
+    }
 }

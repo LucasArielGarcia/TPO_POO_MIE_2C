@@ -76,8 +76,10 @@ public class Main {
                         juegoControler.aceptarMision(opcion, heroeJuego);
                     } else if (opcion == 2) {
                         boolean reclamoRecompensa = juegoControler.reclamarRecompensa();
-                        if (reclamoRecompensa)
+                        if (reclamoRecompensa) {
                             System.out.println("Reclamaste tu recompensa");
+                            System.out.println(juegoControler.mostrarRecompensa());
+                        }
                         else
                             System.out.println("No completaste la mision");
                     }
@@ -148,6 +150,10 @@ public class Main {
                 if (!juego.hayPelea()){
                     System.out.println("Eliminaste a todos los enemigos felicidades");
                 }
+            }
+            if (juego.hayCofre()){
+                System.out.println("Hay un cofre vamos a ver que hay adentro");
+                System.out.println(juego.abrirCofre());
             }
             System.out.println("Ve al aliado para reclamar tu recompensa");
             juego.cerrarMision();

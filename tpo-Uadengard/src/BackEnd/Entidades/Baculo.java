@@ -16,6 +16,6 @@ public class Baculo extends Items {
 
     @Override
     public String infoItem() {
-        return superInfor() + "aumenta daño: "+ aumentoDano +" puntos";
+        return superInfor() + " aumenta daño: "+ aumentoDano +" puntos";
     }
 }

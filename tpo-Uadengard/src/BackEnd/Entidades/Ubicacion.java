@@ -60,4 +60,12 @@ public class Ubicacion {
 
    public String mostrarEstadisticasHeroe(){return mision.mostrarEstadisticaHeroe();}
 
+    public boolean hayCofre(){
+        return mision.hayCofre();
+    }
+
+    public String abrirCofre(){
+        return mision.abrirCofre(heroe);
+    }
+
 }
