@@ -1,5 +1,6 @@
 package BackEnd.Juego;
 
+import BackEnd.Configuracion.ConfiguracionJuego;
 import BackEnd.Entidades.*;
 
 import java.util.List;
@@ -11,12 +12,14 @@ public class Juego {
     private Ubicacion ubicacion;
     private Mision mision;
 
-    public Juego(Mapa mapa, ZonaDescanso zonaDescanso) {
-        this.mapa = mapa;
-        this.zonaDescanso = zonaDescanso;
+    public Juego() {
+        ConfiguracionJuego configuracionJuego = new ConfiguracionJuego();
+        this.mapa = configuracionJuego.getMapa();
+        this.zonaDescanso = configuracionJuego.getZonaDescanso();
     }
 
     public Heroe crearHeroe(int tipoHeroe, String nombre) {
+
         if (tipoHeroe == 1) {
             this.heroe = new Guerrero(nombre);
         } else if (tipoHeroe == 2) {

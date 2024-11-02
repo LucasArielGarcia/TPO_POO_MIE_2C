@@ -17,7 +17,7 @@ public class Main {
 
 
         Scanner scanner = new Scanner(System.in);
-        Juego juegoControler = new Juego(mapa,zonaDescanso);
+        Juego juegoControler = new Juego();
         Heroe heroeJuego;
         System.out.println("Bienvenido al mundo Uadegard");
         System.out.println("Empecemos por la basico, creemos el personaje."+
