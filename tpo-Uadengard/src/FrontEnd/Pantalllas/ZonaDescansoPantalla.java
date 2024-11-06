@@ -1,7 +1,11 @@
 package FrontEnd.Pantalllas;
 
+import FrontEnd.Controlador.ControladorFront;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ZonaDescansoPantalla  extends JFrame {
 
@@ -41,14 +45,26 @@ public class ZonaDescansoPantalla  extends JFrame {
         JButton btnPersonaje = new JButton("Personaje");
         JButton btnViajar = new JButton("Viajar");
 
+
+        class HandlerBtnViajar implements ActionListener {
+            ControladorFront controladorFront = new ControladorFront();
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                MapaGUI mapaGUI = new MapaGUI(controladorFront.abrirMapa());
+                mapaGUI.setVisible(true);
+
+            }
+        }
+        HandlerBtnViajar handlerBtnViajar = new HandlerBtnViajar();
+        btnViajar.addActionListener(handlerBtnViajar);
+
         contBotones.add(btnAliado);
         contBotones.add(btnMercader);
         contBotones.add(btnViajar);
         contBotones.add(btnPersonaje);
 
-
         panelConFondo.add(contBotones);
-
 
         this.add(panelConFondo, BorderLayout.CENTER);
 
