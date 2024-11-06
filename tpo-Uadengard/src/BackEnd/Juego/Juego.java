@@ -70,8 +70,8 @@ public class Juego {
             ubicacion.pelea(heroe,opcion);
     }
 
-    public String viajarUbicacion(int opcion, Heroe heroe){
-        this.ubicacion=mapa.viajarUbicacionMapa(opcion, heroe);
+    public String viajarUbicacion(int opcion){
+        this.ubicacion=mapa.viajarUbicacionMapa(opcion, this.heroe);
         return ubicacion != null ?  "nuestro heroe se encuentra en"+ ubicacion.getNombreUbicacion(): "No se encontro la ubicacion";
     }
 

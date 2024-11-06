@@ -1,6 +1,7 @@
 package FrontEnd.Pantalllas;
 
 import BackEnd.Entidades.Ubicacion;
+import FrontEnd.Controlador.ControladorFront;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.util.List;
 public class MapaGUI extends JFrame {
     private Image imagenFondo;
     UbicacionPantalla ubicacionPantalla;
-    public MapaGUI(List<Ubicacion> ubicacionList){
+    public MapaGUI(List<Ubicacion> ubicacionList, ControladorFront controladorFront){
         super("Mapa");
         setSize(300, 300);
         setLocation(20, 20);
@@ -35,6 +36,7 @@ public class MapaGUI extends JFrame {
         Container contBotones = new Container();
         contBotones.setLayout(new GridLayout(2, 2, 2, 2));
         contBotones.setBounds(40, 85, 200, 60);
+        int index = 0;
 
         for (Ubicacion ubicacion: ubicacionList){
             JButton boton = new JButton(ubicacion.getNombreUbicacion());
@@ -42,10 +44,11 @@ public class MapaGUI extends JFrame {
 
             boton.addActionListener(e -> {
                 dispose();
+                controladorFront.viajarUbicacion(index);
                 ubicacionPantalla = new UbicacionPantalla(ubicacion);
                 ubicacionPantalla.setVisible(true);
             });
-
+            index++;
         }
 
         JButton botonVolver = new JButton("Volver");
@@ -53,7 +56,7 @@ public class MapaGUI extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                ZonaDescansoPantalla zonaDescansoPantalla = new ZonaDescansoPantalla();
+                ZonaDescansoPantalla zonaDescansoPantalla = new ZonaDescansoPantalla(controladorFront);
                 dispose();
                 zonaDescansoPantalla.setVisible(true);
             }

@@ -1,6 +1,7 @@
 package FrontEnd.Pantalllas;
 
 import BackEnd.Entidades.Ubicacion;
+import BackEnd.Juego.Juego;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,6 +28,8 @@ public class UbicacionPantalla extends JFrame {
         };
         panelFondo.setLayout(null);
 
+
+        //while ()
 
 
 

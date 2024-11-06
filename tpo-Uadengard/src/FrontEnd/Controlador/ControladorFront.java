@@ -21,6 +21,14 @@ public class ControladorFront {
         return juego.abrirMapa();
     }
 
+    public boolean hayMision(Ubicacion ubicacionActual){
+        return juego.hayMision();
+    }
+
+    public void viajarUbicacion(int opcion){
+        juego.viajarUbicacion(opcion);
+    }
+
 
 
 }

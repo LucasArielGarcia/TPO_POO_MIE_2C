@@ -47,7 +47,7 @@ public class CreacionPersonaje extends JFrame {
                 controladorFront.crearPersonaje(campoNombrePersonaje.getText(),tipo);
                 JOptionPane.showMessageDialog(null, "Que empiece la aventura", "Info", JOptionPane.INFORMATION_MESSAGE);
                 dispose();
-                ZonaDescansoPantalla zonaDescansoPantalla = new ZonaDescansoPantalla();
+                ZonaDescansoPantalla zonaDescansoPantalla = new ZonaDescansoPantalla(controladorFront);
                 zonaDescansoPantalla.setVisible(true);
 
             }

@@ -134,7 +134,7 @@ public class Main {
 
     public static void viajarZonaJuego(int opcion, Juego juego, Heroe heroe, Scanner scanner){
         String mensajeReturns = "";
-        mensajeReturns = juego.viajarUbicacion(opcion,heroe);
+        mensajeReturns = juego.viajarUbicacion(opcion);
         System.out.println(mensajeReturns);
         if (juego.hayMision()){
             while (juego.hayPelea()){
