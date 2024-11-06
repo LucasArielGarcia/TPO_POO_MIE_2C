@@ -13,7 +13,7 @@ public class UbicacionPantalla extends JFrame {
         setLocation(20, 20);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
-        JOptionPane.showMessageDialog(null, "Bienvenido a "+ubicacion.getNombreUbicacion(), "Mensage", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Bienvenido a "+ubicacion.getNombreUbicacion(), "Mensage", JOptionPane.PLAIN_MESSAGE);
 
         imagenFondo = new ImageIcon(ubicacion.getUrlImagen()).getImage();
         JPanel panelFondo = new JPanel() {
