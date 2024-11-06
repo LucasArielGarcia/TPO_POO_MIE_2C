@@ -4,6 +4,8 @@ import BackEnd.Entidades.Ubicacion;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class MapaGUI extends JFrame {
@@ -30,13 +32,33 @@ public class MapaGUI extends JFrame {
 
 
         Container contBotones = new Container();
-        contBotones.setLayout(new GridLayout(1, 2, 2, 2));
-        contBotones.setBounds(40, 85, 200, 40);
+        contBotones.setLayout(new GridLayout(2, 2, 2, 2));
+        contBotones.setBounds(40, 85, 200, 60);
 
         for (Ubicacion ubicacion: ubicacionList){
             JButton boton = new JButton(ubicacion.getNombreUbicacion());
             contBotones.add(boton);
+            /*
+            boton.addActionListener(e -> {
+                JOptionPane.showMessageDialog(this, "Has hecho clic en: " + elemento);
+            });
+             */
         }
+
+        JButton botonVolver = new JButton("Volver");
+        class HandlerBtnZonaDescanso implements ActionListener {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ZonaDescansoPantalla zonaDescansoPantalla = new ZonaDescansoPantalla();
+                dispose();
+                zonaDescansoPantalla.setVisible(true);
+            }
+        }
+        HandlerBtnZonaDescanso handlerBtnZonaDescanso = new HandlerBtnZonaDescanso();
+        botonVolver.addActionListener(handlerBtnZonaDescanso);
+
+        contBotones.add(botonVolver);
 
 
         panelFondo.add(contBotones);

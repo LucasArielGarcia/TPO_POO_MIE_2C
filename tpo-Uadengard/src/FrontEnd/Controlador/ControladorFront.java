@@ -3,6 +3,8 @@ package FrontEnd.Controlador;
 import BackEnd.Entidades.Ubicacion;
 import BackEnd.Juego.Juego;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 
 public class ControladorFront {
