@@ -7,10 +7,12 @@ public class Ubicacion {
     private Mision mision;
     private Enemigo enemigo;
     private Heroe heroe;
+    private String urlImagen;
 
-    public Ubicacion(String nombreUbicacion, Mision mision) {
+    public Ubicacion(String nombreUbicacion, Mision mision, String urlImagen) {
         this.nombreUbicacion = nombreUbicacion;
         this.mision = mision;
+        this.urlImagen = urlImagen;
     }
     public void llegadaUbicacion(Heroe heroe){
         this.heroe = heroe;
@@ -68,4 +70,7 @@ public class Ubicacion {
         return mision.abrirCofre(heroe);
     }
 
+    public String getUrlImagen() {
+        return urlImagen;
+    }
 }

@@ -10,6 +10,7 @@ import java.util.List;
 
 public class MapaGUI extends JFrame {
     private Image imagenFondo;
+    UbicacionPantalla ubicacionPantalla;
     public MapaGUI(List<Ubicacion> ubicacionList){
         super("Mapa");
         setSize(300, 300);
@@ -38,11 +39,13 @@ public class MapaGUI extends JFrame {
         for (Ubicacion ubicacion: ubicacionList){
             JButton boton = new JButton(ubicacion.getNombreUbicacion());
             contBotones.add(boton);
-            /*
+
             boton.addActionListener(e -> {
-                JOptionPane.showMessageDialog(this, "Has hecho clic en: " + elemento);
+                dispose();
+                ubicacionPantalla = new UbicacionPantalla(ubicacion);
+                ubicacionPantalla.setVisible(true);
             });
-             */
+
         }
 
         JButton botonVolver = new JButton("Volver");

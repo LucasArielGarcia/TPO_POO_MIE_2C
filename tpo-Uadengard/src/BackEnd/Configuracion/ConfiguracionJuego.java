@@ -46,8 +46,8 @@ public class ConfiguracionJuego {
         DevolverItem devolverItemEnCastillo = new DevolverItem(espada1,"Traer objeto castillo",baculo1);
         this.misionList.add(devolverItemEnCastillo);
 
-        Ubicacion ubicacion1 = new Ubicacion("Pantano",limpiarPantano);
-        Ubicacion ubicacion2 = new Ubicacion("Castillo",devolverItemEnCastillo);
+        Ubicacion ubicacion1 = new Ubicacion("Pantano",limpiarPantano,"C:\\Users\\LUCAS\\Downloads\\pantano.png");
+        Ubicacion ubicacion2 = new Ubicacion("Castillo",devolverItemEnCastillo, "C:\\Users\\LUCAS\\Downloads\\castillo.png");
         List<Ubicacion> ubicacionList = new ArrayList<>();
         ubicacionList.add(ubicacion1);
         ubicacionList.add(ubicacion2);
