@@ -12,7 +12,7 @@ public class ZonaDescansoPantalla  extends JFrame {
     JTextField campoNombre,campoApellido;
     private Image imagenFondo;
 
-    public ZonaDescansoPantalla(ControladorFront controladorFront){
+    public ZonaDescansoPantalla(){
         super("Zona de descanso");
         setSize(300, 300);
         setLocation(20, 20);
@@ -51,7 +51,7 @@ public class ZonaDescansoPantalla  extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                MapaGUI mapaGUI = new MapaGUI(controladorFront.abrirMapa(),controladorFront);
+                MapaGUI mapaGUI = new MapaGUI(ControladorFront.getinstancia().abrirMapa());
                 mapaGUI.setVisible(true);
 
             }

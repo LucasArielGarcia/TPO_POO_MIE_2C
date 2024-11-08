@@ -11,11 +11,17 @@ public class Juego {
     private ZonaDescanso zonaDescanso;
     private Ubicacion ubicacion;
     private Mision mision;
+    private static Juego juego;
 
     public Juego() {
         ConfiguracionJuego configuracionJuego = new ConfiguracionJuego();
         this.mapa = configuracionJuego.getMapa();
         this.zonaDescanso = configuracionJuego.getZonaDescanso();
+    }
+    public static Juego getInstancia(){
+        if (juego == null)
+            return juego = new Juego();
+        return juego;
     }
 
     public Heroe crearHeroe(int tipoHeroe, String nombre) {

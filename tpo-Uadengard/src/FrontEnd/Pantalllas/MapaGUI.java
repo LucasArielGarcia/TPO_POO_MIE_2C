@@ -1,7 +1,6 @@
 package FrontEnd.Pantalllas;
 
 import BackEnd.Entidades.Ubicacion;
-import FrontEnd.Controlador.ControladorFront;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +11,7 @@ import java.util.List;
 public class MapaGUI extends JFrame {
     private Image imagenFondo;
     UbicacionPantalla ubicacionPantalla;
-    public MapaGUI(List<Ubicacion> ubicacionList, ControladorFront controladorFront){
+    public MapaGUI(List<Ubicacion> ubicacionList){
         super("Mapa");
         setSize(300, 300);
         setLocation(20, 20);
@@ -44,7 +43,7 @@ public class MapaGUI extends JFrame {
 
             boton.addActionListener(e -> {
                 dispose();
-                controladorFront.viajarUbicacion(index);
+                //controladorFront.viajarUbicacion(index);
                 ubicacionPantalla = new UbicacionPantalla(ubicacion);
                 ubicacionPantalla.setVisible(true);
             });
@@ -56,7 +55,7 @@ public class MapaGUI extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                ZonaDescansoPantalla zonaDescansoPantalla = new ZonaDescansoPantalla(controladorFront);
+                ZonaDescansoPantalla zonaDescansoPantalla = new ZonaDescansoPantalla();
                 dispose();
                 zonaDescansoPantalla.setVisible(true);
             }
