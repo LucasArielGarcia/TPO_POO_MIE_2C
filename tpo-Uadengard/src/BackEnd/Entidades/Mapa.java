@@ -1,5 +1,9 @@
 package BackEnd.Entidades;
 
+import BackEnd.Entidades.objectView.MapaView;
+import BackEnd.Entidades.objectView.UbicacionView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Mapa {
@@ -31,23 +35,30 @@ public class Mapa {
         return this.ubicacionList;
     }
 
-    public Ubicacion viajarUbicacionMapa(int opcion, Heroe heroe){
-        for (int i = 0; i<ubicacionList.size();i++){
-            if (opcion == i){
-                Ubicacion ubicacionReturn = ubicacionList.get(i);
-                ubicacionReturn.llegadaUbicacion(heroe);
-                return ubicacionReturn;
-            }
-        }
-
-        return null ;
+    public void viajarUbicacionMapa(Ubicacion ubicacionViajar, Heroe heroe){
+        ubicacionViajar.llegadaUbicacion(heroe);
     }
 
     public void aceptarMision(int opcion, Heroe heroe){
         zonaDescanso.aceptarMision(opcion, heroe);
     }
 
+    public MapaView toView(){
+        List<UbicacionView> ubicacionViewList = new ArrayList<>();
+        for (Ubicacion ubicacion: ubicacionList){
+            ubicacionViewList.add(ubicacion.toView());
+        }
+        return new MapaView(ubicacionViewList);
+    }
 
+
+    public Ubicacion buscarUbicacion(int idUbicacion){
+        for (Ubicacion ubicacion: ubicacionList){
+            if (ubicacion.soyUbicacion(idUbicacion))
+                return ubicacion;
+        }
+        return null;
+    }
 
 
 }

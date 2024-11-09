@@ -2,6 +2,7 @@ package BackEnd.Juego;
 
 import BackEnd.Configuracion.ConfiguracionJuego;
 import BackEnd.Entidades.*;
+import BackEnd.Entidades.objectView.MapaView;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Juego {
         return juego;
     }
 
-    public Heroe crearHeroe(int tipoHeroe, String nombre) {
+    public void crearHeroe(int tipoHeroe, String nombre) {
 
         if (tipoHeroe == 1) {
             this.heroe = new Guerrero(nombre);
@@ -35,7 +36,10 @@ public class Juego {
         } else {
             System.out.println("Tipo de héroe no válido.");
         }
-        return this.heroe;
+
+    }
+    public boolean heroejeVivo(){
+        return this.heroe.personajeVivo();
     }
 
 
@@ -46,8 +50,8 @@ public class Juego {
         return mapa.mostrarItems() ;
     }
 
-    public void aceptarMision(int opcion, Heroe heroe){
-        mapa.aceptarMision(opcion,heroe);
+    public void aceptarMision(int opcion){
+        mapa.aceptarMision(opcion,this.heroe);
     }
 
 
@@ -76,21 +80,32 @@ public class Juego {
             ubicacion.pelea(heroe,opcion);
     }
 
-    public String viajarUbicacion(int opcion){
-        this.ubicacion=mapa.viajarUbicacionMapa(opcion, this.heroe);
-        return ubicacion != null ?  "nuestro heroe se encuentra en"+ ubicacion.getNombreUbicacion(): "No se encontro la ubicacion";
+    public String viajarUbicacion(int id){
+        Ubicacion ubicacionViajar = mapa.buscarUbicacion(id);
+        mapa.viajarUbicacionMapa(ubicacionViajar, this.heroe);
+        return ubicacionViajar != null ?  "nuestro heroe se encuentra en"+ ubicacion.getNombreUbicacion(): "No se encontro la ubicacion";
     }
 
-    public void viajarZonaDescanso(Mapa mapa, ZonaDescanso zonaDescanso){
-        Ubicacion ubicacion = mapa.ubicacionPersonaje();
+
+
+    public void viajarZonaDescanso(){
+        Ubicacion ubicacion = this.mapa.ubicacionPersonaje();
         if (ubicacion != null)
             ubicacion.sacarPersonaje();
-        zonaDescanso.llegarZonaDescanso(heroe);
+        this.zonaDescanso.llegarZonaDescanso(this.heroe);
     }
 
-    public List<Ubicacion> abrirMapa(){
-        return mapa.abrirMapa();
+    public boolean jugadorEstaEnZonaDescanso(){
+        return zonaDescanso.personajeEstaEnzona();
     }
+    public void jugadorSaleZonaDescanso(){
+         zonaDescanso.salirZonaDescanso();
+    }
+
+    public MapaView abrirMapa(){
+        return this.mapa.toView();
+    }
+
 
     public void comprarItem(){
 
@@ -122,40 +137,10 @@ public class Juego {
     public String mostrarRecompensa() {
         return heroe.mostrarRecompensa();
     }
+
+    public MapaView getMapa(){
+        return this.mapa.toView();
+    }
 }
 
 
-/*
-* public static void viajarZonaJuego(int opcion, Juego juego, Heroe heroe, Scanner scanner){
-        Ubicacion ubicacionActual =juego.viajarUbicacion(opcion,heroe);
-        while (ubicacionActual.personajeSeEncuentra()){
-            System.out.println("El heroe se encuentra en: "+ubicacionActual.getNombreUbicacion());
-            if (ubicacionActual.tengoMision() && heroe.misionSonIguales(ubicacionActual.getMision())){
-                System.out.println("Empecemos la mision");
-                Mision misionActual = ubicacionActual.empezarMision();
-                while (!misionActual.misionCompleta()){
-                    if (misionActual.existePelea()){
-                        while (misionActual.hayEnemigos()){
-                            mostrarEstadisticas(misionActual.mostrarEstadisticasEnemigos());
-                            System.out.println("");
-                            System.out.println("Nuestro heroe tiene estas estadisticas: " + misionActual.mostrarEstadisticaHeroe());
-                            System.out.println("Debes ingresar a quien quieres atacar...");
-                            int opcionPelea = scanner.nextInt();
-                            scanner.nextLine();
-                            misionActual.peleaHeroe(heroe,opcionPelea);
-                            if (!misionActual.hayEnemigos()){
-                                System.out.println("Mataste a todos los enemigos enhorabuena.");
-                                misionActual.marcarMisionCompletada();
-                                misionActual.terminarPelea();
-                            }
-                        }
-                    }
-
-                }
-            }
-            System.out.println("No tiene que hacer nada por aqui, volvamos a la zona de descanso");
-            ubicacionActual.terminarMision();
-            ubicacionActual.sacarPersonaje();
-        }
-
-    }*/

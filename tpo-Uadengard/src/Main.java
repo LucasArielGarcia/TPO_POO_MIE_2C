@@ -1,5 +1,6 @@
 import BackEnd.Configuracion.ConfiguracionJuego;
 import BackEnd.Entidades.*;
+import BackEnd.Entidades.objectView.UbicacionView;
 import BackEnd.Juego.Juego;
 
 import java.util.List;
@@ -8,16 +9,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ConfiguracionJuego configuracionJuego = new ConfiguracionJuego();
 
-        Mapa mapa = configuracionJuego.getMapa();
-        ZonaDescanso zonaDescanso = configuracionJuego.getZonaDescanso();
+
 
 
 
 
         Scanner scanner = new Scanner(System.in);
-        Juego juegoControler = new Juego();
+
         Heroe heroeJuego;
         System.out.println("Bienvenido al mundo Uadegard");
         System.out.println("Empecemos por la basico, creemos el personaje."+
@@ -32,16 +31,16 @@ public class Main {
         System.out.println("Dinos tu nombre viajero");
         String nombre = scanner.nextLine();
 
-        heroeJuego = juegoControler.crearHeroe(tipoPersonaje,nombre);
+        Juego.getInstancia().crearHeroe(tipoPersonaje,nombre);
         System.out.println("Muy bien "+nombre+" ya creamos el personaje" + "\n");
 
-        while (heroeJuego.personajeVivo()){
+        while (Juego.getInstancia().heroejeVivo()){
             System.out.println("Nos encontramos en la zona de descanso aqui puedes elegir hablar con el mercader tambien podemos hablar nuestro aliado para que nos de misiones"+ "\n"+
                     "Abrir el mapa para ver nuestras ubicaciones o viajar a las ubicaciones"+ "\n"
                     );
-            juegoControler.viajarZonaDescanso(mapa,zonaDescanso);
+            Juego.getInstancia().viajarZonaDescanso();
 
-            while (zonaDescanso.personajeEstaEnzona()){
+            while (!Juego.getInstancia().jugadorEstaEnZonaDescanso()){
                 System.out.println("1 para abrir el mapa"+ "\n"+
                         "2 para hablar con el mercader" + "\n"+
                         "3 para hablar con nuestro aliado"+ "\n"+
@@ -51,7 +50,7 @@ public class Main {
                 int opcion = scanner.nextInt();
                 scanner.nextLine();
                 if (opcion == 1){
-                    abrirMapaJuego(juegoControler.abrirMapa());
+                    abrirMapaJuego(Juego.getInstancia().abrirMapa().getUbicacionListView());
                 } else if (opcion == 2) {
                     System.out.println("Bienvenido " + nombre+ " que deseas?"+ "\n");
                     System.out.println("1 para ver el catalogo del mercader" + "\n"+
@@ -59,9 +58,9 @@ public class Main {
                     opcion = scanner.nextInt();
                     scanner.nextLine();
                     if (opcion == 1)
-                        mostrarCatalogo(juegoControler.mostrarCatalogoMercaderItems());
+                        mostrarCatalogo(Juego.getInstancia().mostrarCatalogoMercaderItems());
                     else if (opcion == 2)
-                        juegoControler.comprarItem();
+                        Juego.getInstancia().comprarItem();
                 } else if (opcion == 3) {
                     System.out.println("Bienvenido aliado, veo que estas emocionado por emprender una nueva aventura. Dime que deseas hacer..."+"\n"+
                                        "1 Para aceptar Misiones "+ "\n"+
@@ -69,16 +68,16 @@ public class Main {
                     opcion = scanner.nextInt();
                     scanner.nextLine();
                     if (opcion == 1){
-                        mostrarMisiones(juegoControler.mostrarMisionList());
+                        mostrarMisiones(Juego.getInstancia().mostrarMisionList());
                         System.out.println("ingresa que mision quieres...");
                         opcion = scanner.nextInt();
                         scanner.nextLine();
-                        juegoControler.aceptarMision(opcion, heroeJuego);
+                        Juego.getInstancia().aceptarMision(opcion);
                     } else if (opcion == 2) {
-                        boolean reclamoRecompensa = juegoControler.reclamarRecompensa();
+                        boolean reclamoRecompensa = Juego.getInstancia().reclamarRecompensa();
                         if (reclamoRecompensa) {
                             System.out.println("Reclamaste tu recompensa");
-                            System.out.println(juegoControler.mostrarRecompensa());
+                            System.out.println(Juego.getInstancia().mostrarRecompensa());
                         }
                         else
                             System.out.println("No completaste la mision");
@@ -87,8 +86,8 @@ public class Main {
                     System.out.println("Ingrese la zona en donde queres viajar");
                     int ubicacion = scanner.nextInt();
                     scanner.nextLine();
-                    zonaDescanso.salirZonaDescanso();
-                    viajarZonaJuego(ubicacion,juegoControler,heroeJuego,scanner);
+                    Juego.getInstancia().jugadorSaleZonaDescanso();
+                    viajarZonaJuego(ubicacion,scanner);
 
                 }
                 else if (opcion == 5) {
@@ -97,7 +96,7 @@ public class Main {
                     opcion= scanner.nextInt();
                     scanner.nextLine();
                     if (opcion == 1)
-                        abrirMochila(juegoControler);
+                        abrirMochila();
                     else if (opcion == 2) {
 
                     }
@@ -107,7 +106,7 @@ public class Main {
             System.out.println("¿Deseas volver a la zona de descanso? S/N");
             String opcion = scanner.nextLine();
             if (opcion.equals("S"))
-                zonaDescanso.llegarZonaDescanso(heroeJuego);
+                Juego.getInstancia().viajarZonaDescanso();
 
 
         }
@@ -116,10 +115,10 @@ public class Main {
     }
 
 
-    public static void abrirMapaJuego(List<Ubicacion> ubicacionList){
-        for (int i = 0; i<ubicacionList.size(); i++){
-            Ubicacion ubicacion = ubicacionList.get(i);
-            System.out.println(i+" Nombre de la ubicacion: "+ubicacion.getNombreUbicacion());
+    public static void abrirMapaJuego(List<UbicacionView> ubicacionList){
+        for (UbicacionView ubicacionView: ubicacionList){
+
+            System.out.println(ubicacionView.getIdUbicacion()+" Nombre de la ubicacion: "+ubicacionView.getNombreUbicacion());
         }
         System.out.println("");
     }
@@ -132,29 +131,29 @@ public class Main {
         System.out.println("");
     }
 
-    public static void viajarZonaJuego(int opcion, Juego juego, Heroe heroe, Scanner scanner){
+    public static void viajarZonaJuego(int opcion, Scanner scanner){
         String mensajeReturns = "";
-        mensajeReturns = juego.viajarUbicacion(opcion);
+        mensajeReturns = Juego.getInstancia().viajarUbicacion(opcion);
         System.out.println(mensajeReturns);
-        if (juego.hayMision()){
-            while (juego.hayPelea()){
+        if (Juego.getInstancia().hayMision()){
+            while (Juego.getInstancia().hayPelea()){
                 System.out.println("Hay enemigos, demos pelear"+"\n");
-                System.out.println(juego.mostrarEstadisticasHeroe()+"\n");
-                mostrarEstadisticas(juego.estadisticasEnemigos());
+                System.out.println(Juego.getInstancia().mostrarEstadisticasHeroe()+"\n");
+                mostrarEstadisticas(Juego.getInstancia().estadisticasEnemigos());
                 System.out.println("Tienes que elegir un enemigo"+"\n");
                 int opcionPelea = scanner.nextInt();
                 scanner.nextLine();
-                juego.pelea(opcionPelea);
-                if (!juego.hayPelea()){
+                Juego.getInstancia().pelea(opcionPelea);
+                if (!Juego.getInstancia().hayPelea()){
                     System.out.println("Eliminaste a todos los enemigos felicidades");
                 }
             }
-            if (juego.hayCofre()){
+            if (Juego.getInstancia().hayCofre()){
                 System.out.println("Hay un cofre vamos a ver que hay adentro");
-                System.out.println(juego.abrirCofre());
+                System.out.println(Juego.getInstancia().abrirCofre());
             }
             System.out.println("Ve al aliado para reclamar tu recompensa");
-            juego.cerrarMision();
+            Juego.getInstancia().cerrarMision();
         }
         else
             System.out.println("No tienes nada que hacer aqui");
@@ -173,11 +172,11 @@ public class Main {
     }
 
 
-    public static void abrirMochila(Juego juego){
-        for (String item: juego.abrirMochila()){
+    public static void abrirMochila(){
+        for (String item: Juego.getInstancia().abrirMochila()){
             System.out.println(item);
         }
-        if (juego.abrirMochila().isEmpty())
+        if (Juego.getInstancia().abrirMochila().isEmpty())
             System.out.println("No tienes ningun item");
     }
 

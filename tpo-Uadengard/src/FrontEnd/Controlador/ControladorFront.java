@@ -1,6 +1,7 @@
 package FrontEnd.Controlador;
 
 import BackEnd.Entidades.Ubicacion;
+import BackEnd.Entidades.objectView.MapaView;
 import BackEnd.Juego.Juego;
 
 import java.util.List;
@@ -22,16 +23,16 @@ public class ControladorFront {
         return controladorFront;
     }
 
-    public List<Ubicacion> abrirMapa(){
-        return juego.abrirMapa();
+    public MapaView abrirMapa(){
+        return juego.getMapa();
     }
 
     public boolean hayMision(Ubicacion ubicacionActual){
         return juego.hayMision();
     }
 
-    public void viajarUbicacion(int opcion){
-        juego.viajarUbicacion(opcion);
+    public void viajarUbicacion(int idUbicacion){
+        juego.viajarUbicacion(idUbicacion);
     }
 
 

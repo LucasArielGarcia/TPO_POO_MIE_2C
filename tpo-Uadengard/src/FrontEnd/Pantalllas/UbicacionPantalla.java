@@ -1,6 +1,7 @@
 package FrontEnd.Pantalllas;
 
 import BackEnd.Entidades.Ubicacion;
+import BackEnd.Entidades.objectView.UbicacionView;
 import BackEnd.Juego.Juego;
 
 import javax.swing.*;
@@ -8,7 +9,7 @@ import java.awt.*;
 
 public class UbicacionPantalla extends JFrame {
     Image imagenFondo ;
-    public UbicacionPantalla(Ubicacion ubicacion){
+    public UbicacionPantalla(UbicacionView ubicacion){
         super(ubicacion.getNombreUbicacion());
         setSize(300, 300);
         setLocation(20, 20);

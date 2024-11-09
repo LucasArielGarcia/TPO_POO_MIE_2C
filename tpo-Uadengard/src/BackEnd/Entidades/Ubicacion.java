@@ -1,8 +1,12 @@
 package BackEnd.Entidades;
 
+import BackEnd.Entidades.objectView.UbicacionView;
+
 import java.util.List;
 
 public class Ubicacion {
+    private int idUbicacion;
+    private static int contador = 0;
     private String nombreUbicacion;
     private Mision mision;
     private Enemigo enemigo;
@@ -10,6 +14,7 @@ public class Ubicacion {
     private String urlImagen;
 
     public Ubicacion(String nombreUbicacion, Mision mision, String urlImagen) {
+        this.idUbicacion = ++contador;
         this.nombreUbicacion = nombreUbicacion;
         this.mision = mision;
         this.urlImagen = urlImagen;
@@ -72,5 +77,13 @@ public class Ubicacion {
 
     public String getUrlImagen() {
         return urlImagen;
+    }
+
+    public UbicacionView toView (){
+        return new UbicacionView (this.nombreUbicacion,this.urlImagen,this.idUbicacion);
+    }
+
+    public boolean soyUbicacion(int idUbicacion){
+        return this.idUbicacion == idUbicacion;
     }
 }

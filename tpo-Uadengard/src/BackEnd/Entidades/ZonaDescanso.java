@@ -24,7 +24,7 @@ public class ZonaDescanso {
     }
 
     public void llegarZonaDescanso(Heroe heroe){
-        this.heroe = heroe;
+        heroe = heroe;
     }
     public void salirZonaDescanso(){this.heroe = null;}
 

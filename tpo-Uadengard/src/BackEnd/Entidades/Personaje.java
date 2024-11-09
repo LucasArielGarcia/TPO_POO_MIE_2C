@@ -1,5 +1,7 @@
 package BackEnd.Entidades;
 
+import BackEnd.Entidades.objectView.PersonajeView;
+
 abstract class  Personaje {
 	private String tipo;
     private int vida;
@@ -58,6 +60,10 @@ abstract class  Personaje {
     }
     public String mostrarEstadistica(){
         return " Nombre: " + this.nombre + " ,Vida del personaje: "+ this.vida+ " ,Defensa del personaje " + this.defensa;
+    }
+
+    public PersonajeView toView(){
+        return new PersonajeView(this.tipo,this.vida,this.dano,this.nombre,this.defensa);
     }
 
 
