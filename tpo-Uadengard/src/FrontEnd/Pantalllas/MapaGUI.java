@@ -38,7 +38,7 @@ public class MapaGUI extends JFrame {
         Container contBotones = new Container();
         contBotones.setLayout(new GridLayout(2, 2, 2, 2));
         contBotones.setBounds(40, 85, 200, 60);
-        int index = 0;
+
 
         for (UbicacionView ubicacion: mapaView.getUbicacionListView()){
             JButton boton = new JButton(ubicacion.getNombreUbicacion());
@@ -50,7 +50,7 @@ public class MapaGUI extends JFrame {
                 ubicacionPantalla = new UbicacionPantalla(ubicacion);
                 ubicacionPantalla.setVisible(true);
             });
-            index++;
+
         }
 
         JButton botonVolver = new JButton("Volver");

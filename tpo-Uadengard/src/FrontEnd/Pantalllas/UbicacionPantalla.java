@@ -3,6 +3,7 @@ package FrontEnd.Pantalllas;
 import BackEnd.Entidades.Ubicacion;
 import BackEnd.Entidades.objectView.UbicacionView;
 import BackEnd.Juego.Juego;
+import FrontEnd.Controlador.ControladorFront;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +31,10 @@ public class UbicacionPantalla extends JFrame {
         panelFondo.setLayout(null);
 
 
-        //while ()
+        while (ControladorFront.getinstancia().hayMision()){
+            JOptionPane.showMessageDialog(null, "Empezaremos la mision", "Mensage", JOptionPane.PLAIN_MESSAGE);
+            
+        }
 
 
 

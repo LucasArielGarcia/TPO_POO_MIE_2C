@@ -3,6 +3,8 @@ package BackEnd.Entidades;
 import java.util.List;
 
 public abstract class Mision {
+    private static int contador = 0;
+    private int idMision;
     private Items recompensa;
     private String nombreMision;
     private boolean objetivoCompletado;
@@ -12,6 +14,7 @@ public abstract class Mision {
 
 
     public Mision(Items recompensa, String nombreMision) {
+        this.idMision = ++contador;
         this.recompensa = recompensa;
         this.nombreMision = nombreMision;
         this.objetivoCompletado = false;

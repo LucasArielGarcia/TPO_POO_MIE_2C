@@ -7,14 +7,14 @@ import BackEnd.Juego.Juego;
 import java.util.List;
 
 public class ControladorFront {
-    private Juego juego = new Juego();
+
     private static ControladorFront controladorFront;
     public void crearPersonaje(String nombre, String tipoHeroe){
         int tipo;
         if (tipoHeroe.equals("Guerrero")){tipo = 1;}
         else if (tipoHeroe.equals("Arquero")) {tipo = 2;}
         else {tipo = 3;}
-        juego.crearHeroe(tipo,nombre);
+        Juego.getInstancia().crearHeroe(tipo,nombre);
     }
 
     public static ControladorFront getinstancia() {
@@ -24,16 +24,18 @@ public class ControladorFront {
     }
 
     public MapaView abrirMapa(){
-        return juego.getMapa();
+        return Juego.getInstancia().getMapa();
     }
 
-    public boolean hayMision(Ubicacion ubicacionActual){
-        return juego.hayMision();
+    public boolean hayMision(){
+        return Juego.getInstancia().hayMision();
     }
 
     public void viajarUbicacion(int idUbicacion){
-        juego.viajarUbicacion(idUbicacion);
+        Juego.getInstancia().viajarUbicacion(idUbicacion);
     }
+
+    public
 
 
 

@@ -56,8 +56,22 @@ public class ZonaDescansoPantalla  extends JFrame {
 
             }
         }
-        HandlerBtnViajar handlerBtnViajar = new HandlerBtnViajar();
+        class HandlerBtnAliado implements ActionListener {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                AliadoPantalla aliadoPantalla = new AliadoPantalla();
+                aliadoPantalla.setVisible(true);
+
+            }
+        }
+
+
+        HandlerBtnAliado handlerBtnViajar = new HandlerBtnAliado();
+        HandlerBtnAliado handlerBtnAliado = new HandlerBtnAliado();
         btnViajar.addActionListener(handlerBtnViajar);
+        btnAliado.addActionListener(handlerBtnAliado);
 
         contBotones.add(btnAliado);
         contBotones.add(btnMercader);
