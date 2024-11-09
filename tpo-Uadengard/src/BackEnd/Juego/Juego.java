@@ -3,6 +3,8 @@ package BackEnd.Juego;
 import BackEnd.Configuracion.ConfiguracionJuego;
 import BackEnd.Entidades.*;
 import BackEnd.Entidades.objectView.MapaView;
+import BackEnd.Entidades.objectView.MisionView;
+import BackEnd.Entidades.objectView.PersonajeView;
 
 import java.util.List;
 
@@ -43,15 +45,15 @@ public class Juego {
     }
 
 
-    public List<Mision> mostrarMisionList(){
+    public List<MisionView> mostrarMisionList(){
         return mapa.mostrarMisionList();
     }
     public List<Items> mostrarCatalogoMercaderItems(){
         return mapa.mostrarItems() ;
     }
 
-    public void aceptarMision(int opcion){
-        mapa.aceptarMision(opcion,this.heroe);
+    public void aceptarMision(int idMision){
+        mapa.aceptarMision(idMision,this.heroe);
     }
 
 
@@ -110,7 +112,7 @@ public class Juego {
     public void comprarItem(){
 
     }
-    public List<String> estadisticasEnemigos(){
+    public List<PersonajeView> estadisticasEnemigos(){
         return this.ubicacion.estadisticasEnemigos();
     }
 
@@ -121,8 +123,8 @@ public class Juego {
     public boolean reclamarRecompensa(){return zonaDescanso.reclamarRecompensa();}
     public List<String>abrirMochila(){return heroe.abrirMochila();}
 
-    public String mostrarEstadisticasHeroe(){
-        return heroe.mostrarEstadistica();
+    public PersonajeView mostrarEstadisticasHeroe(){
+        return heroe.toView();
     }
 
     public boolean hayCofre(){

@@ -1,5 +1,7 @@
 package BackEnd.Entidades;
 
+import BackEnd.Entidades.objectView.MisionView;
+
 import java.util.ArrayList;
 import java.util.List;
 

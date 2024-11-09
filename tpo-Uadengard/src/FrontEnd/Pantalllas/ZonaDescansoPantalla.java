@@ -12,6 +12,14 @@ public class ZonaDescansoPantalla  extends JFrame {
     JTextField campoNombre,campoApellido;
     private Image imagenFondo;
 
+    private static ZonaDescansoPantalla instancia;
+    public static ZonaDescansoPantalla getInstancia() {
+        if (instancia == null) {
+            instancia = new ZonaDescansoPantalla();
+        }
+        return instancia;
+    }
+
     public ZonaDescansoPantalla(){
         super("Zona de descanso");
         setSize(300, 300);
@@ -68,7 +76,7 @@ public class ZonaDescansoPantalla  extends JFrame {
         }
 
 
-        HandlerBtnAliado handlerBtnViajar = new HandlerBtnAliado();
+        HandlerBtnViajar handlerBtnViajar = new HandlerBtnViajar();
         HandlerBtnAliado handlerBtnAliado = new HandlerBtnAliado();
         btnViajar.addActionListener(handlerBtnViajar);
         btnAliado.addActionListener(handlerBtnAliado);

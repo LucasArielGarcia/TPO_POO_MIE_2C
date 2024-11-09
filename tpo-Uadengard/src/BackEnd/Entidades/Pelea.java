@@ -1,5 +1,7 @@
 package BackEnd.Entidades;
 
+import BackEnd.Entidades.objectView.PersonajeView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -34,14 +36,12 @@ public class Pelea {
         this.enemigoList = enemigo;
     }
 
-    public List<String> mostrarEstadisticaEnemigos(){
-        List<String> pilaEstadisticas = new ArrayList<>();
+    public List<PersonajeView> mostrarEstadisticaEnemigos(){
+        List<PersonajeView> enemigoViews = new ArrayList<>();
         for (int i = 0; i<enemigoList.size();i++){
-            Enemigo enemigo = enemigoList.get(i);
-            String estadistica = enemigo.mostrarEstadistica();
-            pilaEstadisticas.add(estadistica);
+            enemigoViews.add(enemigoList.get(i).toView());
         }
-        return pilaEstadisticas;
+        return enemigoViews;
     }
     public String mostrarEstadisticasHeroe(){
         return heroe.mostrarEstadistica();

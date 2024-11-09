@@ -1,5 +1,7 @@
 package BackEnd.Entidades;
 
+import BackEnd.Entidades.objectView.MisionView;
+
 import java.util.List;
 
 public class ZonaDescanso {
@@ -9,7 +11,7 @@ public class ZonaDescanso {
     public List<Items> mostrarCatologoItems(){
         return mercader.mostrarCatologoItems();
     }
-    public List<Mision> mostrarMisionesList(){
+    public List<MisionView> mostrarMisionesList(){
         return aliado.misionList();
     }
 
@@ -37,8 +39,8 @@ public class ZonaDescanso {
         return this.heroe != null;
     }
 
-    public void aceptarMision(int opcion, Heroe heroe){
-        aliado.aceptarMision(heroe, opcion);
+    public void aceptarMision(int idMision, Heroe heroe){
+        aliado.aceptarMision(heroe, idMision);
     }
 
 

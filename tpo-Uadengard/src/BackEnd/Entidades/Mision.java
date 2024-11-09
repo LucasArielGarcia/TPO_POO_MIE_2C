@@ -1,5 +1,8 @@
 package BackEnd.Entidades;
 
+import BackEnd.Entidades.objectView.MisionView;
+import BackEnd.Entidades.objectView.PersonajeView;
+
 import java.util.List;
 
 public abstract class Mision {
@@ -61,7 +64,7 @@ public abstract class Mision {
         }
     }
 
-    public List<String>mostrarEstadisticasEnemigos(){
+    public List<PersonajeView>mostrarEstadisticasEnemigos(){
         return pelea.mostrarEstadisticaEnemigos();
     }
 
@@ -98,4 +101,14 @@ public abstract class Mision {
         heroe.agregarItemMochila(this.cofre);
         return "En el cofre hay: " +cofre.infoItem();
     }
+
+    public MisionView toView(){
+        return new MisionView(this.idMision,this.nombreMision);
+    }
+
+
+    public boolean soyMision(int id){
+        return this.idMision == id;
+    }
+
 }

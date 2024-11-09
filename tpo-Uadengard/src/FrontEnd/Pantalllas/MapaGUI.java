@@ -45,8 +45,8 @@ public class MapaGUI extends JFrame {
             contBotones.add(boton);
 
             boton.addActionListener(e -> {
-                dispose();
                 ControladorFront.getinstancia().viajarUbicacion(ubicacion.getIdUbicacion());
+                dispose();
                 ubicacionPantalla = new UbicacionPantalla(ubicacion);
                 ubicacionPantalla.setVisible(true);
             });

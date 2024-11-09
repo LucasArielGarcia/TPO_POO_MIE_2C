@@ -1,5 +1,7 @@
 import BackEnd.Configuracion.ConfiguracionJuego;
 import BackEnd.Entidades.*;
+import BackEnd.Entidades.objectView.MisionView;
+import BackEnd.Entidades.objectView.PersonajeView;
 import BackEnd.Entidades.objectView.UbicacionView;
 import BackEnd.Juego.Juego;
 
@@ -159,15 +161,15 @@ public class Main {
             System.out.println("No tienes nada que hacer aqui");
     }
 
-    public static void mostrarEstadisticas(List<String> estadisticasList){
+    public static void mostrarEstadisticas(List<PersonajeView> estadisticasList){
         for (int i = 0; i<estadisticasList.size(); i++){
-            System.out.println("Opcion de ataque: "+i +estadisticasList.get(i));
+            System.out.println("Opcion de ataque: "+i +estadisticasList.get(i).getVida()+" "+estadisticasList.get(i).getNombre());
         }
     }
 
-    public static void mostrarMisiones(List<Mision>misionList){
+    public static void mostrarMisiones(List<MisionView>misionList){
         for (int i = 0; i<misionList.size(); i++){
-            System.out.println(i +" Nombre de la mision: "+misionList.get(i).getNombreMision());
+            System.out.println(misionList.get(i).getIdMision() +" Nombre de la mision: "+misionList.get(i).getNombreMision());
         }
     }
 

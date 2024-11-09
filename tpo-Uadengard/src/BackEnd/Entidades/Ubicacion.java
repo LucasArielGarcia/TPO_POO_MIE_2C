@@ -1,5 +1,6 @@
 package BackEnd.Entidades;
 
+import BackEnd.Entidades.objectView.PersonajeView;
 import BackEnd.Entidades.objectView.UbicacionView;
 
 import java.util.List;
@@ -61,7 +62,7 @@ public class Ubicacion {
         this.mision.peleaHeroe(heroe,opcion);
    }
 
-   public List<String> estadisticasEnemigos(){
+   public List<PersonajeView> estadisticasEnemigos(){
         return this.mision.mostrarEstadisticasEnemigos();
    }
 

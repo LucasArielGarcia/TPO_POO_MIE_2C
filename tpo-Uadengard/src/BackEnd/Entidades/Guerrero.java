@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Guerrero extends Heroe {
 	private int cantidadAtaques=1;
+
     @Override
     public void curarse() {
 

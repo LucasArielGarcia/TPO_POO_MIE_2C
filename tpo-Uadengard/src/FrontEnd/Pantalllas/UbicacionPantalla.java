@@ -30,10 +30,15 @@ public class UbicacionPantalla extends JFrame {
         };
         panelFondo.setLayout(null);
 
-
-        while (ControladorFront.getinstancia().hayMision()){
+        if (ControladorFront.getinstancia().hayMision()) {
             JOptionPane.showMessageDialog(null, "Empezaremos la mision", "Mensage", JOptionPane.PLAIN_MESSAGE);
-            
+            if (ControladorFront.getinstancia().existeUnaPelea()){
+                JOptionPane.showMessageDialog(null, "Debemos pelear, preparate", "Mensage", JOptionPane.PLAIN_MESSAGE);
+                dispose();
+                PeleaPantalla peleaPantalla = new PeleaPantalla(imagenFondo);
+                peleaPantalla.setVisible(true);
+            }
+
         }
 
 

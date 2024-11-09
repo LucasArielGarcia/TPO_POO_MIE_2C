@@ -2,6 +2,8 @@ package FrontEnd.Pantalllas;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AliadoPantalla extends JFrame {
     Image imagenFondo ;
@@ -25,13 +27,32 @@ public class AliadoPantalla extends JFrame {
         };
 
         Container contBotones = new Container();
-        contBotones.setLayout(new GridLayout(2, 2, 2, 2));
+        contBotones.setLayout(new GridLayout(2,1 , 2, 2));
         contBotones.setBounds(40, 85, 200, 60);
 
+        JButton btnAceptarMisiones = new JButton("Aceptar misiones");
+        JButton btnReclamarRecompensa = new JButton("Reclamar recompensa");
 
+        class HandlerAceptarMisiones implements ActionListener {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                ListaMisionesPantalla listaMisionesPantalla = new ListaMisionesPantalla();
+                listaMisionesPantalla.setVisible(true);
+
+            }
+        }
+
+        HandlerAceptarMisiones handlerAceptarMisiones = new HandlerAceptarMisiones();
+        btnAceptarMisiones.addActionListener(handlerAceptarMisiones);
+
+        contBotones.add(btnAceptarMisiones);
+        contBotones.add(btnReclamarRecompensa);
         panelFondo.setLayout(null);
 
 
+        panelFondo.add(contBotones);
 
         this.add(panelFondo, BorderLayout.CENTER);
     }

@@ -1,6 +1,7 @@
 package BackEnd.Entidades;
 
 import BackEnd.Entidades.objectView.MapaView;
+import BackEnd.Entidades.objectView.MisionView;
 import BackEnd.Entidades.objectView.UbicacionView;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class Mapa {
         this.ubicacionList = ubicacionList;
     }
 
-    public List<Mision> mostrarMisionList(){
+    public List<MisionView> mostrarMisionList(){
         return zonaDescanso.mostrarMisionesList();
     }
     public List<Items> mostrarItems(){
@@ -39,8 +40,8 @@ public class Mapa {
         ubicacionViajar.llegadaUbicacion(heroe);
     }
 
-    public void aceptarMision(int opcion, Heroe heroe){
-        zonaDescanso.aceptarMision(opcion, heroe);
+    public void aceptarMision(int idMision, Heroe heroe){
+        zonaDescanso.aceptarMision(idMision, heroe);
     }
 
     public MapaView toView(){

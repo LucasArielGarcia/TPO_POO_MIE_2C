@@ -2,6 +2,8 @@ package FrontEnd.Controlador;
 
 import BackEnd.Entidades.Ubicacion;
 import BackEnd.Entidades.objectView.MapaView;
+import BackEnd.Entidades.objectView.MisionView;
+import BackEnd.Entidades.objectView.PersonajeView;
 import BackEnd.Juego.Juego;
 
 import java.util.List;
@@ -35,8 +37,23 @@ public class ControladorFront {
         Juego.getInstancia().viajarUbicacion(idUbicacion);
     }
 
-    public
+    public List<MisionView> getMisiones(){
+        return Juego.getInstancia().mostrarMisionList();
+    }
 
+    public void aceptarMision(int idMision){
+        Juego.getInstancia().aceptarMision(idMision);
+    }
 
+    public boolean existeUnaPelea(){
+        return Juego.getInstancia().hayPelea();
+    }
 
+    public PersonajeView getHeroe(){
+        return Juego.getInstancia().mostrarEstadisticasHeroe();
+    }
+
+    public List<PersonajeView> getEnemigos(){
+        return Juego.getInstancia().estadisticasEnemigos();
+    }
 }

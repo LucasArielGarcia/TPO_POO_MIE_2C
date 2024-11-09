@@ -9,6 +9,7 @@ abstract class  Personaje {
     private String nombre;
     private int defensa;
 
+
     public Personaje(String nombre, int defensa,String tipo) {
         this.vida = 100;
         this.dano = 5;
