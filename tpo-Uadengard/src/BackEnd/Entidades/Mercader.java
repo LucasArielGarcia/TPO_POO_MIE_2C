@@ -1,7 +1,10 @@
 package BackEnd.Entidades;
 
 import java.util.ArrayList;
+
 import java.util.List;
+
+import BackEnd.Entidades.objectView.MercaderView;
 
 public class Mercader {
     private List<Items> itemVenta = new ArrayList<>();
@@ -12,4 +15,8 @@ public class Mercader {
     public Mercader(List<Items> itemVenta) {
         this.itemVenta = itemVenta;
     }
+    public MercaderView toView(){
+        return new MercaderView(this.itemVenta);
+    }
+    
 }
