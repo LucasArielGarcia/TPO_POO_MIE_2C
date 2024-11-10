@@ -66,6 +66,6 @@ public class ControladorFront {
     }
     
     public void comprarItem(int idItem) {
-    	
+    
     }
 }
