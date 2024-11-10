@@ -56,4 +56,8 @@ public class ControladorFront {
     public List<PersonajeView> getEnemigos(){
         return Juego.getInstancia().estadisticasEnemigos();
     }
+
+    public void atacarEnemigo(int idEnemigo){
+        Juego.getInstancia().pelea(idEnemigo);
+    }
 }

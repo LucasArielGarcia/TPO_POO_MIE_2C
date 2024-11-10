@@ -10,12 +10,17 @@ public class Pelea {
     private Heroe heroe;
     private List<Enemigo> enemigoList;
     private int ataques = 0;
-    public void peleaPersonajes(Heroe heroe, int opcion){
+    public Pelea(Heroe heroe, List<Enemigo> enemigos) {
+        this.heroe = heroe;
+        this.enemigoList = enemigos;
+    }
+    public void peleaPersonajes(Heroe heroe, int idEnemigo){
 
         if (heroe.personajeVivo() && !enemigoList.isEmpty()){
-            heroe.atacar(this.enemigoList.get(opcion));
-            if (!this.enemigoList.get(opcion).personajeVivo()){
-                this.enemigoList.remove(opcion);
+            Enemigo enemigo = buscarEnemigo(idEnemigo);
+            heroe.atacar(enemigo);
+            if (!enemigo.personajeVivo()){
+                eliminarEnemigo(idEnemigo);
             }
             if (!enemigoList.isEmpty()){
                 Enemigo enenemigoAtaque = elegirEnemigoRandom();
@@ -29,11 +34,6 @@ public class Pelea {
 
     public Enemigo elegirAtaqueEnemigo(int opcion){
         return enemigoList.get(opcion);
-    }
-
-    public Pelea(Heroe heroe, List<Enemigo> enemigo) {
-        this.heroe = heroe;
-        this.enemigoList = enemigo;
     }
 
     public List<PersonajeView> mostrarEstadisticaEnemigos(){
@@ -64,5 +64,21 @@ public class Pelea {
         }
     }
 
+    public Enemigo buscarEnemigo(int idEnemigo){
+        for (Enemigo enemigo: enemigoList){
+            if(enemigo.soyPersonaje(idEnemigo)){
+                return enemigo;
+            }
+        }
+        return null;
+    }
+
+    public void eliminarEnemigo(int id){
+        for (int i = 0; i<this.enemigoList.size(); i++){
+            if (this.enemigoList.get(i).soyPersonaje(id)){
+                this.enemigoList.remove(i);
+            }
+        }
+    }
 
 }

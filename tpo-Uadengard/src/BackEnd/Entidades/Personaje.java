@@ -8,6 +8,8 @@ abstract class  Personaje {
     private int dano;
     private String nombre;
     private int defensa;
+    private int idPersonaje;
+    private static int contador = 0;
 
 
     public Personaje(String nombre, int defensa,String tipo) {
@@ -16,6 +18,7 @@ abstract class  Personaje {
         this.nombre = nombre;
         this.defensa = defensa;
         this.tipo=tipo;
+        this.idPersonaje = ++contador;
     }
 
     public void recibirDano(int golpe) {
@@ -64,9 +67,12 @@ abstract class  Personaje {
     }
 
     public PersonajeView toView(){
-        return new PersonajeView(this.tipo,this.vida,this.dano,this.nombre,this.defensa);
+        return new PersonajeView(this.idPersonaje,this.tipo,this.vida,this.dano,this.nombre,this.defensa);
     }
 
+    public boolean soyPersonaje(int idPersonaje){
+        return this.idPersonaje == idPersonaje;
+    }
 
 
 

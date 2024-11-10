@@ -38,6 +38,7 @@ public class ListaMisionesPantalla extends JFrame {
             boton.addActionListener(e -> {
                 ControladorFront.getinstancia().aceptarMision(misionView.getIdMision());
                 dispose();
+                JOptionPane.showMessageDialog(null, "Aceptaste la mision " + misionView.getNombreMision(), "Mensage", JOptionPane.PLAIN_MESSAGE);
                 ZonaDescansoPantalla.getInstancia().setVisible(true);
             });
 
