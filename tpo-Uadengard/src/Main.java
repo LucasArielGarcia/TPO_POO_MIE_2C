@@ -59,10 +59,13 @@ public class Main {
                             "2 para comprar al mercader");
                     opcion = scanner.nextInt();
                     scanner.nextLine();
+                    /*
                     if (opcion == 1)
-                        mostrarCatalogo(Juego.getInstancia().mostrarCatalogoMercaderItems());
+                        //mostrarCatalogo(Juego.getInstancia().mostrarCatalogoMercaderItems());
                     else if (opcion == 2)
                         Juego.getInstancia().comprarItem();
+
+                     */
                 } else if (opcion == 3) {
                     System.out.println("Bienvenido aliado, veo que estas emocionado por emprender una nueva aventura. Dime que deseas hacer..."+"\n"+
                                        "1 Para aceptar Misiones "+ "\n"+

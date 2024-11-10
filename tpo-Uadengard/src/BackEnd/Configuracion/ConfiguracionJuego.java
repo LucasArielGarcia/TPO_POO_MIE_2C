@@ -64,4 +64,6 @@ public class ConfiguracionJuego {
     public Mapa getMapa() {
         return mapa;
     }
+
+    public Mercader getMercader(){return this.mercader;}
 }

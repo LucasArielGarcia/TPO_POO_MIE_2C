@@ -22,6 +22,7 @@ public class Juego {
         ConfiguracionJuego configuracionJuego = new ConfiguracionJuego();
         this.mapa = configuracionJuego.getMapa();
         this.zonaDescanso = configuracionJuego.getZonaDescanso();
+        this.mercader = configuracionJuego.getMercader();
     }
     public static Juego getInstancia(){
         if (juego == null)
