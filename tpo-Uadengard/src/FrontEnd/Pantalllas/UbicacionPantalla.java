@@ -7,6 +7,8 @@ import FrontEnd.Controlador.ControladorFront;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class UbicacionPantalla extends JFrame {
     Image imagenFondo ;
@@ -29,19 +31,56 @@ public class UbicacionPantalla extends JFrame {
             }
         };
         panelFondo.setLayout(null);
+        Container contBotones = new Container();
+        contBotones.setLayout(new GridLayout(2, 2, 2, 2));
+        contBotones.setBounds(40, 85, 200, 90);
 
         if (ControladorFront.getinstancia().hayMision()) {
+            JButton buttonEmpezarMision = new JButton("Empezar Mision");
+            class HandlerBtnEmepzarMision implements ActionListener {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    dispose();
+                    PeleaPantalla peleaPantalla = new PeleaPantalla();
+                    peleaPantalla.setVisible(true);
+
+                }
+            }
+            HandlerBtnEmepzarMision mision = new HandlerBtnEmepzarMision();
+            buttonEmpezarMision.addActionListener(mision);
+
+            contBotones.add(buttonEmpezarMision);
+            /*
             JOptionPane.showMessageDialog(null, "Empezaremos la mision", "Mensage", JOptionPane.PLAIN_MESSAGE);
             if (ControladorFront.getinstancia().existeUnaPelea()){
                 JOptionPane.showMessageDialog(null, "Debemos pelear, preparate", "Mensage", JOptionPane.PLAIN_MESSAGE);
                 dispose();
-                PeleaPantalla peleaPantalla = new PeleaPantalla(imagenFondo);
+                PeleaPantalla peleaPantalla = new PeleaPantalla();
                 peleaPantalla.setVisible(true);
             }
+            */
+        }
+        else {
+            JLabel label = new JLabel("Debes volver");
+            label.setForeground(Color.WHITE);
+            JButton buttonVolverZonaDescanso = new JButton("Volver a zona de descanso");
+            class HandlerBtnVolver implements ActionListener {
 
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    dispose();
+                    ZonaDescansoPantalla.getInstancia().setVisible(true);
+
+                }
+            }
+            HandlerBtnVolver handlerBtnVolver = new HandlerBtnVolver();
+            buttonVolverZonaDescanso.addActionListener(handlerBtnVolver);
+            contBotones.add(label);
+            contBotones.add(buttonVolverZonaDescanso);
         }
 
-
+        panelFondo.add(contBotones);
 
         this.add(panelFondo, BorderLayout.CENTER);
 

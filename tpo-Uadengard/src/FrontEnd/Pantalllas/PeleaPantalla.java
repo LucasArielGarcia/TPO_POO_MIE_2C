@@ -7,8 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PeleaPantalla extends JFrame {
-
-    public PeleaPantalla(Image imagenFondo) {
+    Image imagenFondo;
+    public PeleaPantalla() {
         super("Pelea");
         setSize(600, 600);
         setLocation(20, 20);
@@ -30,16 +30,17 @@ public class PeleaPantalla extends JFrame {
         // Panel del héroe
         JPanel panelHeroe = new JPanel();
         panelHeroe.setLayout(new FlowLayout(FlowLayout.LEFT));
-        JLabel labelHeroe = new JLabel(ControladorFront.getinstancia().getHeroe().getNombre() + " Vida: " + ControladorFront.getinstancia().getHeroe().getVida());
-        JButton btonHeroe = new JButton("Atacar");
+        JLabel labelHeroe = new JLabel("| Heore |" + " Vida: " + ControladorFront.getinstancia().getHeroe().getVida());
+        //JButton btonHeroe = new JButton("Curarse");
 
         panelHeroe.add(labelHeroe);
-        panelHeroe.add(btonHeroe);
+        //panelHeroe.add(btonHeroe);
         panelFondo.add(panelHeroe);
 
         // Panel de enemigos
+        JPanel panelEnemigo = new JPanel();
         for (PersonajeView personajeView : ControladorFront.getinstancia().getEnemigos()) {
-            JPanel panelEnemigo = new JPanel();
+
             panelEnemigo.setLayout(new FlowLayout(FlowLayout.LEFT));
             JLabel labelEnemigo = new JLabel(personajeView.getNombre() + " Vida: " + personajeView.getVida());
             JButton btonEnemigo = new JButton("Atacar");
