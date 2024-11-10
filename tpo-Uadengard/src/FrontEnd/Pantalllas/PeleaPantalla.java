@@ -10,7 +10,7 @@ public class PeleaPantalla extends JFrame {
     Image imagenFondo;
     public PeleaPantalla() {
         super("Pelea");
-        setSize(600, 600);
+        setSize(500, 300);
         setLocation(20, 20);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
