@@ -16,7 +16,7 @@ public class Main2 {
         interfazCreacionPersonaje.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         interfazCreacionPersonaje.setLocation(20, 20);
 
-
+        
 
     }
 
