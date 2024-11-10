@@ -3,6 +3,7 @@ package BackEnd.Juego;
 import BackEnd.Configuracion.ConfiguracionJuego;
 import BackEnd.Entidades.*;
 import BackEnd.Entidades.objectView.MapaView;
+import BackEnd.Entidades.objectView.MercaderView;
 import BackEnd.Entidades.objectView.MisionView;
 import BackEnd.Entidades.objectView.PersonajeView;
 
@@ -15,6 +16,7 @@ public class Juego {
     private Ubicacion ubicacion;
     private Mision mision;
     private static Juego juego;
+    private Mercader mercader;
 
     public Juego() {
         ConfiguracionJuego configuracionJuego = new ConfiguracionJuego();
@@ -48,8 +50,8 @@ public class Juego {
     public List<MisionView> mostrarMisionList(){
         return mapa.mostrarMisionList();
     }
-    public List<Items> mostrarCatalogoMercaderItems(){
-        return mapa.mostrarItems() ;
+    public MercaderView mostrarCatalogoMercaderItems(){
+        return this.mercader.toView();
     }
 
     public void aceptarMision(int idMision){
@@ -109,9 +111,6 @@ public class Juego {
     }
 
 
-    public void comprarItem(){
-
-    }
     public List<PersonajeView> estadisticasEnemigos(){
         return this.ubicacion.estadisticasEnemigos();
     }
