@@ -7,8 +7,13 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.*;
+
+import BackEnd.Entidades.Items;
+import BackEnd.Entidades.objectView.MercaderView;
+import FrontEnd.Controlador.ControladorFront;
 
 public class MercaderPantalla extends JFrame{
 	Image imagenFondo;
@@ -35,18 +40,24 @@ public class MercaderPantalla extends JFrame{
         contBotones.setLayout(new GridLayout(2,1 , 2, 2));
         contBotones.setBounds(40, 85, 200, 60);
 
-        JButton btnComprarArma = new JButton("Comprar arma");
+        JButton btnComprarArmas = new JButton("Comprar arma");
         
-        class HandlerComprarArmas implements ActionListener {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        MercaderView mercaderView = ControladorFront.getinstancia().getItems();
+        List<Items> itemList = mercaderView.getMostrarCatologoItems();
+        for(Items item: itemList) {
+        	JButton boton = new JButton(item.getDescripcion());
+            contBotones.add(boton);
+            
+            boton.addActionListener(e -> {
+                ControladorFront.getinstancia();
                 dispose();
-                //hacer el objectView de mercader y sus ítem
-
-            }
+                JOptionPane.showMessageDialog(null, "Compraste el arma " + item.getDescripcion(), "Mensage", JOptionPane.PLAIN_MESSAGE);
+                ZonaDescansoPantalla.getInstancia().setVisible(true);
+            });
+            panelFondo.add(contBotones);
+            panelFondo.setLayout(null);
+            this.add(panelFondo, BorderLayout.CENTER);
+            
         }
-	
-        
 	}
 }
