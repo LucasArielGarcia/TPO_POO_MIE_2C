@@ -2,6 +2,7 @@ package FrontEnd.Controlador;
 
 import BackEnd.Entidades.Ubicacion;
 import BackEnd.Entidades.objectView.MapaView;
+import BackEnd.Entidades.objectView.MercaderView;
 import BackEnd.Entidades.objectView.MisionView;
 import BackEnd.Entidades.objectView.PersonajeView;
 import BackEnd.Juego.Juego;
@@ -59,5 +60,12 @@ public class ControladorFront {
 
     public void atacarEnemigo(int idEnemigo){
         Juego.getInstancia().pelea(idEnemigo);
+    }
+    public MercaderView getItems() {
+    	return Juego.getInstancia().mostrarCatalogoMercaderItems();
+    }
+    
+    public void comprarItem(int idItem) {
+    	
     }
 }
