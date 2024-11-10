@@ -6,14 +6,15 @@ public class PersonajeView {
     private int dano;
     private String nombre;
     private int defensa;
+    private int idPersonaje;
 
-
-    public PersonajeView(String tipo, int vida, int dano, String nombre, int defensa) {
+    public PersonajeView(int idPersonaje,String tipo, int vida, int dano, String nombre, int defensa) {
         this.tipo = tipo;
         this.vida = vida;
         this.dano = dano;
         this.nombre = nombre;
         this.defensa = defensa;
+        this.idPersonaje = idPersonaje;
     }
 
     public int getVida() {
@@ -30,5 +31,9 @@ public class PersonajeView {
 
     public int getDefensa() {
         return defensa;
+    }
+
+    public int getIdPersonaje() {
+        return idPersonaje;
     }
 }

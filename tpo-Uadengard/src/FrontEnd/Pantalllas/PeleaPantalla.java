@@ -42,9 +42,11 @@ public class PeleaPantalla extends JFrame {
         for (PersonajeView personajeView : ControladorFront.getinstancia().getEnemigos()) {
 
             panelEnemigo.setLayout(new FlowLayout(FlowLayout.LEFT));
-            JLabel labelEnemigo = new JLabel(personajeView.getNombre() + " Vida: " + personajeView.getVida());
+            JLabel labelEnemigo = new JLabel(personajeView.getNombre() + " Vida: " + personajeView.getVida() + " Defensa: "+ personajeView.getDefensa());
             JButton btonEnemigo = new JButton("Atacar");
-
+            btonEnemigo.addActionListener(e -> {
+                ControladorFront.getinstancia().atacarEnemigo(personajeView.getIdPersonaje());
+            });
             panelEnemigo.add(labelEnemigo);
             panelEnemigo.add(btonEnemigo);
             panelFondo.add(panelEnemigo);

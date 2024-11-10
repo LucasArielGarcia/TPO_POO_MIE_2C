@@ -79,7 +79,7 @@ public class Juego {
 
     public void pelea(int opcion){
         if (hayPelea())
-            ubicacion.pelea(heroe,opcion);
+            ubicacion.pelea(this.heroe,opcion);
     }
 
     public String viajarUbicacion(int id){
