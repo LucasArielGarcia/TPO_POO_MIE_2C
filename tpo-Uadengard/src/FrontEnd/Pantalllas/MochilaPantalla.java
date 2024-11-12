@@ -19,9 +19,10 @@ public class MochilaPantalla extends JFrame {
         }
         return instancia;
     }
+    private Image imagenFondo;
     public MochilaPantalla(){
         super("Mochila");
-        setSize(300, 300);
+        setSize(350, 300);
         setLocation(20, 20);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
@@ -42,7 +43,7 @@ public class MochilaPantalla extends JFrame {
         panelConFondo.setLayout(null);
         Container contBotones = new Container();
         contBotones.setLayout(new GridLayout(1, 2, 2, 2));
-        contBotones.setBounds(40, 85, 200, 90);
+        contBotones.setBounds(30, 70, 280, 50);
 
         JButton btnVerItems = new JButton("Ver Items");
         JButton btnCerrarMochila = new JButton("Cerrar Mochila");
@@ -58,7 +59,7 @@ public class MochilaPantalla extends JFrame {
             public void actionPerformed(ActionEvent e){
                 dispose();
                 ZonaDescansoPantalla zonaDescanso=new ZonaDescansoPantalla();
-                zonaDescanso.setVisible(TRUE);
+                zonaDescanso.setVisible(true);
             }
         }
 
@@ -68,5 +69,9 @@ public class MochilaPantalla extends JFrame {
         btnCerrarMochila.addActionListener(handlerBtnCerrarMochila);
         contBotones.add(btnVerItems);
         contBotones.add(btnCerrarMochila);
+
+        //agregue
+        panelConFondo.add(contBotones);
+        this.add(panelConFondo, BorderLayout.CENTER);
     }
 }
