@@ -15,7 +15,7 @@ public class AliadoPantalla extends JFrame {
         this.setLayout(new BorderLayout());
         JOptionPane.showMessageDialog(null, "Bienvenido viajero que deseas? ", "Mensage", JOptionPane.PLAIN_MESSAGE);
 
-        imagenFondo = new ImageIcon("E:\\git\\POO\\TPO\\TPO_POO_MIE_2C\\tpo-Uadengard\\src\\FrontEnd\\Imagenes\\aliado.png").getImage();
+        imagenFondo = new ImageIcon("C:\\Users\\Nicol\\IdeaProjects\\TPOGrupo4\\tpo-Uadengard\\src\\FrontEnd\\Imagenes\\aliado.png").getImage();
         JPanel panelFondo = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {

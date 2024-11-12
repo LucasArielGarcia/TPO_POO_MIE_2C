@@ -1,5 +1,7 @@
 package BackEnd.Entidades;
 
+import BackEnd.Entidades.objectView.ItemsMochilaView;
+
 public abstract class Items {
     private String descripcion;
     private int idItems = 0 ;

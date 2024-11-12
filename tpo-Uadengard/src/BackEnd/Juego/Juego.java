@@ -4,6 +4,7 @@ import BackEnd.Configuracion.ConfiguracionJuego;
 import BackEnd.Entidades.*;
 import BackEnd.Entidades.objectView.MapaView;
 import BackEnd.Entidades.objectView.MercaderView;
+import BackEnd.Entidades.objectView.ItemsMochilaView;
 import BackEnd.Entidades.objectView.MisionView;
 import BackEnd.Entidades.objectView.PersonajeView;
 
@@ -54,12 +55,11 @@ public class Juego {
     public MercaderView mostrarCatalogoMercaderItems(){
         return this.mercader.toView();
     }
+    public ItemsMochilaView mostrarItemsMochila(){return this.heroe.itemsToView();}
 
     public void aceptarMision(int idMision){
         mapa.aceptarMision(idMision,this.heroe);
     }
-
-
 
 
     private void empezarMision(){

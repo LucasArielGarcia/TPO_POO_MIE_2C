@@ -1,5 +1,6 @@
 package BackEnd.Entidades;
 
+import BackEnd.Entidades.objectView.ItemsMochilaView;
 import BackEnd.Entidades.objectView.MisionView;
 
 import java.util.ArrayList;
@@ -53,6 +54,10 @@ public abstract class Heroe extends Personaje{
         mochilaItems.forEach(items -> {
 
         });
+    }
+
+    public ItemsMochilaView itemsToView(){
+         return new ItemsMochilaView(this.mochilaItems);
     }
 
 
