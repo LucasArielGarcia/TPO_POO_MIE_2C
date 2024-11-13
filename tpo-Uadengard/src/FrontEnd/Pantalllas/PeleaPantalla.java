@@ -1,6 +1,8 @@
 package FrontEnd.Pantalllas;
 
 import BackEnd.Entidades.objectView.PersonajeView;
+import BackEnd.Entidades.objectView.UbicacionView;
+import BackEnd.Juego.Juego;
 import FrontEnd.Controlador.ControladorFront;
 
 import javax.swing.*;
@@ -9,8 +11,10 @@ import java.awt.*;
 public class PeleaPantalla extends JFrame {
     Image imagenFondo;
     JPanel panelFondo;
+    
     public PeleaPantalla() {
         super("Pelea");
+        UbicacionPantalla.getInstancia().setVisible(false);
         setSize(500, 300);
         setLocation(20, 20);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,6 +51,7 @@ public class PeleaPantalla extends JFrame {
             JButton btonEnemigo = new JButton("Atacar");
             btonEnemigo.addActionListener(e -> {
                 ControladorFront.getinstancia().atacarEnemigo(personajeView.getIdPersonaje());
+                actualizarPantalla(labelEnemigo,personajeView.getIdPersonaje());
             });
             panelEnemigo.add(labelEnemigo);
             panelEnemigo.add(btonEnemigo);
@@ -60,10 +65,20 @@ public class PeleaPantalla extends JFrame {
         setVisible(true);
     }
 
-    public void actualizarPantalla(JPanel panel){
+    public void actualizarPantalla(JLabel labels, int id){
+        for (PersonajeView personajeView : Juego.getInstancia().estadisticasEnemigos()){
+            if (personajeView.getIdPersonaje() == id){
+                if (personajeView.getVida() >0)
+                    labels.setText(personajeView.getNombre() + " Vida: " + personajeView.getVida() + " Defensa: "+ personajeView.getDefensa());
+                else
+                    labels.setText("El personaje murio");
+            }
+        }
+        panelFondo.updateUI();
 
-
-
+        if (!Juego.getInstancia().hayPelea()){
+            dispose();
+            UbicacionPantalla.getInstancia().setVisible(true);
+        }
     }
-
 }
