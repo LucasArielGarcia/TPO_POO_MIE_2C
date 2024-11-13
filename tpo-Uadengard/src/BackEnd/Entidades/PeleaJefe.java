@@ -4,7 +4,7 @@ public class PeleaJefe extends Mision{
 
 
     public PeleaJefe(Items recompensa, String nombreMision) {
-        super(recompensa, nombreMision);
+        super(recompensa, nombreMision,null);
     }
 
     @Override

@@ -127,7 +127,7 @@ public class Juego {
         return ubicacion.hayCofre();
     }
 
-    public String abrirCofre(){
+    public ItemView abrirCofre(){
         return ubicacion.abrirCofre();
     }
 

@@ -74,8 +74,8 @@ public class ControladorFront {
         return Juego.getInstancia().hayCofre();
     }
 
-    public void abrirCofre(){
-        Juego.getInstancia().abrirCofre();
+    public ItemView abrirCofre(){
+        return Juego.getInstancia().abrirCofre();
     }
 
     public void viajarZonaDescanso(){

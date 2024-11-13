@@ -1,5 +1,6 @@
 package BackEnd.Entidades;
 
+import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.ItemsMochilaView;
 
 public abstract class Items {
@@ -36,5 +37,9 @@ public abstract class Items {
     public abstract String infoItem();
     protected String superInfor(){
         return this.descripcion;
+    }
+
+    public ItemView toView(){
+        return new ItemView(this.descripcion,this.idItems,this.precio,this.nvlItem);
     }
 }

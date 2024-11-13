@@ -1,5 +1,6 @@
 package FrontEnd.Pantalllas;
 
+import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.PersonajeView;
 import BackEnd.Entidades.objectView.UbicacionView;
 import BackEnd.Juego.Juego;
@@ -79,8 +80,14 @@ public class PeleaPantalla extends JFrame {
             if (ControladorFront.getinstancia().existeCofre()) {
                 JButton abrirCofre = new JButton("Abrir Cofre");
                 abrirCofre.addActionListener(e -> {
-                    ControladorFront.getinstancia().abrirCofre();
+                    ItemView itemView = ControladorFront.getinstancia().abrirCofre();
+                    JOptionPane.showMessageDialog(null, "Abriste el cofre, en este se encuentra el objeto: "+itemView.getDescripcion()+" ,Se agregara a tu mochila", "Mensage", JOptionPane.PLAIN_MESSAGE);
+                    ControladorFront.getinstancia().viajarZonaDescanso();
+                    ControladorFront.getinstancia().terminarMision();
+                    dispose();
+                    ZonaDescansoPantalla.getInstancia().setVisible(true);
                 });
+                panelFondo.add(abrirCofre);
             } else {
                 JButton volverZonaDescanso = new JButton("volver Zona Desanso");
                 volverZonaDescanso.addActionListener(e -> {

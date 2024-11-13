@@ -1,6 +1,7 @@
 package FrontEnd.Pantalllas;
 
 import BackEnd.Entidades.Ubicacion;
+import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.UbicacionView;
 import FrontEnd.Controlador.ControladorFront;
 
@@ -60,15 +61,19 @@ public class UbicacionPantalla extends JFrame {
                     peleaPantalla.setVisible(true);
                 });
                 contBotones.add(buttonEmpezarMision);
-            }
-
-            if (ControladorFront.getinstancia().existeCofre()) {
+            } else if (ControladorFront.getinstancia().existeCofre()) {
                 JButton buttonAbrirCofre = new JButton("Abrir cofre");
                 buttonAbrirCofre.addActionListener(e -> {
-                    // Lógica para abrir el cofre
+                    ItemView itemView = ControladorFront.getinstancia().abrirCofre();
+                    JOptionPane.showMessageDialog(null, "Abriste el cofre, en este se encuentra el objeto: "+itemView.getDescripcion()+" ,Se agregara a tu mochila, debes devolverlo al aliado", "Mensage", JOptionPane.PLAIN_MESSAGE);
+                    ControladorFront.getinstancia().viajarZonaDescanso();
+                    ControladorFront.getinstancia().terminarMision();
+                    dispose();
+                    ZonaDescansoPantalla.getInstancia().setVisible(true);
                 });
                 contBotones.add(buttonAbrirCofre);
             }
+
         } else {
             JLabel label = new JLabel("Debes volver");
             label.setForeground(Color.WHITE);
