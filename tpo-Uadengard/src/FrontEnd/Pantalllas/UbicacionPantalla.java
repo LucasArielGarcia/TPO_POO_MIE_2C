@@ -80,6 +80,7 @@ public class UbicacionPantalla extends JFrame {
             JButton buttonVolverZonaDescanso = new JButton("Volver a zona de descanso");
             buttonVolverZonaDescanso.addActionListener(e -> {
                 dispose();
+                ControladorFront.getinstancia().viajarZonaDescanso();
                 ZonaDescansoPantalla.getInstancia().setVisible(true);
             });
             contBotones.add(label);
@@ -87,6 +88,11 @@ public class UbicacionPantalla extends JFrame {
         }
 
         panelFondo.add(contBotones);
+    }
+
+    public static void resetearUbicacion(){
+        if (instancia != null)
+            instancia = null;
     }
 
 }
