@@ -1,10 +1,8 @@
 package FrontEnd.Controlador;
 
+import BackEnd.Entidades.Items;
 import BackEnd.Entidades.Ubicacion;
-import BackEnd.Entidades.objectView.MapaView;
-import BackEnd.Entidades.objectView.MercaderView;
-import BackEnd.Entidades.objectView.MisionView;
-import BackEnd.Entidades.objectView.PersonajeView;
+import BackEnd.Entidades.objectView.*;
 import BackEnd.Juego.Juego;
 
 import java.util.List;
@@ -61,9 +59,12 @@ public class ControladorFront {
     public void atacarEnemigo(int idEnemigo){
         Juego.getInstancia().pelea(idEnemigo);
     }
+
     public MercaderView getItems() {
     	return Juego.getInstancia().mostrarCatalogoMercaderItems();
     }
+
+    public ItemsMochilaView getItemsMochila(){ return Juego.getInstancia().mostrarItemsMochila();}
     
     public void comprarItem(int idItem) {
     

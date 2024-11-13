@@ -8,6 +8,7 @@ import java.awt.*;
 
 public class PeleaPantalla extends JFrame {
     Image imagenFondo;
+    JPanel panelFondo;
     public PeleaPantalla() {
         super("Pelea");
         setSize(500, 300);
@@ -16,7 +17,7 @@ public class PeleaPantalla extends JFrame {
         setLayout(new BorderLayout());
 
         // Panel de fondo con imagen
-        JPanel panelFondo = new JPanel() {
+         panelFondo = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -58,4 +59,11 @@ public class PeleaPantalla extends JFrame {
         // Hacer visible la ventana
         setVisible(true);
     }
+
+    public void actualizarPantalla(JPanel panel){
+
+
+
+    }
+
 }
