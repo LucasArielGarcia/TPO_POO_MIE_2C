@@ -73,4 +73,17 @@ public class ControladorFront {
     public boolean existeCofre(){
         return Juego.getInstancia().hayCofre();
     }
+
+    public void abrirCofre(){
+        Juego.getInstancia().abrirCofre();
+    }
+
+    public void viajarZonaDescanso(){
+        Juego.getInstancia().viajarZonaDescanso();
+    }
+
+    public void terminarMision(){
+        Juego.getInstancia().cerrarMision();
+    }
+
 }

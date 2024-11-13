@@ -11,7 +11,7 @@ import java.awt.*;
 public class PeleaPantalla extends JFrame {
     Image imagenFondo;
     JPanel panelFondo;
-    
+
     public PeleaPantalla() {
         super("Pelea");
         UbicacionPantalla.getInstancia().setVisible(false);
@@ -75,10 +75,23 @@ public class PeleaPantalla extends JFrame {
             }
         }
         panelFondo.updateUI();
-
-        if (!Juego.getInstancia().hayPelea()){
-            dispose();
-            UbicacionPantalla.getInstancia().setVisible(true);
+        if (!ControladorFront.getinstancia().existeUnaPelea()) {
+            if (ControladorFront.getinstancia().existeCofre()) {
+                JButton abrirCofre = new JButton("Abrir Cofre");
+                abrirCofre.addActionListener(e -> {
+                    ControladorFront.getinstancia().abrirCofre();
+                });
+            } else {
+                JButton volverZonaDescanso = new JButton("volver Zona Desanso");
+                volverZonaDescanso.addActionListener(e -> {
+                    ControladorFront.getinstancia().viajarZonaDescanso();
+                    ControladorFront.getinstancia().terminarMision();
+                    dispose();
+                    ZonaDescansoPantalla.getInstancia().setVisible(true);
+                });
+                panelFondo.add(volverZonaDescanso);
+            }
         }
+
     }
 }
