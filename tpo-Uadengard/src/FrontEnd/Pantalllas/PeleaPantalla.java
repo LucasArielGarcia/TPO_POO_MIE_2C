@@ -11,7 +11,7 @@ import java.awt.*;
 public class PeleaPantalla extends JFrame {
     Image imagenFondo;
     JPanel panelFondo;
-    //sss
+    
     public PeleaPantalla() {
         super("Pelea");
         UbicacionPantalla.getInstancia().setVisible(false);
