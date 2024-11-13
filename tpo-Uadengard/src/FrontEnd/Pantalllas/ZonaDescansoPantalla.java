@@ -44,7 +44,7 @@ public class ZonaDescansoPantalla  extends JFrame {
 
         // Crear el contenedor de botones con GridLayout
         Container contBotones = new Container();
-        contBotones.setLayout(new GridLayout(2, 2, 2, 2));
+        contBotones.setLayout(new GridLayout(3, 2, 2, 2));
         contBotones.setBounds(40, 85, 200, 90);
 
 
@@ -52,6 +52,7 @@ public class ZonaDescansoPantalla  extends JFrame {
         JButton btnAliado = new JButton("Aliado");
         JButton btnPersonaje = new JButton("Personaje");
         JButton btnViajar = new JButton("Viajar");
+        JButton btnMochila=new JButton("abrir mochila");
 
 
         class HandlerBtnViajar implements ActionListener {
@@ -83,19 +84,30 @@ public class ZonaDescansoPantalla  extends JFrame {
                 }
         	
         }
+        class HandlerBtnAbrirMochila implements ActionListener{
+
+            public void actionPerformed(ActionEvent e){
+                dispose();
+                MochilaPantalla mochilaPantalla= new MochilaPantalla();
+                mochilaPantalla.setVisible(true);
+            }
+        }
 
 
         HandlerBtnViajar handlerBtnViajar = new HandlerBtnViajar();
         HandlerBtnAliado handlerBtnAliado = new HandlerBtnAliado();
         HandlerBtnMercader handlerBtnMercader = new HandlerBtnMercader();
+        HandlerBtnAbrirMochila handlerBtnAbrirMochila=new HandlerBtnAbrirMochila();
         btnViajar.addActionListener(handlerBtnViajar);
         btnAliado.addActionListener(handlerBtnAliado);
         btnMercader.addActionListener(handlerBtnMercader);
+        btnMochila.addActionListener(handlerBtnAbrirMochila);
 
         contBotones.add(btnAliado);
         contBotones.add(btnMercader);
         contBotones.add(btnViajar);
         contBotones.add(btnPersonaje);
+        contBotones.add(btnMochila);
 
         panelConFondo.add(contBotones);
 

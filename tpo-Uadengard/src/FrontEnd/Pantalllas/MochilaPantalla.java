@@ -9,9 +9,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class MochilaPantalla extends JFrame {
-
+    Image imagenFondo;
     private static MochilaPantalla instancia;
     public static MochilaPantalla getInstancia() {
         if(instancia==null){
@@ -37,36 +38,25 @@ public class MochilaPantalla extends JFrame {
                 }
             }
         };
-        ItemsMochilaView listaItems= ControladorFront.getinstancia().getItemsMochila();
-        int tamanoLista=listaItems.getMostrarItemsMochila().toArray().length;
+        ItemsMochilaView itemsMochilaView= ControladorFront.getinstancia().getItemsMochila();
+        List<Items> inventario=itemsMochilaView.getMostrarItemsMochila();
         panelConFondo.setLayout(null);
         Container contBotones = new Container();
-        contBotones.setLayout(new GridLayout(1, 2, 2, 2));
+        contBotones.setLayout(new GridLayout(2, 1, 2, 2));
         contBotones.setBounds(40, 85, 200, 90);
+       for(Items item: inventario) {
+           JButton boton = new JButton(item.getDescripcion());
+           contBotones.add(boton);
 
-        JButton btnVerItems = new JButton("Ver Items");
-        JButton btnCerrarMochila = new JButton("Cerrar Mochila");
-        class HandleerBtnVerItems implements ActionListener{
-            @Override
-            public void actionPerformed(ActionEvent e){
-                dispose();
-
-            }
-        }
-        class HandlerBtnCerrarMochila implements ActionListener{
-            @Override
-            public void actionPerformed(ActionEvent e){
-                dispose();
-                ZonaDescansoPantalla zonaDescanso=new ZonaDescansoPantalla();
-                zonaDescanso.setVisible(TRUE);
-            }
-        }
-
-        HandleerBtnVerItems handlerBtnVerItems=new HandleerBtnVerItems();
-        HandlerBtnCerrarMochila handlerBtnCerrarMochila=new HandlerBtnCerrarMochila();
-        btnVerItems.addActionListener(handlerBtnVerItems);
-        btnCerrarMochila.addActionListener(handlerBtnCerrarMochila);
-        contBotones.add(btnVerItems);
-        contBotones.add(btnCerrarMochila);
+           boton.addActionListener(e -> {
+               ControladorFront.getinstancia();
+               dispose();
+               JOptionPane.showMessageDialog(null, "equipaste el item " + item.getDescripcion(), "Mensage", JOptionPane.PLAIN_MESSAGE);
+               ZonaDescansoPantalla.getInstancia().setVisible(true);
+           });
+           panelConFondo.add(contBotones);
+           panelConFondo.setLayout(null);
+           this.add(panelConFondo, BorderLayout.CENTER);
+       }
     }
 }
