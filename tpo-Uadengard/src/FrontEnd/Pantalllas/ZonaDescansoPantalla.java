@@ -28,7 +28,11 @@ public class ZonaDescansoPantalla  extends JFrame {
         this.setLayout(new BorderLayout());
 
 
+<<<<<<< HEAD
+        imagenFondo = new ImageIcon("C:\\Users\\zambr\\OneDrive\\Escritorio\\Documentos\\UADE\\2do_año_Uade\\POO\\git\\TPO_POO_MIE_2C\\tpo-Uadengard\\src\\FrontEnd\\Imagenes\\aldea.png").getImage();
+=======
         imagenFondo = new ImageIcon("C:\\Users\\Nicol\\IdeaProjects\\TPOGrupo4\\tpo-Uadengard\\src\\FrontEnd\\Imagenes\\aldea.png").getImage();
+>>>>>>> 63e986d16f31fd77d887f8f13b45f1fdd3bca0a3
 
 
         JPanel panelConFondo = new JPanel() {
