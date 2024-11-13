@@ -66,7 +66,11 @@ public class ControladorFront {
 
     public ItemsMochilaView getItemsMochila(){ return Juego.getInstancia().mostrarItemsMochila();}
     
-    public void comprarItem(int idItem) {
-    
+    public UbicacionView getUbicacionActual() {
+        return Juego.getInstancia().getUbicacionActual();
+    }
+
+    public boolean existeCofre(){
+        return Juego.getInstancia().hayCofre();
     }
 }
