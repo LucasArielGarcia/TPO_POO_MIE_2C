@@ -3,8 +3,8 @@ package BackEnd.Entidades;
 public class PeleaJefe extends Mision{
 
 
-    public PeleaJefe(Items recompensa, String nombreMision) {
-        super(recompensa, nombreMision,null);
+    public PeleaJefe(Items recompensa, String nombreMision,double moneda) {
+        super(recompensa, nombreMision,null,moneda);
     }
 
     @Override

@@ -140,6 +140,10 @@ public class Juego {
         return this.mapa.toView();
     }
     public UbicacionView getUbicacionActual(){return this.ubicacion.toView();}
+
+    public void comprarItem(int idItem){
+        this.zonaDescanso.comprarItem(idItem);
+    }
 }
 
 

@@ -86,4 +86,6 @@ public class ControladorFront {
         Juego.getInstancia().cerrarMision();
     }
 
+    public void comprarItem(int id){Juego.getInstancia().comprarItem(id);}
+
 }

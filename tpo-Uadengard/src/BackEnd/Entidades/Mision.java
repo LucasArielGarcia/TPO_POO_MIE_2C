@@ -15,14 +15,16 @@ public abstract class Mision {
     private List<Enemigo> enemigosList;
     private Pelea pelea;
     private Items cofre;
+    private double monedasAdar;
 
 
-    public Mision(Items recompensa, String nombreMision, Items cofre) {
+    public Mision(Items recompensa, String nombreMision, Items cofre,double monedas) {
         this.idMision = ++contador;
         this.recompensa = recompensa;
         this.nombreMision = nombreMision;
         this.objetivoCompletado = false;
         this.cofre = cofre;
+        this.monedasAdar = monedas;
     }
     public void cargarEnemigos(List<Enemigo>listaEnemigos){
         this.enemigosList = listaEnemigos;
@@ -105,7 +107,7 @@ public abstract class Mision {
     }
 
     public MisionView toView(){
-        return new MisionView(this.idMision,this.nombreMision);
+        return new MisionView(this.idMision,this.nombreMision,this.monedasAdar);
     }
 
 

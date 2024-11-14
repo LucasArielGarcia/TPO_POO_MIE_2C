@@ -11,11 +11,13 @@ public abstract class Heroe extends Personaje{
     private List<Items> equipoItems = new ArrayList<>();
     private int nivelHeroe;
     private Mision mision;
+    private double monedas;
 
 
     public Heroe(String nombre, int defensa,String tipo) {
         super(nombre, defensa,tipo);
         this.nivelHeroe = 1;
+        this.monedas= 1;
     }
     public void equiparItem(Items itemEquipar){
         equipoItems.add(itemEquipar);
@@ -63,5 +65,17 @@ public abstract class Heroe extends Personaje{
 
     public String mostrarRecompensa() {
         return "La recompensa es: "+mochilaItems.get(mochilaItems.size()-1).infoItem();
+    }
+
+    public void recompensaMonedas(double monedasRecompensa){
+        this.monedas = monedasRecompensa;
+    }
+
+    public double getMonedas() {
+        return monedas;
+    }
+
+    public void descontarMonedasCompra(double monedas){
+        this.monedas -= monedas;
     }
 }

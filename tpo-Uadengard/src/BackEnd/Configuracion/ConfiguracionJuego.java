@@ -25,10 +25,10 @@ public class ConfiguracionJuego {
         Dragon dragon = new Dragon("Dragon", 80);
         this.enemigoList.add(dragon);
 
-        Armadura armadura1 = new Armadura("Armadura de hierro",100,1,100);
-        Espada espada1 = new Espada("Espada de hierro",100,1,20);
-        Baculo baculo1 = new Baculo("Baculo de pino", 100, 1, 10);
-        Arco arco1 = new Arco("Arco de pino",100,1,25);
+        Armadura armadura1 = new Armadura("Armadura de hierro",10,1,100);
+        Espada espada1 = new Espada("Espada de hierro",10,1,20);
+        Baculo baculo1 = new Baculo("Baculo de pino", 10, 1, 10);
+        Arco arco1 = new Arco("Arco de pino",10,1,25);
         itemsList.add(armadura1);
         itemsList.add(espada1);
         itemsList.add(baculo1);
@@ -39,11 +39,11 @@ public class ConfiguracionJuego {
         enemigosPantano.add(espectro0);
         enemigosPantano.add(Troll1);
 
-        LimpiarUbicacion limpiarPantano = new LimpiarUbicacion(arco1, "limpiar pantano",espada1); // en caso que no quieran agregar cofre LimpiarUbicacion limpiarPantano = new LimpiarUbicacion(arco1, "limpiar pantano",null);
+        LimpiarUbicacion limpiarPantano = new LimpiarUbicacion(arco1, "limpiar pantano",espada1,15.0); // en caso que no quieran agregar cofre LimpiarUbicacion limpiarPantano = new LimpiarUbicacion(arco1, "limpiar pantano",null);
         limpiarPantano.cargarEnemigos(enemigosPantano);
 
         this.misionList.add(limpiarPantano);
-        DevolverItem devolverItemEnCastillo = new DevolverItem(espada1,"Traer objeto castillo",baculo1);
+        DevolverItem devolverItemEnCastillo = new DevolverItem(espada1,"Traer objeto castillo",baculo1,4);
         this.misionList.add(devolverItemEnCastillo);
 
         Ubicacion ubicacion1 = new Ubicacion("Pantano",limpiarPantano,"C:\\Users\\LUCAS\\Downloads\\pantano.png");

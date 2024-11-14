@@ -82,8 +82,8 @@ public class PeleaPantalla extends JFrame {
                 abrirCofre.addActionListener(e -> {
                     ItemView itemView = ControladorFront.getinstancia().abrirCofre();
                     JOptionPane.showMessageDialog(null, "Abriste el cofre, en este se encuentra el objeto: "+itemView.getDescripcion()+" ,Se agregara a tu mochila", "Mensage", JOptionPane.PLAIN_MESSAGE);
-                    ControladorFront.getinstancia().viajarZonaDescanso();
                     ControladorFront.getinstancia().terminarMision();
+                    ControladorFront.getinstancia().viajarZonaDescanso();
                     dispose();
                     ZonaDescansoPantalla.getInstancia().setVisible(true);
                 });

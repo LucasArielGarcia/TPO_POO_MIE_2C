@@ -1,6 +1,7 @@
 package BackEnd.Entidades;
 
 import BackEnd.Entidades.objectView.ItemView;
+import BackEnd.Entidades.objectView.MisionView;
 import BackEnd.Entidades.objectView.PersonajeView;
 import BackEnd.Entidades.objectView.UbicacionView;
 
@@ -40,7 +41,10 @@ public class Ubicacion {
    }
    public void terminarMision(){
         mision.marcarMisionCompletada();
+        MisionView misionView = mision.toView();
         mision = null;
+        heroe.recompensaMonedas(misionView.getMonedasAdar());
+
    }
 
    public String getNombreUbicacion(){

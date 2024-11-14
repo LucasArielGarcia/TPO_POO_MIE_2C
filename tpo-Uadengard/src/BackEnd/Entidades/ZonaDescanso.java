@@ -1,5 +1,6 @@
 package BackEnd.Entidades;
 
+import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.MisionView;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class ZonaDescanso {
     }
 
     public void llegarZonaDescanso(Heroe heroe){
-        heroe = heroe;
+        this.heroe = heroe;
     }
     public void salirZonaDescanso(){this.heroe = null;}
 
@@ -51,6 +52,17 @@ public class ZonaDescanso {
             return true;
         }
         return false;
+    }
+
+    public void comprarItem(int idItem){
+        Items itemComprado = this.mercader.comprarItem(idItem,this.heroe.getMonedas());
+        if (itemComprado != null){
+            ItemView itemView = itemComprado.toView();
+            this.heroe.descontarMonedasCompra(itemView.getPrecio());
+        }
+
+
+
     }
 
 }

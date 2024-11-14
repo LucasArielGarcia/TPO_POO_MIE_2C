@@ -5,13 +5,11 @@ import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.*;
 
-import BackEnd.Entidades.Items;
+import BackEnd.Entidades.ZonaDescanso;
 import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.MercaderView;
 import FrontEnd.Controlador.ControladorFront;
@@ -48,14 +46,23 @@ public class MercaderPantalla extends JFrame{
             contBotones.add(boton);
             
             boton.addActionListener(e -> {
-                dispose();
+                ControladorFront.getinstancia().comprarItem(item.getIdItems());
                 JOptionPane.showMessageDialog(null, "Compraste el arma " + item.getDescripcion(), "Mensage", JOptionPane.PLAIN_MESSAGE);
-                ControladorFront.getinstancia().c
+
             });
             panelFondo.add(contBotones);
             panelFondo.setLayout(null);
-            this.add(panelFondo, BorderLayout.CENTER);
-            
+
         }
+        JButton botonZonaDescanso = new JButton("volver a zona descanso");
+        contBotones.add(botonZonaDescanso);
+
+        botonZonaDescanso.addActionListener(e -> {
+            dispose();
+            ZonaDescansoPantalla.getInstancia().setVisible(true);
+
+        });
+        panelFondo.add(botonZonaDescanso);
+        this.add(panelFondo, BorderLayout.CENTER);
 	}
 }
