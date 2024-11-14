@@ -1,5 +1,6 @@
 import BackEnd.Configuracion.ConfiguracionJuego;
 import BackEnd.Entidades.*;
+import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.MisionView;
 import BackEnd.Entidades.objectView.PersonajeView;
 import BackEnd.Entidades.objectView.UbicacionView;
@@ -128,9 +129,9 @@ public class Main {
         System.out.println("");
     }
 
-    public static void mostrarCatalogo(List<Items> itemsList){
+    public static void mostrarCatalogo(List<ItemView> itemsList){
         for (int i =0; i< itemsList.size(); i++){
-            Items item = itemsList.get(i);
+            ItemView item = itemsList.get(i);
             System.out.println(i+"Descripcion: "+ item.getDescripcion() + " Precio: "+item.getPrecio());
         }
         System.out.println("");

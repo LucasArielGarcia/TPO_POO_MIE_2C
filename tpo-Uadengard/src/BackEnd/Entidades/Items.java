@@ -22,14 +22,6 @@ public abstract class Items {
 
     public abstract void usarItem(Personaje personaje);
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
     public int getNvlItem() {
         return nvlItem;
     }

@@ -58,8 +58,7 @@ public class MochilaPantalla extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e){
                 dispose();
-                ZonaDescansoPantalla zonaDescanso=new ZonaDescansoPantalla();
-                zonaDescanso.setVisible(true);
+                ZonaDescansoPantalla.getInstancia().setVisible(true);
             }
         }
 
@@ -70,7 +69,6 @@ public class MochilaPantalla extends JFrame {
         contBotones.add(btnVerItems);
         contBotones.add(btnCerrarMochila);
 
-        //agregue
         panelConFondo.add(contBotones);
         this.add(panelConFondo, BorderLayout.CENTER);
     }

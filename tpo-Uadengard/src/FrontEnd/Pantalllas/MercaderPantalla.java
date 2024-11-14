@@ -12,6 +12,7 @@ import java.util.List;
 import javax.swing.*;
 
 import BackEnd.Entidades.Items;
+import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.MercaderView;
 import FrontEnd.Controlador.ControladorFront;
 
@@ -25,7 +26,6 @@ public class MercaderPantalla extends JFrame{
         this.setLayout(new BorderLayout());
         JOptionPane.showMessageDialog(null, "Bienvenido al viajero, es hora de adquirir algunas armas ", "Mensage", JOptionPane.PLAIN_MESSAGE);
         
-        imagenFondo = new ImageIcon("C:\\Users\\zambr\\OneDrive\\Escritorio\\Documentos\\UADE\\2do_año_Uade\\POO\\git\\TPO_POO_MIE_2C\\tpo-Uadengard\\src\\FrontEnd\\Imagenes\\mercader.jpg").getImage();
         imagenFondo = new ImageIcon("E:\\git\\POO\\TPO\\TPO_POO_MIE_2C\\tpo-Uadengard\\src\\FrontEnd\\Imagenes\\mercader.jpg").getImage();
         JPanel panelFondo = new JPanel() {
             @Override
@@ -42,16 +42,15 @@ public class MercaderPantalla extends JFrame{
         contBotones.setBounds(40, 85, 300, 60);
         
         MercaderView mercaderView = ControladorFront.getinstancia().getItems();
-        List<Items> itemList = mercaderView.getMostrarCatologoItems();
-        for(Items item: itemList) {
+        List<ItemView> itemList = mercaderView.getMostrarCatologoItems();
+        for(ItemView item: itemList) {
         	JButton boton = new JButton(item.getDescripcion());
             contBotones.add(boton);
             
             boton.addActionListener(e -> {
-                ControladorFront.getinstancia();
                 dispose();
                 JOptionPane.showMessageDialog(null, "Compraste el arma " + item.getDescripcion(), "Mensage", JOptionPane.PLAIN_MESSAGE);
-                ZonaDescansoPantalla.getInstancia().setVisible(true);
+                ControladorFront.getinstancia().c
             });
             panelFondo.add(contBotones);
             panelFondo.setLayout(null);
