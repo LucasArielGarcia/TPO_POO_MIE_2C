@@ -1,5 +1,6 @@
 package BackEnd.Entidades;
 
+import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.PersonajeView;
 import BackEnd.Entidades.objectView.UbicacionView;
 
@@ -72,7 +73,7 @@ public class Ubicacion {
         return mision.hayCofre();
     }
 
-    public String abrirCofre(){
+    public ItemView abrirCofre(){
         return mision.abrirCofre(heroe);
     }
 

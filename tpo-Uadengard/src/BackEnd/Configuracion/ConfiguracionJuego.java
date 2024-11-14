@@ -39,7 +39,7 @@ public class ConfiguracionJuego {
         enemigosPantano.add(espectro0);
         enemigosPantano.add(Troll1);
 
-        LimpiarUbicacion limpiarPantano = new LimpiarUbicacion(arco1, "limpiar pantano");
+        LimpiarUbicacion limpiarPantano = new LimpiarUbicacion(arco1, "limpiar pantano",espada1); // en caso que no quieran agregar cofre LimpiarUbicacion limpiarPantano = new LimpiarUbicacion(arco1, "limpiar pantano",null);
         limpiarPantano.cargarEnemigos(enemigosPantano);
 
         this.misionList.add(limpiarPantano);

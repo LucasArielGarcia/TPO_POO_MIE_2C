@@ -2,11 +2,7 @@ package BackEnd.Juego;
 
 import BackEnd.Configuracion.ConfiguracionJuego;
 import BackEnd.Entidades.*;
-import BackEnd.Entidades.objectView.MapaView;
-import BackEnd.Entidades.objectView.MercaderView;
-import BackEnd.Entidades.objectView.ItemsMochilaView;
-import BackEnd.Entidades.objectView.MisionView;
-import BackEnd.Entidades.objectView.PersonajeView;
+import BackEnd.Entidades.objectView.*;
 
 import java.util.List;
 
@@ -131,7 +127,7 @@ public class Juego {
         return ubicacion.hayCofre();
     }
 
-    public String abrirCofre(){
+    public ItemView abrirCofre(){
         return ubicacion.abrirCofre();
     }
 
@@ -143,6 +139,7 @@ public class Juego {
     public MapaView getMapa(){
         return this.mapa.toView();
     }
+    public UbicacionView getUbicacionActual(){return this.ubicacion.toView();}
 }
 
 

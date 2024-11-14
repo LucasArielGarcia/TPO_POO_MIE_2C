@@ -66,7 +66,24 @@ public class ControladorFront {
 
     public ItemsMochilaView getItemsMochila(){ return Juego.getInstancia().mostrarItemsMochila();}
     
-    public void comprarItem(int idItem) {
-    
+    public UbicacionView getUbicacionActual() {
+        return Juego.getInstancia().getUbicacionActual();
     }
+
+    public boolean existeCofre(){
+        return Juego.getInstancia().hayCofre();
+    }
+
+    public ItemView abrirCofre(){
+        return Juego.getInstancia().abrirCofre();
+    }
+
+    public void viajarZonaDescanso(){
+        Juego.getInstancia().viajarZonaDescanso();
+    }
+
+    public void terminarMision(){
+        Juego.getInstancia().cerrarMision();
+    }
+
 }

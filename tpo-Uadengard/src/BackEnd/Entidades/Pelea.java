@@ -19,14 +19,15 @@ public class Pelea {
         if (heroe.personajeVivo() && !enemigoList.isEmpty()){
             Enemigo enemigo = buscarEnemigo(idEnemigo);
             heroe.atacar(enemigo);
-            if (!enemigo.personajeVivo()){
+            /*if (!enemigo.personajeVivo()){
                 eliminarEnemigo(idEnemigo);
             }
-            if (!enemigoList.isEmpty()){
+
+             */
+            if (enemigosVivos()){
                 Enemigo enenemigoAtaque = elegirEnemigoRandom();
                 enenemigoAtaque.atacar(heroe);
             }
-
 
         }
 
@@ -51,13 +52,26 @@ public class Pelea {
 
     public Enemigo elegirEnemigoRandom (){
         Random random = new Random();
-        int enemigoRandom = random.nextInt(enemigoList.size());
-        return enemigoList.get(enemigoRandom);
+        int enemigoRandom = 0;
+        boolean enemigoElegido =true ;
+        int interaccionesBucle = 0;
+                //random.nextInt(enemigoList.size());
+        while (enemigoElegido){
+            enemigoRandom = random.nextInt(enemigoList.size());
+            if (enemigoList.get(enemigoRandom).personajeVivo()){
+                return enemigoList.get(enemigoRandom);
+            }
+            if (interaccionesBucle> 4){
+                return null;
+            }
+            interaccionesBucle++;
+        }
+        return null;
     }
 
     public boolean hayEnemigos(){
         try {
-            return !enemigoList.isEmpty();
+            return enemigosVivos();
         }
         catch (NullPointerException e){
             return true;
@@ -80,5 +94,17 @@ public class Pelea {
             }
         }
     }
+
+    public boolean enemigosVivos(){
+        for (Enemigo enemigo: this.enemigoList){
+            if (enemigo.personajeVivo()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
 
 }

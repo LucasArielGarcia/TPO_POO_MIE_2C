@@ -1,5 +1,6 @@
 package BackEnd.Entidades;
 
+import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.MisionView;
 import BackEnd.Entidades.objectView.PersonajeView;
 
@@ -16,11 +17,12 @@ public abstract class Mision {
     private Items cofre;
 
 
-    public Mision(Items recompensa, String nombreMision) {
+    public Mision(Items recompensa, String nombreMision, Items cofre) {
         this.idMision = ++contador;
         this.recompensa = recompensa;
         this.nombreMision = nombreMision;
         this.objetivoCompletado = false;
+        this.cofre = cofre;
     }
     public void cargarEnemigos(List<Enemigo>listaEnemigos){
         this.enemigosList = listaEnemigos;
@@ -97,9 +99,9 @@ public abstract class Mision {
         return this.cofre != null;
     }
 
-    public String abrirCofre(Heroe heroe){
+    public ItemView abrirCofre(Heroe heroe){
         heroe.agregarItemMochila(this.cofre);
-        return "En el cofre hay: " +cofre.infoItem();
+        return this.cofre.toView();
     }
 
     public MisionView toView(){
