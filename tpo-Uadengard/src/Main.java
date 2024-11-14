@@ -80,8 +80,8 @@ public class Main {
                         scanner.nextLine();
                         Juego.getInstancia().aceptarMision(opcion);
                     } else if (opcion == 2) {
-                        boolean reclamoRecompensa = Juego.getInstancia().reclamarRecompensa();
-                        if (reclamoRecompensa) {
+                        ItemView reclamoRecompensa = Juego.getInstancia().reclamarRecompensa();
+                        if (reclamoRecompensa!=null) {
                             System.out.println("Reclamaste tu recompensa");
                             System.out.println(Juego.getInstancia().mostrarRecompensa());
                         }

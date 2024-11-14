@@ -116,7 +116,7 @@ public class Juego {
         ubicacion.terminarMision();
     }
 
-    public boolean reclamarRecompensa(){return zonaDescanso.reclamarRecompensa();}
+    public ItemView reclamarRecompensa(){return zonaDescanso.reclamarRecompensa();}
     public List<String>abrirMochila(){return heroe.abrirMochila();}
 
     public PersonajeView mostrarEstadisticasHeroe(){

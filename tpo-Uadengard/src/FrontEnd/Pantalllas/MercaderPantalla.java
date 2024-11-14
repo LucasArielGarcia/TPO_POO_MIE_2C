@@ -36,8 +36,8 @@ public class MercaderPantalla extends JFrame{
         };
         
         Container contBotones = new Container();
-        contBotones.setLayout(new GridLayout(2,1 , 2, 2));
-        contBotones.setBounds(40, 85, 300, 60);
+        contBotones.setLayout(new GridLayout(4,1 , 2, 2));
+        contBotones.setBounds(40, 85, 300, 100);
         
         MercaderView mercaderView = ControladorFront.getinstancia().getItems();
         List<ItemView> itemList = mercaderView.getMostrarCatologoItems();
@@ -50,11 +50,10 @@ public class MercaderPantalla extends JFrame{
                 JOptionPane.showMessageDialog(null, "Compraste el arma " + item.getDescripcion(), "Mensage", JOptionPane.PLAIN_MESSAGE);
 
             });
-            panelFondo.add(contBotones);
-            panelFondo.setLayout(null);
+
 
         }
-        JButton botonZonaDescanso = new JButton("volver a zona descanso");
+        JButton botonZonaDescanso = new JButton("volver ");
         contBotones.add(botonZonaDescanso);
 
         botonZonaDescanso.addActionListener(e -> {
@@ -62,7 +61,9 @@ public class MercaderPantalla extends JFrame{
             ZonaDescansoPantalla.getInstancia().setVisible(true);
 
         });
-        panelFondo.add(botonZonaDescanso);
+        contBotones.add(botonZonaDescanso);
+        panelFondo.add(contBotones);
+        panelFondo.setLayout(null);
         this.add(panelFondo, BorderLayout.CENTER);
 	}
 }
