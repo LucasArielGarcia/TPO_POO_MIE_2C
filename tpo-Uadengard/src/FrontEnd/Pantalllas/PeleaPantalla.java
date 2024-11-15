@@ -36,7 +36,8 @@ public class PeleaPantalla extends JFrame {
         // Panel del héroe
         JPanel panelHeroe = new JPanel();
         panelHeroe.setLayout(new FlowLayout(FlowLayout.LEFT));
-        JLabel labelHeroe = new JLabel("| Heore |" + " Vida: " + ControladorFront.getinstancia().getHeroe().getVida());
+        PersonajeView heroe = ControladorFront.getinstancia().getHeroe();
+        JLabel labelHeroe = new JLabel("| Heore |" + " Vida: " + heroe.getVida()+ " defensa: " + heroe.getDefensa());
         //JButton btonHeroe = new JButton("Curarse");
 
         panelHeroe.add(labelHeroe);
@@ -52,7 +53,8 @@ public class PeleaPantalla extends JFrame {
             JButton btonEnemigo = new JButton("Atacar");
             btonEnemigo.addActionListener(e -> {
                 ControladorFront.getinstancia().atacarEnemigo(personajeView.getIdPersonaje());
-                actualizarPantalla(labelEnemigo,personajeView.getIdPersonaje());
+                actualizarPantallaEnemigo(labelEnemigo,personajeView.getIdPersonaje());
+                actualizarPantallaHeroe(labelHeroe);
             });
             panelEnemigo.add(labelEnemigo);
             panelEnemigo.add(btonEnemigo);
@@ -66,7 +68,7 @@ public class PeleaPantalla extends JFrame {
         setVisible(true);
     }
 
-    public void actualizarPantalla(JLabel labels, int id){
+    public void actualizarPantallaEnemigo(JLabel labels, int id){
         for (PersonajeView personajeView : Juego.getInstancia().estadisticasEnemigos()){
             if (personajeView.getIdPersonaje() == id){
                 if (personajeView.getVida() >0)
@@ -99,6 +101,16 @@ public class PeleaPantalla extends JFrame {
                 panelFondo.add(volverZonaDescanso);
             }
         }
+    }
+    public void actualizarPantallaHeroe(JLabel label){
+        PersonajeView heroe = ControladorFront.getinstancia().getHeroe();
+        if (heroe.getVida()>0)
+            label.setText("| Heore |" + " Vida: " + heroe.getVida()+ " defensa: " + heroe.getDefensa());
+        else {
+            JOptionPane.showMessageDialog(null, "GAME OVER", "Mensage", JOptionPane.PLAIN_MESSAGE);
+            dispose();
+        }
 
     }
+
 }

@@ -20,9 +20,15 @@ public abstract class Heroe extends Personaje{
         this.nivelHeroe = 1;
         this.monedas= 1;
     }
-    public void equiparItem(Items itemEquipar){
-        equipoItems.add(itemEquipar);
-        super.usarItem(itemEquipar);
+    public void equiparItem(int id){
+        Items itemEquipar = buscarItem(id);
+        if (itemEquipar != null){
+            sacarItemEquipo(itemEquipar);
+            equipoItems.add(itemEquipar);
+            super.usarItem(itemEquipar);
+        }
+        else
+            throw new RuntimeException("Hubo un error para equipar el item");
     }
     public abstract void atacar(Personaje personajeAtacar);
     public void aceptarMision(Mision mision){
@@ -91,4 +97,24 @@ public abstract class Heroe extends Personaje{
         }
         return false;
     }
+    public Items buscarItem(int idItem){
+        for (Items items: this.mochilaItems){
+            if (items.sosItem(idItem)){
+                return items;
+            }
+        }
+        return null;
+    }
+
+    public void sacarItemEquipo(Items items){
+        Items item = items;
+        for(int i = 0; i<equipoItems.size();i++){
+            if (equipoItems.get(i) == item){
+                equipoItems.remove(i);
+            }
+        }
+    }
+
+
+
 }

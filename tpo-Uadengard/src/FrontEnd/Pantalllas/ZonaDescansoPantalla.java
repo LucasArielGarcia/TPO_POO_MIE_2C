@@ -89,7 +89,8 @@ public class ZonaDescansoPantalla  extends JFrame {
 
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                MochilaPantalla.getInstancia().setVisible(true);
+                PersonajePantallaPrincipal personajePantallaPrincipal = new PersonajePantallaPrincipal();
+                personajePantallaPrincipal.setVisible(true);
             }
 
         }

@@ -1,8 +1,6 @@
 package FrontEnd.Pantalllas;
 
-import BackEnd.Entidades.Items;
 import BackEnd.Entidades.objectView.ItemsMochilaView;
-import BackEnd.Juego.Juego;
 import FrontEnd.Controlador.ControladorFront;
 
 import javax.swing.*;
@@ -10,18 +8,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MochilaPantalla extends JFrame {
+public class PersonajePantallaPrincipal extends JFrame {
 
-    private static MochilaPantalla instancia;
-    public static MochilaPantalla getInstancia() {
-        if(instancia==null){
-            instancia=new MochilaPantalla();
-        }
-        return instancia;
-    }
+
     private Image imagenFondo;
-    public MochilaPantalla(){
-        super("Mochila");
+    public PersonajePantallaPrincipal(){
+        super("Personaje");
         setSize(350, 300);
         setLocation(20, 20);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,12 +37,14 @@ public class MochilaPantalla extends JFrame {
         contBotones.setLayout(new GridLayout(1, 2, 2, 2));
         contBotones.setBounds(30, 70, 280, 50);
 
-        JButton btnVerItems = new JButton("Ver Items");
-        JButton btnCerrarMochila = new JButton("Cerrar Mochila");
-        class HandleerBtnVerItems implements ActionListener{
+        JButton btnEstadisticas = new JButton("Ver estadisticas del heroe");
+        JButton btnVerMochila = new JButton("ver Mochila");
+        class HandleerBtnVerEstadisticas implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e){
                 dispose();
+                EstadisticasHeroePantalla estadisticasHeroePantalla = new EstadisticasHeroePantalla();
+                estadisticasHeroePantalla.setVisible(true);
 
             }
         }
@@ -62,12 +56,12 @@ public class MochilaPantalla extends JFrame {
             }
         }
 
-        HandleerBtnVerItems handlerBtnVerItems=new HandleerBtnVerItems();
+        HandleerBtnVerEstadisticas handlerBtnVerItems=new HandleerBtnVerEstadisticas();
         HandlerBtnCerrarMochila handlerBtnCerrarMochila=new HandlerBtnCerrarMochila();
-        btnVerItems.addActionListener(handlerBtnVerItems);
-        btnCerrarMochila.addActionListener(handlerBtnCerrarMochila);
-        contBotones.add(btnVerItems);
-        contBotones.add(btnCerrarMochila);
+        btnEstadisticas.addActionListener(handlerBtnVerItems);
+        btnVerMochila.addActionListener(handlerBtnCerrarMochila);
+        contBotones.add(btnEstadisticas);
+        contBotones.add(btnVerMochila);
 
         panelConFondo.add(contBotones);
         this.add(panelConFondo, BorderLayout.CENTER);
