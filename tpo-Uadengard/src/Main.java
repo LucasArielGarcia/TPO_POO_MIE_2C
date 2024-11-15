@@ -179,7 +179,7 @@ public class Main {
 
 
     public static void abrirMochila(){
-        for (String item: Juego.getInstancia().abrirMochila()){
+        for (ItemView item: Juego.getInstancia().abrirMochila()){
             System.out.println(item);
         }
         if (Juego.getInstancia().abrirMochila().isEmpty())

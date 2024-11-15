@@ -117,7 +117,8 @@ public class Juego {
     }
 
     public ItemView reclamarRecompensa(){return zonaDescanso.reclamarRecompensa();}
-    public List<String>abrirMochila(){return heroe.abrirMochila();}
+
+    public List<ItemView>abrirMochila(){return heroe.abrirMochila();}
 
     public PersonajeView mostrarEstadisticasHeroe(){
         return heroe.toView();
