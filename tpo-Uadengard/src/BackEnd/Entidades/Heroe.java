@@ -78,4 +78,17 @@ public abstract class Heroe extends Personaje{
     public void descontarMonedasCompra(double monedas){
         this.monedas -= monedas;
     }
+    public void aumentarMonedas(double modenas){this.monedas +=modenas;}
+
+    public boolean venderItem(int idItem){
+        for (int i= 0; i<mochilaItems.size();i++){
+            if (mochilaItems.get(i).sosItem(idItem)){
+                ItemView itemView = mochilaItems.get(i).toView();
+                aumentarMonedas(itemView.getPrecio());
+                mochilaItems.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 }

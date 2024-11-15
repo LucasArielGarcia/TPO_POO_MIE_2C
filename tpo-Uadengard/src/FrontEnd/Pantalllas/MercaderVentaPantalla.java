@@ -34,10 +34,24 @@ public class MercaderVentaPantalla extends JFrame {
         for (ItemView itemView : ControladorFront.getinstancia().abrirMochila()){
             JButton buttonItem = new JButton(itemView.getDescripcion());
             buttonItem.addActionListener(e -> {
-                // programar funcion de venta al mercader
+                boolean vendio = ControladorFront.getinstancia().venderItem(itemView.getIdItems());
+                if (vendio){
+                    JOptionPane.showMessageDialog(null, "Vendiste tu item: " + itemView.getDescripcion(), "Mensaje", JOptionPane.PLAIN_MESSAGE);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Hubo un error para vender el item:  " + itemView.getDescripcion(), "Mensaje", JOptionPane.PLAIN_MESSAGE);
+
+                }
             });
+
             contBotones.add(buttonItem);
         }
+        JButton btnVolver = new JButton("Volver");
+        btnVolver.addActionListener(e -> {
+            dispose();
+            ZonaDescansoPantalla.getInstancia().setVisible(true);
+        });
+        contBotones.add(btnVolver);
         panelConFondo.add(contBotones);
         panelConFondo.setLayout(null);
         this.add(panelConFondo, BorderLayout.CENTER);

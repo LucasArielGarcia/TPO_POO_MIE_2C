@@ -60,9 +60,10 @@ public class ZonaDescanso {
             ItemView itemView = itemComprado.toView();
             this.heroe.descontarMonedasCompra(itemView.getPrecio());
         }
+    }
 
-
-
+    public boolean venderItem(int idItem){
+        return this.heroe.venderItem(idItem);
     }
 
 }

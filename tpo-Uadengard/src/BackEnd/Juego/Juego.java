@@ -145,6 +145,7 @@ public class Juego {
     public void comprarItem(int idItem){
         this.zonaDescanso.comprarItem(idItem);
     }
+    public boolean venderItem(int idItem){return this.zonaDescanso.venderItem(idItem);}
 }
 
 

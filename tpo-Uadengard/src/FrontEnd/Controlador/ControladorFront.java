@@ -90,5 +90,6 @@ public class ControladorFront {
 
     public ItemView reclamarRecompensa(){ return Juego.getInstancia().reclamarRecompensa();}
     public List<ItemView> abrirMochila(){return Juego.getInstancia().abrirMochila();}
+    public boolean venderItem(int idItem){return Juego.getInstancia().venderItem(idItem);}
 
 }
