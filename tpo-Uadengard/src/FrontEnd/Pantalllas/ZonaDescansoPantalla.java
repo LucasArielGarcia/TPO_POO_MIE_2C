@@ -80,7 +80,7 @@ public class ZonaDescansoPantalla  extends JFrame {
         	
         	public void actionPerformed(ActionEvent e) {
                 dispose();
-                MercaderPantalla mercaderPantalla = new MercaderPantalla();
+                MercaderPantallaPrincipal mercaderPantalla = new MercaderPantallaPrincipal();
                 mercaderPantalla.setVisible(true);
                 }
         	

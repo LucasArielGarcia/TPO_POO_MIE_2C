@@ -9,14 +9,13 @@ import java.util.List;
 
 import javax.swing.*;
 
-import BackEnd.Entidades.ZonaDescanso;
 import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.MercaderView;
 import FrontEnd.Controlador.ControladorFront;
 
-public class MercaderPantalla extends JFrame{
+public class MercaderPantallaCompra extends JFrame{
 	Image imagenFondo;
-	public MercaderPantalla(){
+	public MercaderPantallaCompra(){
 		super("Mercader");
 		setSize(400, 300);
         setLocation(20, 20);

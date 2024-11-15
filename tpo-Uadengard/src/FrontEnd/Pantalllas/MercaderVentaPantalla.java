@@ -10,7 +10,7 @@ public class MercaderVentaPantalla extends JFrame {
     Image imagenFondo;
 
     public MercaderVentaPantalla(){
-        super("Mochila");
+        super("Mercader Venta");
         setSize(350, 300);
         setLocation(20, 20);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,7 +30,7 @@ public class MercaderVentaPantalla extends JFrame {
         };
         Container contBotones = new Container();
         contBotones.setLayout(new GridLayout(4,1 , 2, 2));
-        contBotones.setBounds(40, 85, 300, 100);
+        contBotones.setBounds(40, 85, 200, 100);
         for (ItemView itemView : ControladorFront.getinstancia().abrirMochila()){
             JButton buttonItem = new JButton(itemView.getDescripcion());
             buttonItem.addActionListener(e -> {
@@ -39,7 +39,8 @@ public class MercaderVentaPantalla extends JFrame {
             contBotones.add(buttonItem);
         }
         panelConFondo.add(contBotones);
-
+        panelConFondo.setLayout(null);
+        this.add(panelConFondo, BorderLayout.CENTER);
 
 
     }
