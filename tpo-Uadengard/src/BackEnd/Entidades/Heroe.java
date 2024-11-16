@@ -20,15 +20,17 @@ public abstract class Heroe extends Personaje{
         this.nivelHeroe = 1;
         this.monedas= 1;
     }
-    public void equiparItem(int id){
+    public boolean equiparItem(int id){
         Items itemEquipar = buscarItem(id);
         if (itemEquipar != null){
             sacarItemEquipo(itemEquipar);
             equipoItems.add(itemEquipar);
             super.usarItem(itemEquipar);
+            return true;
         }
-        else
-            throw new RuntimeException("Hubo un error para equipar el item");
+        else {
+            return false;
+        }
     }
     public abstract void atacar(Personaje personajeAtacar);
     public void aceptarMision(Mision mision){

@@ -48,16 +48,17 @@ public class PersonajePantallaPrincipal extends JFrame {
 
             }
         }
-        class HandlerBtnCerrarMochila implements ActionListener{
+        class HandlerBtnAbrirMochila implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e){
                 dispose();
-                ZonaDescansoPantalla.getInstancia().setVisible(true);
+                PersonajePantallaMochila personajePantallaMochila = new PersonajePantallaMochila();
+                personajePantallaMochila.setVisible(true);
             }
         }
 
         HandleerBtnVerEstadisticas handlerBtnVerItems=new HandleerBtnVerEstadisticas();
-        HandlerBtnCerrarMochila handlerBtnCerrarMochila=new HandlerBtnCerrarMochila();
+        HandlerBtnAbrirMochila handlerBtnCerrarMochila=new HandlerBtnAbrirMochila();
         btnEstadisticas.addActionListener(handlerBtnVerItems);
         btnVerMochila.addActionListener(handlerBtnCerrarMochila);
         contBotones.add(btnEstadisticas);

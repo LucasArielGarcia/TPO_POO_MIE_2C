@@ -147,6 +147,7 @@ public class Juego {
     }
     public boolean venderItem(int idItem){return this.zonaDescanso.venderItem(idItem);}
     public List<ItemView> mostrarEquipoHeroe(){return this.heroe.mostrarEquipo();}
+    public boolean equiparItem(int idItem){return this.heroe.equiparItem(idItem);}
 }
 
 
