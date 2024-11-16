@@ -22,6 +22,8 @@ public abstract class Items {
     }
 
     public abstract void usarItem(Personaje personaje);
+    public abstract void sacarItem(Personaje personaje);
+
 
     public int getNvlItem() {
         return nvlItem;

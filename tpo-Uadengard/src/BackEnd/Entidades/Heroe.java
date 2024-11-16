@@ -26,6 +26,7 @@ public abstract class Heroe extends Personaje{
             sacarItemEquipo(itemEquipar);
             equipoItems.add(itemEquipar);
             super.usarItem(itemEquipar);
+            sacarItemMochila(id);
             return true;
         }
         else {
@@ -59,12 +60,6 @@ public abstract class Heroe extends Personaje{
         return mochilaReturn;
     }
 
-
-    public void devolverItem(){
-        mochilaItems.forEach(items -> {
-
-        });
-    }
 
     public ItemsMochilaView itemsToView(){
          return new ItemsMochilaView(this.mochilaItems);
@@ -111,7 +106,9 @@ public abstract class Heroe extends Personaje{
     public void sacarItemEquipo(Items items){
         Items item = items;
         for(int i = 0; i<equipoItems.size();i++){
-            if (equipoItems.get(i) == item){
+            if (equipoItems.get(i).getClass() == item.getClass()){
+                mochilaItems.add(equipoItems.get(i));
+                super.sacarItem(equipoItems.get(i));
                 equipoItems.remove(i);
             }
         }
@@ -122,6 +119,14 @@ public abstract class Heroe extends Personaje{
             itemViewList.add(items.toView());
         }
         return itemViewList;
+    }
+
+    public void sacarItemMochila(int id){
+        for(int i = 0; i< mochilaItems.size(); i++){
+            if (mochilaItems.get(i).sosItem(id)){
+                mochilaItems.remove(i);
+            }
+        }
     }
 
 

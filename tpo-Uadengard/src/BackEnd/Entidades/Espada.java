@@ -14,6 +14,11 @@ public class Espada extends Items {
     }
 
     @Override
+    public void sacarItem(Personaje personaje) {
+        personaje.restarDano(this.aumentoDano);
+    }
+
+    @Override
     public String infoItem() {
         return superInfor()+ "Aumenta en daño: "+ aumentoDano;
     }

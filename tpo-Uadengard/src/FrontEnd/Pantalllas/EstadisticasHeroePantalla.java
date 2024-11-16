@@ -11,7 +11,7 @@ public class EstadisticasHeroePantalla extends JFrame {
 
     public EstadisticasHeroePantalla(){
         super("Personaje");
-        setSize(350, 300);
+        setSize(350, 600);
         setLocation(20, 20);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
@@ -23,14 +23,13 @@ public class EstadisticasHeroePantalla extends JFrame {
 
         JLabel estadisticasLabel = new JLabel(estadistica);
         Container contBotones = new Container();
-        contBotones.setLayout(new GridLayout(2,1 , 2, 2));
+        contBotones.setLayout(new GridLayout(8,1 , 2, 2));
         contBotones.setBounds(20, 125, 400, 60);
-        Container contEquipo = new Container();
         JLabel label = new JLabel("Equipo heroe");
-        contEquipo.add(label);
+        contBotones.add(label);
         for (ItemView itemView : ControladorFront.getinstancia().mostrarEquipoHeroe()){
-            JLabel equipo = new JLabel("Descripcion"+ itemView.getDescripcion());
-            contEquipo.add(equipo);
+            JLabel equipo = new JLabel("Descripcion: "+ itemView.getDescripcion());
+            contBotones.add(equipo);
         }
 
         JButton btnVolver = new JButton("Volver");
@@ -41,7 +40,6 @@ public class EstadisticasHeroePantalla extends JFrame {
         contBotones.add(estadisticasLabel);
         contBotones.add(btnVolver);
         panelFondo.add(contBotones);
-        panelFondo.add(contEquipo);
 
         add(panelFondo, BorderLayout.CENTER);
 

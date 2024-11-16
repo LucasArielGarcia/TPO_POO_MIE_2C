@@ -47,6 +47,10 @@ abstract class  Personaje {
     public void usarItem(Items item){
         item.usarItem(this);
     }
+    public void sacarItem(Items items){
+       items.sacarItem(this);
+    }
+
 
     public void sumarDefensa(int cantidadDefensa){
         defensa += cantidadDefensa;
@@ -72,6 +76,13 @@ abstract class  Personaje {
 
     public boolean soyPersonaje(int idPersonaje){
         return this.idPersonaje == idPersonaje;
+    }
+
+    public void restarDano(int danoRestar){
+        this.dano -= danoRestar;
+    }
+    public void restarDefensa(int defensaRestar){
+        this.defensa -= defensaRestar;
     }
 
 

@@ -59,6 +59,7 @@ public class ZonaDescanso {
         if (itemComprado != null){
             ItemView itemView = itemComprado.toView();
             this.heroe.descontarMonedasCompra(itemView.getPrecio());
+            this.heroe.agregarItemMochila(itemComprado);
         }
     }
 
