@@ -114,6 +114,13 @@ public abstract class Heroe extends Personaje{
             }
         }
     }
+    public List<ItemView> mostrarEquipo(){
+        List<ItemView> itemViewList = new ArrayList<>();
+        for (Items items: this.equipoItems){
+            itemViewList.add(items.toView());
+        }
+        return itemViewList;
+    }
 
 
 

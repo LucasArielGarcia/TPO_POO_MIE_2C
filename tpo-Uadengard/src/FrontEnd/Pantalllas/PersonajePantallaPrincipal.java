@@ -34,7 +34,7 @@ public class PersonajePantallaPrincipal extends JFrame {
         int tamanoLista=listaItems.getMostrarItemsMochila().toArray().length;
         panelConFondo.setLayout(null);
         Container contBotones = new Container();
-        contBotones.setLayout(new GridLayout(1, 2, 2, 2));
+        contBotones.setLayout(new GridLayout(2, 1, 2, 2));
         contBotones.setBounds(30, 70, 280, 50);
 
         JButton btnEstadisticas = new JButton("Ver estadisticas del heroe");
