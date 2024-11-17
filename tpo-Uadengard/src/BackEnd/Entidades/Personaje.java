@@ -22,10 +22,6 @@ abstract class  Personaje {
     }
 
     public void recibirDano(int golpe) {
-
-
-
-
      	if (this.defensa > 0) {
             this.defensa = this.defensa - golpe;
             if (golpe > (defensa + golpe) && defensa < 0) {
@@ -43,41 +39,33 @@ abstract class  Personaje {
     public boolean personajeVivo(){
         return vida > 0;
     }
-
     public void usarItem(Items item){
         item.usarItem(this);
     }
     public void sacarItem(Items items){
        items.sacarItem(this);
     }
-
-
     public void sumarDefensa(int cantidadDefensa){
         defensa += cantidadDefensa;
     }
     public void sumarDano(int cantidadDano){
         dano += cantidadDano;
     }
-
     public int golpePersonaje(){
         return this.dano;
     }
-
     public String tipoPersonaje() {
     	return this.tipo;
     }
     public String mostrarEstadistica(){
         return " Nombre: " + this.nombre + " ,Vida del personaje: "+ this.vida+ " ,Defensa del personaje " + this.defensa;
     }
-
     public PersonajeView toView(){
         return new PersonajeView(this.idPersonaje,this.tipo,this.vida,this.dano,this.nombre,this.defensa);
     }
-
     public boolean soyPersonaje(int idPersonaje){
         return this.idPersonaje == idPersonaje;
     }
-
     public void restarDano(int danoRestar){
         this.dano -= danoRestar;
     }
