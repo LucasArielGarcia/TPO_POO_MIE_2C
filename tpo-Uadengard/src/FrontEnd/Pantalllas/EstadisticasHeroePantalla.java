@@ -1,5 +1,6 @@
 package FrontEnd.Pantalllas;
 
+import BackEnd.Entidades.objectView.HeroeToview;
 import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.PersonajeView;
 import FrontEnd.Controlador.ControladorFront;
@@ -11,15 +12,17 @@ public class EstadisticasHeroePantalla extends JFrame {
 
     public EstadisticasHeroePantalla(){
         super("Personaje");
-        setSize(350, 600);
+        setSize(500, 600);
         setLocation(20, 20);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
-        PersonajeView personajeView = ControladorFront.getinstancia().getHeroe();
+        HeroeToview personajeView = ControladorFront.getinstancia().getHeroe();
         JPanel panelFondo = new JPanel();
         String estadistica = "Vida actual: "+personajeView.getVida() +"\n"+
                 " Defensa: " + personajeView.getDefensa()+ "\n"+
                 " Daño: "+ personajeView.getDano();
+
+        JLabel monedasMisionLabel = new JLabel("Mision actual: "+personajeView.getMisionActual()+ " || Cantidad de monedas: "+ personajeView.getMonedas());
 
         JLabel estadisticasLabel = new JLabel(estadistica);
         Container contBotones = new Container();
@@ -38,6 +41,7 @@ public class EstadisticasHeroePantalla extends JFrame {
             ZonaDescansoPantalla.getInstancia().setVisible(true);
         });
         contBotones.add(estadisticasLabel);
+        contBotones.add(monedasMisionLabel);
         contBotones.add(btnVolver);
         panelFondo.add(contBotones);
 

@@ -1,8 +1,6 @@
 package BackEnd.Entidades;
 
-import BackEnd.Entidades.objectView.ItemView;
-import BackEnd.Entidades.objectView.ItemsMochilaView;
-import BackEnd.Entidades.objectView.MisionView;
+import BackEnd.Entidades.objectView.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,6 +125,18 @@ public abstract class Heroe extends Personaje{
                 mochilaItems.remove(i);
             }
         }
+    }
+
+    public HeroeToview toview(){
+        PersonajeView personajeView = this.toView();
+        String mision = "";
+        if (this.mision == null){
+            mision = "No aceptaste ninguna mision";
+        }
+        else {
+            mision = this.mision.toView().getNombreMision();
+        }
+        return new HeroeToview(personajeView.getVida(),personajeView.getDano(),personajeView.getNombre(),personajeView.getDefensa(),this.monedas,mision);
     }
 
 

@@ -1,5 +1,6 @@
 package FrontEnd.Pantalllas;
 
+import BackEnd.Entidades.objectView.HeroeToview;
 import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.PersonajeView;
 import BackEnd.Entidades.objectView.UbicacionView;
@@ -36,7 +37,7 @@ public class PeleaPantalla extends JFrame {
         // Panel del héroe
         JPanel panelHeroe = new JPanel();
         panelHeroe.setLayout(new FlowLayout(FlowLayout.LEFT));
-        PersonajeView heroe = ControladorFront.getinstancia().getHeroe();
+        HeroeToview heroe = ControladorFront.getinstancia().getHeroe();
         JLabel labelHeroe = new JLabel("| Heore |" + " Vida: " + heroe.getVida()+ " defensa: " + heroe.getDefensa());
         //JButton btonHeroe = new JButton("Curarse");
 
@@ -103,7 +104,7 @@ public class PeleaPantalla extends JFrame {
         }
     }
     public void actualizarPantallaHeroe(JLabel label){
-        PersonajeView heroe = ControladorFront.getinstancia().getHeroe();
+        HeroeToview heroe = ControladorFront.getinstancia().getHeroe();
         if (heroe.getVida()>0)
             label.setText("| Heore |" + " Vida: " + heroe.getVida()+ " defensa: " + heroe.getDefensa());
         else {

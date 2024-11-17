@@ -48,7 +48,7 @@ public class ControladorFront {
         return Juego.getInstancia().hayPelea();
     }
 
-    public PersonajeView getHeroe(){
+    public HeroeToview getHeroe(){
         return Juego.getInstancia().mostrarEstadisticasHeroe();
     }
 

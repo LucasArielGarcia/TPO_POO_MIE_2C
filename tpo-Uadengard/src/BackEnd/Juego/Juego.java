@@ -120,8 +120,8 @@ public class Juego {
 
     public List<ItemView>abrirMochila(){return heroe.abrirMochila();}
 
-    public PersonajeView mostrarEstadisticasHeroe(){
-        return heroe.toView();
+    public HeroeToview mostrarEstadisticasHeroe(){
+        return heroe.toview();
     }
 
     public boolean hayCofre(){
