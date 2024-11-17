@@ -44,7 +44,6 @@ public class Ubicacion {
         MisionView misionView = mision.toView();
         mision = null;
         heroe.recompensaMonedas(misionView.getMonedasAdar());
-
    }
 
    public String getNombreUbicacion(){
