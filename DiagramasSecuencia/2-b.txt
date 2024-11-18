@@ -1,0 +1,26 @@
+@startuml
+ACTOR Usuario
+Usuario->Juego:viajarUbicacion: void
+Activate Juego
+Juego -> Ubicacion: llegarUbicacion(): void
+activate Ubicacion
+
+Ubicacion -> Ubicacion: hayMision(): boolean
+alt si hay mision
+ Ubicacion -> Mision : comenzarMision(): void
+ activate Mision
+ Mision -> Ubicacion: hayEnemigosUbicacion(): boolean
+ Ubicacion --> Mision: boolean
+ alt si hay enemigos
+  Mision -> Pelea: empezarPelea(heroe: Heroe, enemigo: Enemigo): void
+  loop mientras heroe y enemigo tengan su vida superiror a 1
+   Pelea -> Heroe: ataca() void
+   Pelea -> Enemigo: ataca(): void
+   Pelea -> Heroe: estoyMuerto(): boolean
+   Heroe --> Pelea: boolean
+   Pelea -> Enemigo: estoyMuerto(): booelan
+   Enemigo --> Pelea: boolean
+  end
+ end
+end
+@endum
