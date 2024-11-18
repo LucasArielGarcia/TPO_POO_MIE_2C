@@ -116,15 +116,11 @@ public class Juego {
         ubicacion.terminarMision();
     }
 
-    public ItemView reclamarRecompensa(){
-        this.heroe.terminarMision();
-        return zonaDescanso.reclamarRecompensa();
-    }
+    public boolean reclamarRecompensa(){return zonaDescanso.reclamarRecompensa();}
+    public List<String>abrirMochila(){return heroe.abrirMochila();}
 
-    public List<ItemView>abrirMochila(){return heroe.abrirMochila();}
-
-    public HeroeToview mostrarEstadisticasHeroe(){
-        return heroe.toview();
+    public PersonajeView mostrarEstadisticasHeroe(){
+        return heroe.toView();
     }
 
     public boolean hayCofre(){
@@ -144,13 +140,6 @@ public class Juego {
         return this.mapa.toView();
     }
     public UbicacionView getUbicacionActual(){return this.ubicacion.toView();}
-
-    public void comprarItem(int idItem){
-        this.zonaDescanso.comprarItem(idItem);
-    }
-    public boolean venderItem(int idItem){return this.zonaDescanso.venderItem(idItem);}
-    public List<ItemView> mostrarEquipoHeroe(){return this.heroe.mostrarEquipo();}
-    public boolean equiparItem(int idItem){return this.heroe.equiparItem(idItem);}
 }
 
 

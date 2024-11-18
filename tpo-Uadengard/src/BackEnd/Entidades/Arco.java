@@ -14,11 +14,6 @@ public class Arco extends Items {
     }
 
     @Override
-    public void sacarItem(Personaje personaje) {
-        personaje.restarDano(danoSumar);
-    }
-
-    @Override
     public String infoItem() {
         return superInfor() + " aumenta en daño: "+ danoSumar;
     }

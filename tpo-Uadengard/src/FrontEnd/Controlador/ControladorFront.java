@@ -48,7 +48,7 @@ public class ControladorFront {
         return Juego.getInstancia().hayPelea();
     }
 
-    public HeroeToview getHeroe(){
+    public PersonajeView getHeroe(){
         return Juego.getInstancia().mostrarEstadisticasHeroe();
     }
 
@@ -85,13 +85,5 @@ public class ControladorFront {
     public void terminarMision(){
         Juego.getInstancia().cerrarMision();
     }
-
-    public void comprarItem(int id){Juego.getInstancia().comprarItem(id);}
-
-    public ItemView reclamarRecompensa(){ return Juego.getInstancia().reclamarRecompensa();}
-    public List<ItemView> abrirMochila(){return Juego.getInstancia().abrirMochila();}
-    public boolean venderItem(int idItem){return Juego.getInstancia().venderItem(idItem);}
-    public List<ItemView> mostrarEquipoHeroe(){return Juego.getInstancia().mostrarEquipoHeroe();}
-    public boolean equiparItem(int idItem){return Juego.getInstancia().equiparItem(idItem);}
 
 }

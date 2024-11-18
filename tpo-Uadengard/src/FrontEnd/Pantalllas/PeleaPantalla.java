@@ -1,6 +1,5 @@
 package FrontEnd.Pantalllas;
 
-import BackEnd.Entidades.objectView.HeroeToview;
 import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.PersonajeView;
 import BackEnd.Entidades.objectView.UbicacionView;
@@ -37,8 +36,7 @@ public class PeleaPantalla extends JFrame {
         // Panel del héroe
         JPanel panelHeroe = new JPanel();
         panelHeroe.setLayout(new FlowLayout(FlowLayout.LEFT));
-        HeroeToview heroe = ControladorFront.getinstancia().getHeroe();
-        JLabel labelHeroe = new JLabel("| Heore |" + " Vida: " + heroe.getVida()+ " defensa: " + heroe.getDefensa());
+        JLabel labelHeroe = new JLabel("| Heore |" + " Vida: " + ControladorFront.getinstancia().getHeroe().getVida());
         //JButton btonHeroe = new JButton("Curarse");
 
         panelHeroe.add(labelHeroe);
@@ -54,8 +52,7 @@ public class PeleaPantalla extends JFrame {
             JButton btonEnemigo = new JButton("Atacar");
             btonEnemigo.addActionListener(e -> {
                 ControladorFront.getinstancia().atacarEnemigo(personajeView.getIdPersonaje());
-                actualizarPantallaEnemigo(labelEnemigo,personajeView.getIdPersonaje());
-                actualizarPantallaHeroe(labelHeroe);
+                actualizarPantalla(labelEnemigo,personajeView.getIdPersonaje());
             });
             panelEnemigo.add(labelEnemigo);
             panelEnemigo.add(btonEnemigo);
@@ -69,7 +66,7 @@ public class PeleaPantalla extends JFrame {
         setVisible(true);
     }
 
-    public void actualizarPantallaEnemigo(JLabel labels, int id){
+    public void actualizarPantalla(JLabel labels, int id){
         for (PersonajeView personajeView : Juego.getInstancia().estadisticasEnemigos()){
             if (personajeView.getIdPersonaje() == id){
                 if (personajeView.getVida() >0)
@@ -85,8 +82,8 @@ public class PeleaPantalla extends JFrame {
                 abrirCofre.addActionListener(e -> {
                     ItemView itemView = ControladorFront.getinstancia().abrirCofre();
                     JOptionPane.showMessageDialog(null, "Abriste el cofre, en este se encuentra el objeto: "+itemView.getDescripcion()+" ,Se agregara a tu mochila", "Mensage", JOptionPane.PLAIN_MESSAGE);
-                    ControladorFront.getinstancia().terminarMision();
                     ControladorFront.getinstancia().viajarZonaDescanso();
+                    ControladorFront.getinstancia().terminarMision();
                     dispose();
                     ZonaDescansoPantalla.getInstancia().setVisible(true);
                 });
@@ -102,16 +99,6 @@ public class PeleaPantalla extends JFrame {
                 panelFondo.add(volverZonaDescanso);
             }
         }
-    }
-    public void actualizarPantallaHeroe(JLabel label){
-        HeroeToview heroe = ControladorFront.getinstancia().getHeroe();
-        if (heroe.getVida()>0)
-            label.setText("| Heore |" + " Vida: " + heroe.getVida()+ " defensa: " + heroe.getDefensa());
-        else {
-            JOptionPane.showMessageDialog(null, "GAME OVER", "Mensage", JOptionPane.PLAIN_MESSAGE);
-            dispose();
-        }
 
     }
-
 }

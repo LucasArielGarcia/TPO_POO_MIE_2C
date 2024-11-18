@@ -16,11 +16,6 @@ public class Armadura  extends Items{
     }
 
     @Override
-    public void sacarItem(Personaje personaje) {
-        personaje.restarDefensa(aumentoDefensa);
-    }
-
-    @Override
     public String infoItem() {
         return superInfor() + "defensa item: "+aumentoDefensa;
     }

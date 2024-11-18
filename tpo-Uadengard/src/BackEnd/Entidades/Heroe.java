@@ -1,6 +1,7 @@
 package BackEnd.Entidades;
 
-import BackEnd.Entidades.objectView.*;
+import BackEnd.Entidades.objectView.ItemsMochilaView;
+import BackEnd.Entidades.objectView.MisionView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,26 +11,15 @@ public abstract class Heroe extends Personaje{
     private List<Items> equipoItems = new ArrayList<>();
     private int nivelHeroe;
     private Mision mision;
-    private double monedas;
 
 
     public Heroe(String nombre, int defensa,String tipo) {
         super(nombre, defensa,tipo);
         this.nivelHeroe = 1;
-        this.monedas= 1;
     }
-    public boolean equiparItem(int id){
-        Items itemEquipar = buscarItem(id);
-        if (itemEquipar != null){
-            sacarItemEquipo(itemEquipar);
-            equipoItems.add(itemEquipar);
-            super.usarItem(itemEquipar);
-            sacarItemMochila(id);
-            return true;
-        }
-        else {
-            return false;
-        }
+    public void equiparItem(Items itemEquipar){
+        equipoItems.add(itemEquipar);
+        super.usarItem(itemEquipar);
     }
     public abstract void atacar(Personaje personajeAtacar);
     public void aceptarMision(Mision mision){
@@ -50,14 +40,21 @@ public abstract class Heroe extends Personaje{
     public abstract void curarse();
 
 
-    public List<ItemView> abrirMochila(){
-        List<ItemView> mochilaReturn = new ArrayList<>();
+    public List<String> abrirMochila(){
+        List<String> mochilaReturn = new ArrayList<>();
         for (Items item: mochilaItems){
-            mochilaReturn.add(item.toView());
+            String itemString = item.infoItem();
+            mochilaReturn.add(itemString);
         }
         return mochilaReturn;
     }
 
+
+    public void devolverItem(){
+        mochilaItems.forEach(items -> {
+
+        });
+    }
 
     public ItemsMochilaView itemsToView(){
          return new ItemsMochilaView(this.mochilaItems);
@@ -67,78 +64,4 @@ public abstract class Heroe extends Personaje{
     public String mostrarRecompensa() {
         return "La recompensa es: "+mochilaItems.get(mochilaItems.size()-1).infoItem();
     }
-
-    public void recompensaMonedas(double monedasRecompensa){
-        this.monedas = monedasRecompensa;
-    }
-
-    public double getMonedas() {
-        return monedas;
-    }
-
-    public void descontarMonedasCompra(double monedas){
-        this.monedas -= monedas;
-    }
-    public void aumentarMonedas(double modenas){this.monedas +=modenas;}
-
-    public boolean venderItem(int idItem){
-        for (int i= 0; i<mochilaItems.size();i++){
-            if (mochilaItems.get(i).sosItem(idItem)){
-                ItemView itemView = mochilaItems.get(i).toView();
-                aumentarMonedas(itemView.getPrecio());
-                mochilaItems.remove(i);
-                return true;
-            }
-        }
-        return false;
-    }
-    public Items buscarItem(int idItem){
-        for (Items items: this.mochilaItems){
-            if (items.sosItem(idItem)){
-                return items;
-            }
-        }
-        return null;
-    }
-
-    public void sacarItemEquipo(Items items){
-        Items item = items;
-        for(int i = 0; i<equipoItems.size();i++){
-            if (equipoItems.get(i).getClass() == item.getClass()){
-                mochilaItems.add(equipoItems.get(i));
-                super.sacarItem(equipoItems.get(i));
-                equipoItems.remove(i);
-            }
-        }
-    }
-    public List<ItemView> mostrarEquipo(){
-        List<ItemView> itemViewList = new ArrayList<>();
-        for (Items items: this.equipoItems){
-            itemViewList.add(items.toView());
-        }
-        return itemViewList;
-    }
-
-    public void sacarItemMochila(int id){
-        for(int i = 0; i< mochilaItems.size(); i++){
-            if (mochilaItems.get(i).sosItem(id)){
-                mochilaItems.remove(i);
-            }
-        }
-    }
-
-    public HeroeToview toview(){
-        PersonajeView personajeView = this.toView();
-        String mision = "";
-        if (this.mision == null){
-            mision = "No aceptaste ninguna mision";
-        }
-        else {
-            mision = this.mision.toView().getNombreMision();
-        }
-        return new HeroeToview(personajeView.getVida(),personajeView.getDano(),personajeView.getNombre(),personajeView.getDefensa(),this.monedas,mision);
-    }
-
-
-
 }

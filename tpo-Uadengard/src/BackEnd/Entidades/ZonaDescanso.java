@@ -1,6 +1,5 @@
 package BackEnd.Entidades;
 
-import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.MisionView;
 
 import java.util.List;
@@ -27,7 +26,7 @@ public class ZonaDescanso {
     }
 
     public void llegarZonaDescanso(Heroe heroe){
-        this.heroe = heroe;
+        heroe = heroe;
     }
     public void salirZonaDescanso(){this.heroe = null;}
 
@@ -45,26 +44,13 @@ public class ZonaDescanso {
     }
 
 
-    public ItemView reclamarRecompensa(){
+    public boolean reclamarRecompensa(){
         Items recompensa = aliado.reclamarRecompensa();
         if (recompensa != null) {
             heroe.agregarItemMochila(recompensa);
-            return recompensa.toView();
+            return true;
         }
-        return null;
-    }
-
-    public void comprarItem(int idItem){
-        Items itemComprado = this.mercader.comprarItem(idItem,this.heroe.getMonedas());
-        if (itemComprado != null){
-            ItemView itemView = itemComprado.toView();
-            this.heroe.descontarMonedasCompra(itemView.getPrecio());
-            this.heroe.agregarItemMochila(itemComprado);
-        }
-    }
-
-    public boolean venderItem(int idItem){
-        return this.heroe.venderItem(idItem);
+        return false;
     }
 
 }

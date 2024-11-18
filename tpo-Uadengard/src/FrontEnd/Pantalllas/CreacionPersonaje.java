@@ -43,16 +43,11 @@ public class CreacionPersonaje extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String tipo = (String) comboClase.getSelectedItem();
-                String nombrePersonaje = campoNombrePersonaje.getText();
-                if (nombrePersonaje.equals("")){
-                    JOptionPane.showMessageDialog(null, "Debes ingresar un nombre", "Info", JOptionPane.INFORMATION_MESSAGE);
-                }else {
-                    controladorFront.crearPersonaje(nombrePersonaje, tipo);
-                    JOptionPane.showMessageDialog(null, "Que empiece la aventura", "Info", JOptionPane.INFORMATION_MESSAGE);
-                    dispose();
-                    ControladorFront.getinstancia().viajarZonaDescanso();
-                    ZonaDescansoPantalla.getInstancia().setVisible(true);
-                }
+                controladorFront.crearPersonaje(campoNombrePersonaje.getText(),tipo);
+                JOptionPane.showMessageDialog(null, "Que empiece la aventura", "Info", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+                ControladorFront.getinstancia().viajarZonaDescanso();
+                ZonaDescansoPantalla.getInstancia().setVisible(true);
 
             }
         }

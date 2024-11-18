@@ -6,14 +6,12 @@ import java.util.List;
 import BackEnd.Entidades.Items;
 
 public class MercaderView {
-	private List<ItemView> itemVenta = new ArrayList<>();
+	private List<Items> itemVenta = new ArrayList<>();
 	
-    public MercaderView(List<Items> itemVentaP) {
-    	for (Items items : itemVentaP){
-			itemVenta.add(items.toView());
-		}
+    public MercaderView(List<Items> itemVenta) {
+    	this.itemVenta = itemVenta;
 	}
-	public List<ItemView> getMostrarCatologoItems(){
+	public List<Items> getMostrarCatologoItems(){
 		return this.itemVenta;
 	}
     
