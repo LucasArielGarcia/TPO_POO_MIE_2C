@@ -3,7 +3,7 @@ package BackEnd.Entidades;
 public class Dragon extends Enemigo {
 	private int cont=1;
     public Dragon(String nombre, int defensa) {
-        super(nombre, 70,"Dragon");
+        super(nombre, defensa,"Dragon");
     }
     @Override
     public void atacar(Personaje personajeAtacar) {

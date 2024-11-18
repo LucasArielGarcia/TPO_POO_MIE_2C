@@ -34,7 +34,7 @@ public class Guerrero extends Heroe {
     private void equipoComienzo(){
         Items armadura = new Armadura("Armadura de cuero",0,0,20);
         Items espada = new Espada("Espada de metal",0,0,35);
-        super.equiparItem(armadura);
-        super.equiparItem(espada);
+        super.agregarItemMochila(armadura);
+        super.agregarItemMochila(espada);
     }
 }

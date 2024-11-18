@@ -66,8 +66,8 @@ public class UbicacionPantalla extends JFrame {
                 buttonAbrirCofre.addActionListener(e -> {
                     ItemView itemView = ControladorFront.getinstancia().abrirCofre();
                     JOptionPane.showMessageDialog(null, "Abriste el cofre, en este se encuentra el objeto: "+itemView.getDescripcion()+" ,Se agregara a tu mochila, debes devolverlo al aliado", "Mensage", JOptionPane.PLAIN_MESSAGE);
-                    ControladorFront.getinstancia().viajarZonaDescanso();
                     ControladorFront.getinstancia().terminarMision();
+                    ControladorFront.getinstancia().viajarZonaDescanso();
                     dispose();
                     ZonaDescansoPantalla.getInstancia().setVisible(true);
                 });

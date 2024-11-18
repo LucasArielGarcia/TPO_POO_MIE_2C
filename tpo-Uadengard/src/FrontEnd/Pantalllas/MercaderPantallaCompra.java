@@ -5,19 +5,17 @@ import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.*;
 
-import BackEnd.Entidades.Items;
+import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.MercaderView;
 import FrontEnd.Controlador.ControladorFront;
 
-public class MercaderPantalla extends JFrame{
+public class MercaderPantallaCompra extends JFrame{
 	Image imagenFondo;
-	public MercaderPantalla(){
+	public MercaderPantallaCompra(){
 		super("Mercader");
 		setSize(400, 300);
         setLocation(20, 20);
@@ -25,7 +23,6 @@ public class MercaderPantalla extends JFrame{
         this.setLayout(new BorderLayout());
         JOptionPane.showMessageDialog(null, "Bienvenido al viajero, es hora de adquirir algunas armas ", "Mensage", JOptionPane.PLAIN_MESSAGE);
         
-        imagenFondo = new ImageIcon("C:\\Users\\zambr\\OneDrive\\Escritorio\\Documentos\\UADE\\2do_año_Uade\\POO\\git\\TPO_POO_MIE_2C\\tpo-Uadengard\\src\\FrontEnd\\Imagenes\\mercader.jpg").getImage();
         imagenFondo = new ImageIcon("E:\\git\\POO\\TPO\\TPO_POO_MIE_2C\\tpo-Uadengard\\src\\FrontEnd\\Imagenes\\mercader.jpg").getImage();
         JPanel panelFondo = new JPanel() {
             @Override
@@ -38,25 +35,34 @@ public class MercaderPantalla extends JFrame{
         };
         
         Container contBotones = new Container();
-        contBotones.setLayout(new GridLayout(2,1 , 2, 2));
-        contBotones.setBounds(40, 85, 300, 60);
+        contBotones.setLayout(new GridLayout(4,1 , 2, 2));
+        contBotones.setBounds(40, 85, 300, 100);
         
         MercaderView mercaderView = ControladorFront.getinstancia().getItems();
-        List<Items> itemList = mercaderView.getMostrarCatologoItems();
-        for(Items item: itemList) {
+        List<ItemView> itemList = mercaderView.getMostrarCatologoItems();
+        for(ItemView item: itemList) {
         	JButton boton = new JButton(item.getDescripcion());
             contBotones.add(boton);
             
             boton.addActionListener(e -> {
-                ControladorFront.getinstancia();
-                dispose();
+                ControladorFront.getinstancia().comprarItem(item.getIdItems());
                 JOptionPane.showMessageDialog(null, "Compraste el arma " + item.getDescripcion(), "Mensage", JOptionPane.PLAIN_MESSAGE);
-                ZonaDescansoPantalla.getInstancia().setVisible(true);
+
             });
-            panelFondo.add(contBotones);
-            panelFondo.setLayout(null);
-            this.add(panelFondo, BorderLayout.CENTER);
-            
+
+
         }
+        JButton botonZonaDescanso = new JButton("volver ");
+        contBotones.add(botonZonaDescanso);
+
+        botonZonaDescanso.addActionListener(e -> {
+            dispose();
+            ZonaDescansoPantalla.getInstancia().setVisible(true);
+
+        });
+        contBotones.add(botonZonaDescanso);
+        panelFondo.add(contBotones);
+        panelFondo.setLayout(null);
+        this.add(panelFondo, BorderLayout.CENTER);
 	}
 }
