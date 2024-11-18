@@ -45,12 +45,17 @@ public class ConfiguracionJuego {
         this.misionList.add(limpiarPantano);
         DevolverItem devolverItemEnCastillo = new DevolverItem(espada1,"Traer objeto castillo",baculo1,4);
         this.misionList.add(devolverItemEnCastillo);
+        Espada espadaMataDragones = new Espada("Espada mata dragones",20000.00,1,50);
+        PeleaJefe peleaJefe = new PeleaJefe(null,"Pelea dragon de la montaña",20.00,espadaMataDragones,new Dragon("Dragon de la montaña",300));
+        this.misionList.add(peleaJefe);
 
         Ubicacion ubicacion1 = new Ubicacion("Pantano",limpiarPantano,"C:\\Users\\LUCAS\\Downloads\\pantano.png");
         Ubicacion ubicacion2 = new Ubicacion("Castillo",devolverItemEnCastillo, "C:\\Users\\LUCAS\\Downloads\\castillo.png");
+        Ubicacion montaña = new Ubicacion("Montaña",peleaJefe,"");
         List<Ubicacion> ubicacionList = new ArrayList<>();
         ubicacionList.add(ubicacion1);
         ubicacionList.add(ubicacion2);
+        ubicacionList.add(montaña);
         this.aliado = new Aliado(this.misionList);
         this.mercader = new Mercader(itemsList);
         this.zonaDescanso = new ZonaDescanso(this.mercader,this.aliado);
