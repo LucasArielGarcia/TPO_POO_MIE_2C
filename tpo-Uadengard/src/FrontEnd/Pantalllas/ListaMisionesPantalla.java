@@ -15,6 +15,8 @@ public class ListaMisionesPantalla extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
         imagenFondo = new ImageIcon("E:\\git\\POO\\TPO\\TPO_POO_MIE_2C\\tpo-Uadengard\\src\\FrontEnd\\Imagenes\\libroMisiones.png").getImage();
+        imagenFondo = new ImageIcon("C:\\Users\\USUARIO\\Desktop\\UADE\\Paradigma-orientado-objetos\\2024\\git\\TPO_POO_MIE_2C\\tpo-Uadengard\\src\\FrontEnd\\Imagenes\\libroMisiones.png").getImage();
+
         JPanel panelFondo = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
