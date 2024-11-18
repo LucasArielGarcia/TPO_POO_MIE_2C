@@ -5,8 +5,8 @@ import java.util.List;
 public class LimpiarUbicacion extends Mision {
 
 
-    public LimpiarUbicacion(Items recompensa, String nombreMision,Items cofre) {
-        super(recompensa, nombreMision, cofre);
+    public LimpiarUbicacion(Items recompensa, String nombreMision,Items cofre,double moneda) {
+        super(recompensa, nombreMision, cofre,moneda);
     }
 
     @Override

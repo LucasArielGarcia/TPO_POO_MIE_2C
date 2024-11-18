@@ -28,6 +28,8 @@ public class ZonaDescansoPantalla  extends JFrame {
         this.setLayout(new BorderLayout());
 
 
+
+        imagenFondo = new ImageIcon("C:\\Users\\zambr\\OneDrive\\Escritorio\\Documentos\\UADE\\2do_año_Uade\\POO\\git\\TPO_POO_MIE_2C\\tpo-Uadengard\\src\\FrontEnd\\Imagenes\\aldea.png").getImage();
         imagenFondo = new ImageIcon("C:\\Users\\Nicol\\IdeaProjects\\TPOGrupo4\\tpo-Uadengard\\src\\FrontEnd\\Imagenes\\aldea.png").getImage();
 
 
@@ -44,7 +46,7 @@ public class ZonaDescansoPantalla  extends JFrame {
 
         // Crear el contenedor de botones con GridLayout
         Container contBotones = new Container();
-        contBotones.setLayout(new GridLayout(3, 2, 2, 2));
+        contBotones.setLayout(new GridLayout(2, 2, 2, 2));
         contBotones.setBounds(40, 85, 200, 90);
 
 
@@ -52,7 +54,6 @@ public class ZonaDescansoPantalla  extends JFrame {
         JButton btnAliado = new JButton("Aliado");
         JButton btnPersonaje = new JButton("Personaje");
         JButton btnViajar = new JButton("Viajar");
-        JButton btnMochila=new JButton("abrir mochila");
 
 
         class HandlerBtnViajar implements ActionListener {
@@ -79,35 +80,35 @@ public class ZonaDescansoPantalla  extends JFrame {
         	
         	public void actionPerformed(ActionEvent e) {
                 dispose();
-                MercaderPantalla mercaderPantalla = new MercaderPantalla();
+                MercaderPantallaPrincipal mercaderPantalla = new MercaderPantallaPrincipal();
                 mercaderPantalla.setVisible(true);
                 }
         	
         }
-        class HandlerBtnAbrirMochila implements ActionListener{
+        class HandlerBtnMochila implements ActionListener {
 
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 dispose();
-                MochilaPantalla mochilaPantalla= new MochilaPantalla();
-                mochilaPantalla.setVisible(true);
+                PersonajePantallaPrincipal personajePantallaPrincipal = new PersonajePantallaPrincipal();
+                personajePantallaPrincipal.setVisible(true);
             }
+
         }
 
 
         HandlerBtnViajar handlerBtnViajar = new HandlerBtnViajar();
         HandlerBtnAliado handlerBtnAliado = new HandlerBtnAliado();
         HandlerBtnMercader handlerBtnMercader = new HandlerBtnMercader();
-        HandlerBtnAbrirMochila handlerBtnAbrirMochila=new HandlerBtnAbrirMochila();
+        HandlerBtnMochila handlerBtnMochila = new HandlerBtnMochila();
         btnViajar.addActionListener(handlerBtnViajar);
         btnAliado.addActionListener(handlerBtnAliado);
         btnMercader.addActionListener(handlerBtnMercader);
-        btnMochila.addActionListener(handlerBtnAbrirMochila);
+        btnPersonaje.addActionListener(handlerBtnMochila);
 
         contBotones.add(btnAliado);
         contBotones.add(btnMercader);
         contBotones.add(btnViajar);
         contBotones.add(btnPersonaje);
-        contBotones.add(btnMochila);
 
         panelConFondo.add(contBotones);
 

@@ -1,5 +1,6 @@
 import BackEnd.Configuracion.ConfiguracionJuego;
 import BackEnd.Entidades.*;
+import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.MisionView;
 import BackEnd.Entidades.objectView.PersonajeView;
 import BackEnd.Entidades.objectView.UbicacionView;
@@ -79,8 +80,8 @@ public class Main {
                         scanner.nextLine();
                         Juego.getInstancia().aceptarMision(opcion);
                     } else if (opcion == 2) {
-                        boolean reclamoRecompensa = Juego.getInstancia().reclamarRecompensa();
-                        if (reclamoRecompensa) {
+                        ItemView reclamoRecompensa = Juego.getInstancia().reclamarRecompensa();
+                        if (reclamoRecompensa!=null) {
                             System.out.println("Reclamaste tu recompensa");
                             System.out.println(Juego.getInstancia().mostrarRecompensa());
                         }
@@ -128,9 +129,9 @@ public class Main {
         System.out.println("");
     }
 
-    public static void mostrarCatalogo(List<Items> itemsList){
+    public static void mostrarCatalogo(List<ItemView> itemsList){
         for (int i =0; i< itemsList.size(); i++){
-            Items item = itemsList.get(i);
+            ItemView item = itemsList.get(i);
             System.out.println(i+"Descripcion: "+ item.getDescripcion() + " Precio: "+item.getPrecio());
         }
         System.out.println("");
@@ -178,7 +179,7 @@ public class Main {
 
 
     public static void abrirMochila(){
-        for (String item: Juego.getInstancia().abrirMochila()){
+        for (ItemView item: Juego.getInstancia().abrirMochila()){
             System.out.println(item);
         }
         if (Juego.getInstancia().abrirMochila().isEmpty())

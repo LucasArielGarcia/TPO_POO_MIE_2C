@@ -1,6 +1,7 @@
 package FrontEnd.Pantalllas;
 
 import BackEnd.Entidades.Items;
+import BackEnd.Entidades.objectView.ItemView;
 import BackEnd.Entidades.objectView.ItemsMochilaView;
 import BackEnd.Juego.Juego;
 import FrontEnd.Controlador.ControladorFront;
@@ -39,12 +40,12 @@ public class MochilaPantalla extends JFrame {
             }
         };
         ItemsMochilaView itemsMochilaView= ControladorFront.getinstancia().getItemsMochila();
-        List<Items> inventario=itemsMochilaView.getMostrarItemsMochila();
+        List<ItemView> inventario=itemsMochilaView.getMostrarItemsMochila();
         panelConFondo.setLayout(null);
         Container contBotones = new Container();
         contBotones.setLayout(new GridLayout(2, 1, 2, 2));
         contBotones.setBounds(40, 85, 200, 90);
-       for(Items item: inventario) {
+       for(ItemView item: inventario) {
            JButton boton = new JButton(item.getDescripcion());
            contBotones.add(boton);
 

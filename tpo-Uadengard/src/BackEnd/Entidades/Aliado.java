@@ -33,12 +33,18 @@ public class Aliado {
     }
 
     public Items reclamarRecompensa(){
-        if (misionAceptadas.misionCompleta()){
-            Items recompensa = misionAceptadas.darRecompensa();
-            misionAceptadas = null;
-            return recompensa;
+        try {
+            if (misionAceptadas.misionCompleta()){
+                Items recompensa = misionAceptadas.darRecompensa();
+                misionAceptadas = null;
+                return recompensa;
+            }
+            return null;
+        }catch (NullPointerException e){
+            System.out.println("No hay mision aceptada");
+            return null;
         }
-        return null;
+
     }
 
     public Mision buscarMision(int idMision){
