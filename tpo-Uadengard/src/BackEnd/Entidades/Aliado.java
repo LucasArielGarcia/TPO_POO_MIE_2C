@@ -26,10 +26,13 @@ public class Aliado {
     }
 
     public void aceptarMision(Heroe heroe, int idMision){
-        Mision misionAceptar = buscarMision(idMision);
-        heroe.aceptarMision(misionAceptar);
-        misionAceptadas = misionAceptar;
-        borrarMision(idMision);
+        if(heroe.misionActiva()) {
+            Mision misionAceptar = buscarMision(idMision);
+            heroe.aceptarMision(misionAceptar);
+            misionAceptadas = misionAceptar;
+            borrarMision(idMision);
+        }
+        else{throw new RuntimeException("ya hay una mision activa");}
     }
 
     public Items reclamarRecompensa(){
