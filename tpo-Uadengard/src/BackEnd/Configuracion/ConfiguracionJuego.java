@@ -49,8 +49,8 @@ public class ConfiguracionJuego {
         PeleaJefe peleaJefe = new PeleaJefe(null,"Pelea dragon de la montaña",20.00,espadaMataDragones,new Dragon("Dragon de la montaña",300));
         this.misionList.add(peleaJefe);
 
-        Ubicacion ubicacion1 = new Ubicacion("Pantano",limpiarPantano,"../Imagenes/pantano.png");
-        Ubicacion ubicacion2 = new Ubicacion("Castillo",devolverItemEnCastillo, "../Imagenes/castillo.png");
+        Ubicacion ubicacion1 = new Ubicacion("Pantano",limpiarPantano,"../../FrontEnd/Imagenes/pantano.png");
+        Ubicacion ubicacion2 = new Ubicacion("Castillo",devolverItemEnCastillo, "../../FrontEnd/Imagenes/castillo.png");
         Ubicacion montaña = new Ubicacion("Montaña",peleaJefe,"");
         List<Ubicacion> ubicacionList = new ArrayList<>();
         ubicacionList.add(ubicacion1);
