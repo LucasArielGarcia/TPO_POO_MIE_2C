@@ -45,7 +45,6 @@ public class AliadoPantalla extends JFrame {
                 dispose();
                 ListaMisionesPantalla listaMisionesPantalla = new ListaMisionesPantalla();
                 listaMisionesPantalla.setVisible(true);
-
             }
         }
         class HandlerReclamarRecompensa implements ActionListener {

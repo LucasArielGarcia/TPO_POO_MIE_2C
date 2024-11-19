@@ -43,6 +43,13 @@ public class ListaMisionesPantalla extends JFrame {
             });
 
         }
+        JButton buttonVolverZonaDescanso = new JButton("Volver a zona de descanso");
+        buttonVolverZonaDescanso.addActionListener(e -> {
+            dispose();
+            ControladorFront.getinstancia().viajarZonaDescanso();
+            ZonaDescansoPantalla.getInstancia().setVisible(true);
+        });
+        contBotones.add(buttonVolverZonaDescanso);
         panelFondo.add(contBotones);
         panelFondo.setLayout(null);
         this.add(panelFondo, BorderLayout.CENTER);
