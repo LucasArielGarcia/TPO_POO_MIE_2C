@@ -1,0 +1,69 @@
+@startuml
+actor JUGADOR
+JUGADOR -> Juego: viajarUbicacion(ubicacion: String): void
+ activate Juego
+ Juego -> Mapa: viajarUbicacion(ubicacion: String): void
+  activate Mapa
+  Mapa -> Ubicacion: buscarUbicacion(nombre: String): Ubicacion
+   activate Ubicacion
+   alt "es la ubicacion"
+       Ubicacion-> Ubicacion: sosUbicacion(nombre: String): boolean
+       Ubicacion -> Mision: comenzarMision(Guerrero: Heroe, Dragon: Enemigo)
+       activate Mision
+       Mision -> Pelea: comenzarPelea(Guerrero: Heroe, Dragon: Enemigo)
+       activate Pelea
+       Pelea -> Heroe: peleaPersonajes(Dragon: Enemigo , Guerrero: Heroe)
+       loop
+           activate Heroe
+           Heroe -> Enemigo: atacar(): void
+           activate Enemigo
+           Enemigo -> Enemigo: estoyMuerto(): boolean
+           alt " Enemigo no está muerto"
+               Enemigo -> Heroe:  atacar(): void
+               activate Heroe
+               Heroe -> Heroe: estoyMuerto(): boolean
+               alt "Heroe no está muerto"
+                   activate Enemigo
+                   Heroe -> Enemigo: defender(): void
+                   Heroe -> Enemigo:  atacar(): void
+                   deactivate Heroe
+                   deactivate Enemigo
+               else "Heroe está muerto"
+                   Heroe -> Objetivo: entoyMuerto(): boolean
+                   activate Objetivo
+                   Objetivo --> Heroe: objetivoCompletado(): boolean
+                   deactivate Objetivo
+                   Heroe --> Pelea: objetivoCompletado(): boolean
+                   Pelea --> Mision: objetivoCompletado(): boolean
+                   Mision --> Ubicacion: misionCompletada(objetivo: Objetivo): boolean
+                   Ubicacion --> Mapa: mensaje(): String
+                   Mapa --> Juego: mensaje(): String
+                   Juego --> JUGADOR: mensaje(): String
+               end
+           else "Enemigo está muerto"
+               Enemigo --> Objetivo: entoyMuerto(): boolean
+               activate Objetivo
+               Objetivo --> Heroe: objetivoCompletado(): boolean
+               deactivate Objetivo
+               Heroe --> Pelea: objetivoCompletado(): boolean
+               Pelea --> Mision: objetivoCompletado(): boolean
+               Mision --> Ubicacion: misionCompletada(objetivo: Objetivo): boolean
+               Ubicacion --> Mapa: mensaje(): String
+               Mapa --> Juego: mensaje(): String
+               Juego --> JUGADOR: mensaje(): String
+               
+           end
+       end
+   else "no es ubicacion"
+       Ubicacion--> Mapa: sosUbicacion(nombre: String): boolean
+       Mapa --> Juego: sosUbicacion(nombre: String): boolean
+       Juego --> JUGADOR: sosUbicacion(nombre: String): boolean
+   end
+deactivate Enemigo
+deactivate Heroe
+deactivate Pelea
+deactivate Mision
+deactivate Ubicacion
+deactivate Mapa
+deactivate Juego
+@enduml

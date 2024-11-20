@@ -1,0 +1,50 @@
+@startuml
+actor JUGADOR
+JUGADOR -> Main: reclamarRecompensa(): boolean
+ activate Main
+Main -> Juego: reclamarReclamarRecompensa(): boolean
+ activate Juego
+ Juego -> ZonaDescanso: reclamarReclamarRecompensa(): boolean
+  activate ZonaDescanso
+  ZonaDescanso -> Aliado: reclamarRecompensa(): boolean
+   activate Aliadoa
+   Aliado -> Mision: reclamarRecompensa(mision Mision): Items
+    activate Mision
+    Mision -> Mision: misionCompleta(): boolean
+     activate Mision
+     alt "está completa"
+         Mision -> Mision: darRecompensa(): Items
+         Mision --> Aliado: return Items
+         deactivate Mision
+         Aliado --> ZonaDescanso: return Items
+         alt "hay item"
+             ZonaDescanso -> Heroe: reclamarRecompensa: boolean
+              activate Heroe
+              Heroe -> Heroe: agregarItemMochila(item Item): void
+              Heroe --> ZonaDescanso: return null
+              deactivate Heroe
+              ZonaDescanso --> Juego: return boolean
+              Juego --> Main: return boolean
+              Main --> JUGADOR: mensajeString (Reclamaste tu recompensa)
+         else "no hay item"
+             ZonaDescanso --> Juego: return boolean
+             Juego --> Main: return boolean
+             Main --> JUGADOR: mensajeString (No hay items para reclamar)
+         end   
+     else "no está completa"
+         activate Mision
+         Mision --> Mision: darRecompensa(): Items
+         activate Mision
+         Mision --> Aliado: return null (emite un mensaje indicando que la mision está incompleta)
+         Aliado --> ZonaDescanso: return null
+         deactivate Mision
+         deactivate Mision
+         ZonaDescanso --> Juego: return boolean
+         Juego --> Main: return boolean
+         Main --> JUGADOR: mensajeString (No completaste la misiona)
+     end
+deactivate Aliado
+deactivate ZonaDescanso
+deactivate Juego
+deactivate Main
+@enduml
