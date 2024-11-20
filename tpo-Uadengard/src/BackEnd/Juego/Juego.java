@@ -10,7 +10,7 @@ public class Juego {
     private Mapa mapa;
     private Heroe heroe;
     private ZonaDescanso zonaDescanso;
-    private Ubicacion ubicacion;
+    private Ubicacion ubicacionActual; 
     private Mision mision;
     private static Juego juego;
     private Mercader mercader;
@@ -59,13 +59,13 @@ public class Juego {
 
 
     private void empezarMision(){
-        if (this.ubicacion.personajeSeEncuentra() && (this.ubicacion.tengoMision() && heroe.misionSonIguales(this.ubicacion.getMision()))){
-            this.ubicacion.empezarMision();
+        if (this.ubicacionActual.personajeSeEncuentra() && (this.ubicacionActual.tengoMision() && heroe.misionSonIguales(this.ubicacionActual.getMision()))){
+            this.ubicacionActual.empezarMision();
         }
     }
 
     public boolean hayMision(){
-        if (this.ubicacion.tengoMision() &&(this.ubicacion.tengoMision() && heroe.misionSonIguales(this.ubicacion.getMision()))) {
+        if (this.ubicacionActual.tengoMision() &&(this.ubicacionActual.tengoMision() && heroe.misionSonIguales(this.ubicacionActual.getMision()))) {
             empezarMision();
             return true;
         }
@@ -73,18 +73,18 @@ public class Juego {
             return false;
     }
     public boolean hayPelea(){
-        return this.ubicacion.hayPelea();
+        return this.ubicacionActual.hayPelea();
     }
 
     public void pelea(int opcion){
         if (hayPelea())
-            ubicacion.pelea(this.heroe,opcion);
+        	ubicacionActual.pelea(this.heroe,opcion);
     }
 
     public String viajarUbicacion(int id){
-        this.ubicacion = mapa.buscarUbicacion(id);
-        mapa.viajarUbicacionMapa(this.ubicacion, this.heroe);
-        return this.ubicacion != null ?  "nuestro heroe se encuentra en"+ this.ubicacion.getNombreUbicacion(): "No se encontro la ubicacion";
+        this.ubicacionActual = mapa.buscarUbicacion(id);
+        mapa.viajarUbicacionMapa(this.ubicacionActual, this.heroe);
+        return this.ubicacionActual != null ?  "nuestro heroe se encuentra en"+ this.ubicacionActual.getNombreUbicacion(): "No se encontro la ubicacion";
     }
 
 
@@ -109,11 +109,11 @@ public class Juego {
 
 
     public List<PersonajeView> estadisticasEnemigos(){
-        return this.ubicacion.estadisticasEnemigos();
+        return this.ubicacionActual.estadisticasEnemigos();
     }
 
     public void cerrarMision(){
-        ubicacion.terminarMision();
+    	ubicacionActual.terminarMision();
     }
 
     public ItemView reclamarRecompensa(){
@@ -128,11 +128,11 @@ public class Juego {
     }
 
     public boolean hayCofre(){
-        return ubicacion.hayCofre();
+        return ubicacionActual.hayCofre();
     }
 
     public ItemView abrirCofre(){
-        return ubicacion.abrirCofre();
+        return ubicacionActual.abrirCofre();
     }
 
 
@@ -143,7 +143,7 @@ public class Juego {
     public MapaView getMapa(){
         return this.mapa.toView();
     }
-    public UbicacionView getUbicacionActual(){return this.ubicacion.toView();}
+    public UbicacionView getUbicacionActual(){return this.ubicacionActual.toView();}
 
     public void comprarItem(int idItem){
         this.zonaDescanso.comprarItem(idItem);
