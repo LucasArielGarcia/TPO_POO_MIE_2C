@@ -1,26 +1,26 @@
 @startuml
 actor JUGADOR
-JUGADOR --> Main: reclamarRecompensa(): boolean
+JUGADOR -> Main: reclamarRecompensa(): boolean
  activate Main
-Main --> Juego: reclamarReclamarRecompensa(): boolean
+Main -> Juego: reclamarReclamarRecompensa(): boolean
  activate Juego
- Juego --> ZonaDescanso: reclamarReclamarRecompensa(): boolean
+ Juego -> ZonaDescanso: reclamarReclamarRecompensa(): boolean
   activate ZonaDescanso
-  ZonaDescanso --> Aliado: reclamarRecompensa(): boolean
-   activate Aliado
-   Aliado --> Mision: reclamarRecompensa(mision Mision): Items
+  ZonaDescanso -> Aliado: reclamarRecompensa(): boolean
+   activate Aliadoa
+   Aliado -> Mision: reclamarRecompensa(mision Mision): Items
     activate Mision
-    Mision --> Mision: misionCompleta(): boolean
+    Mision -> Mision: misionCompleta(): boolean
      activate Mision
      alt "está completa"
-         Mision --> Mision: darRecompensa(): Items
+         Mision -> Mision: darRecompensa(): Items
          Mision --> Aliado: return Items
          deactivate Mision
          Aliado --> ZonaDescanso: return Items
          alt "hay item"
-             ZonaDescanso --> Heroe: reclamarRecompensa: boolean
+             ZonaDescanso -> Heroe: reclamarRecompensa: boolean
               activate Heroe
-              Heroe --> Heroe: agregarItemMochila(item Item): void
+              Heroe -> Heroe: agregarItemMochila(item Item): void
               Heroe --> ZonaDescanso: return null
               deactivate Heroe
               ZonaDescanso --> Juego: return boolean
@@ -47,5 +47,4 @@ deactivate Aliado
 deactivate ZonaDescanso
 deactivate Juego
 deactivate Main
-
 @enduml
