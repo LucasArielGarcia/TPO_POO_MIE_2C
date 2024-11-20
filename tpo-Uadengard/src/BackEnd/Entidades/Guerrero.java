@@ -8,7 +8,7 @@ public class Guerrero extends Heroe {
 
     @Override
     public void curarse() {
-
+    	this.sumarDefensa(60);
     }
     @Override
     public void atacar(Personaje personajeAtacar) {

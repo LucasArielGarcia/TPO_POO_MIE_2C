@@ -13,7 +13,7 @@ public class Arquero extends Heroe {
 
     @Override
     public void curarse() {
-
+    	this.sumarDefensa(60);
     }
 
     @Override
