@@ -23,7 +23,7 @@ public class MercaderPantallaCompra extends JFrame{
         this.setLayout(new BorderLayout());
         JOptionPane.showMessageDialog(null, "Bienvenido al viajero, es hora de adquirir algunas armas ", "Mensage", JOptionPane.PLAIN_MESSAGE);
         
-        imagenFondo = new ImageIcon("E:\\git\\POO\\TPO\\TPO_POO_MIE_2C\\tpo-Uadengard\\src\\FrontEnd\\Imagenes\\mercader.jpg").getImage();
+        imagenFondo = new ImageIcon("src/FrontEnd/Imagenes/mercader.jpg").getImage();
         JPanel panelFondo = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {

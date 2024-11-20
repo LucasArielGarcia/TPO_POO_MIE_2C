@@ -22,7 +22,7 @@ public class MapaGUI extends JFrame {
         this.setLayout(new BorderLayout());
 
 
-        imagenFondo = new ImageIcon("../Imagenes/mapa.png").getImage();
+        imagenFondo = new ImageIcon("src/FrontEnd/Imagenes/mapa.png").getImage();
         JPanel panelFondo = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
