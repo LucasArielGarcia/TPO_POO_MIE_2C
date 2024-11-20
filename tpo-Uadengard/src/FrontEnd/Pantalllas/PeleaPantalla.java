@@ -99,8 +99,8 @@ public class PeleaPantalla extends JFrame {
             } else {
                 JButton volverZonaDescanso = new JButton("volver Zona Desanso");
                 volverZonaDescanso.addActionListener(e -> {
-                    ControladorFront.getinstancia().viajarZonaDescanso();
                     ControladorFront.getinstancia().terminarMision();
+                    ControladorFront.getinstancia().viajarZonaDescanso();
                     dispose();
                     ZonaDescansoPantalla.getInstancia().setVisible(true);
                 });
