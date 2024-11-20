@@ -38,7 +38,8 @@ public class PersonajePantallaPrincipal extends JFrame {
         contBotones.setBounds(30, 70, 280, 50);
 
         JButton btnEstadisticas = new JButton("Ver estadisticas del heroe");
-        JButton btnVerMochila = new JButton("ver Mochila");
+        JButton btnVerMochila = new JButton("Ver Mochila");
+        JButton btnVolverZonaDescanso = new JButton("Volver a zona descanso");
         class HandleerBtnVerEstadisticas implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e){
@@ -56,11 +57,23 @@ public class PersonajePantallaPrincipal extends JFrame {
                 personajePantallaMochila.setVisible(true);
             }
         }
+        class HandlerVolverZonaDescanso implements ActionListener {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                ZonaDescansoPantalla.getInstancia().setVisible(true);
+
+            }
+        }
 
         HandleerBtnVerEstadisticas handlerBtnVerItems=new HandleerBtnVerEstadisticas();
         HandlerBtnAbrirMochila handlerBtnCerrarMochila=new HandlerBtnAbrirMochila();
+        HandlerVolverZonaDescanso handlerVolverZonaDescanso = new HandlerVolverZonaDescanso();
         btnEstadisticas.addActionListener(handlerBtnVerItems);
         btnVerMochila.addActionListener(handlerBtnCerrarMochila);
+        btnVolverZonaDescanso.addActionListener(handlerVolverZonaDescanso);
+        contBotones.add(btnVolverZonaDescanso);
         contBotones.add(btnEstadisticas);
         contBotones.add(btnVerMochila);
 
