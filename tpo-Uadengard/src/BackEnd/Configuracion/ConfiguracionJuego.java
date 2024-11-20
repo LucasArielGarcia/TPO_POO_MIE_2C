@@ -51,7 +51,7 @@ public class ConfiguracionJuego {
 
         Ubicacion ubicacion1 = new Ubicacion("Pantano",limpiarPantano,"src/FrontEnd/Imagenes/pantano.png");
         Ubicacion ubicacion2 = new Ubicacion("Castillo",devolverItemEnCastillo, "src/FrontEnd/Imagenes/castillo.png");
-        Ubicacion montaña = new Ubicacion("Montaña",peleaJefe,"");
+        Ubicacion montaña = new Ubicacion("Montaña",peleaJefe,"src/FrontEnd/Imagenes/montaña.jpg");
         List<Ubicacion> ubicacionList = new ArrayList<>();
         ubicacionList.add(ubicacion1);
         ubicacionList.add(ubicacion2);
