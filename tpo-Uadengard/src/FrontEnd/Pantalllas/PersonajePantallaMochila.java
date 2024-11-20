@@ -9,32 +9,39 @@ import java.awt.*;
 
 public class PersonajePantallaMochila extends JFrame {
     public PersonajePantallaMochila(){
-        super("Personaje");
-        setSize(350, 300);
+    	super("Personaje");
+    	setSize(300, 300);
         setLocation(20, 20);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 
-        JPanel panelConFondo = new JPanel();
+        JPanel panelConFondo = new JPanel(new BorderLayout());
 
         Container contBotones = new Container();
-        contBotones.setLayout(new GridLayout(2, 4, 2, 2));
-        contBotones.setBounds(30, 70, 280, 50);
+        contBotones.setLayout(new GridLayout(8,8 , 1, 1));
+        contBotones.setBounds(20, 85, 400, 60);
 
-        for (ItemView itemView: ControladorFront.getinstancia().abrirMochila()){
-            JButton jButton = new JButton("Descripcion: "+ itemView.getDescripcion());
-            jButton.addActionListener(e -> {
-                boolean agregar = ControladorFront.getinstancia().equiparItem(itemView.getIdItems());
-                if (agregar){
-                    JOptionPane.showMessageDialog(null, "agregaste un item a tu equipo", "Info", JOptionPane.INFORMATION_MESSAGE);
-                    dispose();
-                    ZonaDescansoPantalla.getInstancia().setVisible(true);
-                }
-            });
-            contBotones.add(jButton);
-        }
+        JButton mejorar = new JButton("¡Vamos a equipar mejores armas!");
+        mejorar.addActionListener(e -> {
+            contBotones.removeAll(); // Limpiar botones anteriores para evitar duplicados
+            for (ItemView itemView : ControladorFront.getinstancia().abrirMochila()) {
+                JButton añadir = new JButton("Descripción: " + itemView.getDescripcion());
+                añadir.addActionListener(event -> {
+                    boolean agregar = ControladorFront.getinstancia().equiparItem(itemView.getIdItems());
+                    if (agregar) {
+                        JOptionPane.showMessageDialog(null, "Agregaste un ítem a tu equipo", "Info", JOptionPane.INFORMATION_MESSAGE);
+                        dispose();
+                        ZonaDescansoPantalla.getInstancia().setVisible(true);
+                    }
+                });
+                contBotones.add(añadir);
+            }
+            contBotones.revalidate();
+            contBotones.repaint();
+        });
+
+        contBotones.add(mejorar);
         panelConFondo.add(contBotones);
         this.add(panelConFondo, BorderLayout.CENTER);
-
     }
 }
