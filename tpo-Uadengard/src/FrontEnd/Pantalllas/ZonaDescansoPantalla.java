@@ -23,7 +23,7 @@ public class ZonaDescansoPantalla  extends JFrame {
     public ZonaDescansoPantalla(){
         super("Zona de descanso");
         setSize(300, 300);
-        setLocation(20, 20);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 

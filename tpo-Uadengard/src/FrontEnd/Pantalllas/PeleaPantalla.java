@@ -18,7 +18,7 @@ public class PeleaPantalla extends JFrame {
         super("Pelea");
         UbicacionPantalla.getInstancia().setVisible(false);
         setSize(500, 300);
-        setLocation(20, 20);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 

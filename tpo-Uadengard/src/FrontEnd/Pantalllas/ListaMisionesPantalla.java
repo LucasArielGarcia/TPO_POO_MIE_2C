@@ -11,7 +11,7 @@ public class ListaMisionesPantalla extends JFrame {
     public ListaMisionesPantalla(){
         super("Lista de misiones");
         setSize(300, 300);
-        setLocation(20, 20);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
         imagenFondo = new ImageIcon("../Imagenes/libroMisiones.png").getImage();

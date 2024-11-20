@@ -12,7 +12,7 @@ public class MercaderVentaPantalla extends JFrame {
     public MercaderVentaPantalla(){
         super("Mercader Venta");
         setSize(350, 300);
-        setLocation(20, 20);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 

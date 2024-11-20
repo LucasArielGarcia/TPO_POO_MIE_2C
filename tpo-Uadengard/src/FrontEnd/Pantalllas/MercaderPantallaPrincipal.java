@@ -8,7 +8,7 @@ public class MercaderPantallaPrincipal extends JFrame {
     public MercaderPantallaPrincipal(){
         super("Mercader");
         setSize(400, 300);
-        setLocation(20, 20);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
         JOptionPane.showMessageDialog(null, "Bienvenido al viajero, es hora de adquirir algunas armas ", "Mensage", JOptionPane.PLAIN_MESSAGE);

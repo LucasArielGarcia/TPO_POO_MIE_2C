@@ -15,7 +15,7 @@ public class PersonajePantallaPrincipal extends JFrame {
     public PersonajePantallaPrincipal(){
         super("Personaje");
         setSize(350, 300);
-        setLocation(20, 20);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 

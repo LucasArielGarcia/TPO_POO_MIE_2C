@@ -17,7 +17,7 @@ public class MapaGUI extends JFrame {
     public MapaGUI(MapaView mapaView){
         super("Mapa");
         setSize(300, 300);
-        setLocation(20, 20);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 

@@ -14,7 +14,7 @@ public class AliadoPantalla extends JFrame {
     public AliadoPantalla(){
         super("Aliado");
         setSize(450, 300);
-        setLocation(20, 20);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
         JOptionPane.showMessageDialog(null, "Bienvenido viajero que deseas? ", "Mensage", JOptionPane.PLAIN_MESSAGE);

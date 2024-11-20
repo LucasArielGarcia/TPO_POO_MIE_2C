@@ -25,7 +25,7 @@ public class UbicacionPantalla extends JFrame {
     public UbicacionPantalla() {
         UbicacionView ubicacion = ControladorFront.getinstancia().getUbicacionActual();
         setSize(300, 300);
-        setLocation(20, 20);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 

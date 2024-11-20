@@ -13,7 +13,7 @@ public class EstadisticasHeroePantalla extends JFrame {
     public EstadisticasHeroePantalla(){
         super("Personaje");
         setSize(500, 600);
-        setLocation(20, 20);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
         HeroeToview personajeView = ControladorFront.getinstancia().getHeroe();

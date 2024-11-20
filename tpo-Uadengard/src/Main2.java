@@ -14,7 +14,7 @@ public class Main2 {
         interfazCreacionPersonaje.setVisible(true);
         interfazCreacionPersonaje.setSize(300,300);
         interfazCreacionPersonaje.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        interfazCreacionPersonaje.setLocation(20, 20);
+        interfazCreacionPersonaje.setLocationRelativeTo(null);
 
         
 
