@@ -26,14 +26,14 @@ public class Guerrero extends Heroe {
     }
 
     public Guerrero(String nombre) {
-        super(nombre, 80,"Guerrero");
+        super(nombre, 60,"Guerrero");
         equipoComienzo();
 
     }
 
     private void equipoComienzo(){
-        Items armadura = new Armadura("Armadura de cuero",0,0,20);
-        Items espada = new Espada("Espada de metal",0,0,35);
+        Items armadura = new Armadura("Armadura de cuero",0,0,5);
+        Items espada = new Espada("Espada de metal",0,0,100);
         super.agregarItemMochila(armadura);
         super.agregarItemMochila(espada);
     }

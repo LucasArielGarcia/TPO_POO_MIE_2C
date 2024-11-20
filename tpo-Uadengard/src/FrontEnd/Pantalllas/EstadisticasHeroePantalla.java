@@ -35,10 +35,6 @@ public class EstadisticasHeroePantalla extends JFrame {
             JLabel equipo = new JLabel("Descripcion: "+ itemView.getDescripcion());
             contBotones.add(equipo);
         }
-        for (ItemView itemView: ControladorFront.getinstancia().abrirMochila()){
-        	JLabel items = new JLabel("Descripcion: "+ itemView.getDescripcion());
-            contBotones.add(items);
-        }
 
         JButton btnVolver = new JButton("Volver");
         btnVolver.addActionListener(e -> {
