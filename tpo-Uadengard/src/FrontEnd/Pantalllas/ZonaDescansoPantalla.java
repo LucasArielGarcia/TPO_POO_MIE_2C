@@ -29,7 +29,7 @@ public class ZonaDescansoPantalla  extends JFrame {
 
 
 
-        imagenFondo = new ImageIcon("../Imagenes/aldea.png").getImage();
+        imagenFondo = new ImageIcon("src/FrontEnd/Imagenes/aldea.png").getImage();
 
         JPanel panelConFondo = new JPanel() {
             @Override

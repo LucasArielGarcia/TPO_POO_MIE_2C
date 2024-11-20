@@ -192,11 +192,11 @@ abstract Mision{
 +{abstract} empezarMision(heroe Heroe): void 
 }
 
-abstract LimpiarUbicacion{
+class LimpiarUbicacion{
 +empezarMision(heroe Heroe): void
 }
 
-abstract DevolverItem{
+class DevolverItem{
 +empezarMision(heroe Heroe): void
 }
 
