@@ -23,7 +23,8 @@ public class EstadisticasHeroePantalla extends JFrame {
                 " Daño: "+ personajeView.getDano();
 
         JLabel monedasMisionLabel = new JLabel("Mision actual: "+personajeView.getMisionActual()+ " || Cantidad de monedas: "+ personajeView.getMonedas());
-
+            
+            
         JLabel estadisticasLabel = new JLabel(estadistica);
         Container contBotones = new Container();
         contBotones.setLayout(new GridLayout(8,1 , 2, 2));
@@ -33,6 +34,10 @@ public class EstadisticasHeroePantalla extends JFrame {
         for (ItemView itemView : ControladorFront.getinstancia().mostrarEquipoHeroe()){
             JLabel equipo = new JLabel("Descripcion: "+ itemView.getDescripcion());
             contBotones.add(equipo);
+        }
+        for (ItemView itemView: ControladorFront.getinstancia().abrirMochila()){
+        	JLabel items = new JLabel("Descripcion: "+ itemView.getDescripcion());
+            contBotones.add(items);
         }
 
         JButton btnVolver = new JButton("Volver");
