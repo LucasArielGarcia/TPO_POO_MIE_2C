@@ -25,12 +25,27 @@ public class Aliado {
         return mision.misionCompleta() ? mision.darRecompensa(): null; // es un if despues del "?" retornaria si el if es true y despues del ":" si es false
     }
 
-    public void aceptarMision(Heroe heroe, int idMision){
-        Mision misionAceptar = buscarMision(idMision);
-        heroe.aceptarMision(misionAceptar);
-        misionAceptadas = misionAceptar;
-        borrarMision(idMision);
+    public void aceptarMision(Heroe heroe, int idMision) {
+        if (heroe.misionActiva()) {
+            Mision misionAceptar = buscarMision(idMision);
+
+            // Verifica si es una misión de tipo PeleaJefe y si el héroe tiene el item requerido
+            if (misionAceptar instanceof PeleaJefe) {
+                PeleaJefe peleaJefe = (PeleaJefe) misionAceptar;
+                if (!peleaJefe.tieneItemRequerido(heroe)) {
+                    throw new RuntimeException("no tenés el item requerido");
+                }
+            }
+
+            // Si todo está bien, acepta la misión
+            heroe.aceptarMision(misionAceptar);
+            misionAceptadas = misionAceptar;
+            borrarMision(idMision);
+        } else {
+            throw new RuntimeException("ya hay una mision activa");
+        }
     }
+
 
     public Items reclamarRecompensa(){
         try {

@@ -98,6 +98,11 @@ public abstract class Heroe extends Personaje{
                 return items;
             }
         }
+        for (Items item : this.equipoItems) {
+            if (item.sosItem(idItem)) {
+                return item;
+            }
+        }
         return null;
     }
 
@@ -126,7 +131,8 @@ public abstract class Heroe extends Personaje{
             }
         }
     }
-
+    public boolean misionActiva(){return this.mision==null;
+    }
     public HeroeToview toview(){
         PersonajeView personajeView = this.toView();
         String mision = "";
