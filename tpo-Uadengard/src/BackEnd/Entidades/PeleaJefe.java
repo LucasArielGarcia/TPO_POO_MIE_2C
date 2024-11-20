@@ -16,6 +16,11 @@ public class PeleaJefe extends Mision{
         cargarEnemigos(enemigos);
     }
 
+    public boolean tieneItemRequerido(Heroe heroe) {
+        ItemView itemView = itemRequerido.toView();
+        return heroe.buscarItem(itemView.getIdItems()) != null;
+    }
+
     @Override
     public void empezarMision(Heroe heroe) {
         ItemView itemView = itemRequerido.toView();

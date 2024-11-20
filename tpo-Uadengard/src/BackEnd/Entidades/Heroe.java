@@ -98,6 +98,11 @@ public abstract class Heroe extends Personaje{
                 return items;
             }
         }
+        for (Items item : this.equipoItems) {
+            if (item.sosItem(idItem)) {
+                return item;
+            }
+        }
         return null;
     }
 
